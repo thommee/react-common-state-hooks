@@ -1,4 +1,4 @@
-import { StateChangeObserver, StateChangeSubscription } from '../types';
+import { StateChangeObserver, StateChangeSubscription } from '../../../types';
 
 export class BaseStateChangeSubscription implements StateChangeSubscription {
   constructor(

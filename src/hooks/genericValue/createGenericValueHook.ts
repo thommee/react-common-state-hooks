@@ -1,6 +1,6 @@
-import { SubscribableStateStorage } from '../../subscribableStateStorage/SubscribableStateStorage';
-import { useStorage } from '../../subscribableStateStorage/useStorage';
-export const createGenericValueHook = (storage: SubscribableStateStorage) => {
-  const useGenericValue = <T>(key: string, initialState?: T) => useStorage(storage, key, initialState);
+import { UseStorage } from '../../types';
+
+export const createGenericValueHook = (useStorage: UseStorage) => {
+  const useGenericValue = <T>(key: string, initialState: T) => useStorage<T>(key, initialState);
   return { useGenericValue };
 };

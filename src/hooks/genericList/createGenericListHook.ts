@@ -1,16 +1,15 @@
-import { SubscribableStateStorage } from '../../subscribableStateStorage/SubscribableStateStorage';
-import { useStorage } from '../../subscribableStateStorage/useStorage';
 import { useCallback, useMemo } from 'react';
 import { ListOptions, AreListItemsEqual, inPlaceAdd, inPlaceRemove } from './utils/Collections';
+import { UseStorage } from '../../types';
 
-export const createGenericListHook = (storage: SubscribableStateStorage) => {
+export const createGenericListHook = (useStorage: UseStorage) => {
   const useGenericList = <T>(
     key: string,
-    initialState: T[] = [],
+    initialValue: T[] = [],
     areEqual: AreListItemsEqual = (a, b) => a === b,
     defaultOptions?: ListOptions,
   ) => {
-    const [list, setList] = useStorage<T[]>(storage, key, initialState);
+    const [list, setList] = useStorage<T[]>(key, initialValue);
 
     const addItem = useCallback(
       (item: T, options?: ListOptions) => {

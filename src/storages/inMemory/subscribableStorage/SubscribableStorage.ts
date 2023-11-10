@@ -1,8 +1,8 @@
 import { BaseStateChangeSubscription } from './BaseStateChangeSubscription';
 
-import { StateChangeObserver, StateChangeSubscribable, StateChangeSubscription, StateStorage } from '../types';
+import { StateChangeObserver, StateChangeSubscribable, StateChangeSubscription, StateStorage } from '../../../types';
 
-export class SubscribableStateStorage implements StateChangeSubscribable, StateStorage {
+export class SubscribableStorage implements StateChangeSubscribable, StateStorage {
   private readonly observersMap: Map<string, Set<StateChangeObserver<any>>> = new Map();
   constructor(private readonly storage: StateStorage) {}
 

@@ -1,14 +1,12 @@
-import { act, renderHook } from '@testing-library/react';
-import { createInMemoryStateHooks } from '../src';
+import { act } from '@testing-library/react';
+import { getInMemoryGenericListHook, getReduxGenericListHook } from './utils/createHooksWrappers';
 
-describe('useGenericList', () => {
+describe.each`
+  renderGenericListHook                                 | description
+  ${getReduxGenericListHook().renderGenericListHook}    | ${'redux'}
+  ${getInMemoryGenericListHook().renderGenericListHook} | ${'inMemory'}
+`('$description: useGenericList', ({ renderGenericListHook }) => {
   const getListKey = () => 's.' + Math.random() + '.key';
-  const renderGenericListHook = (
-    ...args: Parameters<ReturnType<typeof createInMemoryStateHooks>['useGenericList']>
-  ) => {
-    const { useGenericList } = createInMemoryStateHooks();
-    return renderHook(() => useGenericList(...args)).result.current;
-  };
 
   describe('general initialization', () => {
     it.each`
@@ -20,10 +18,26 @@ describe('useGenericList', () => {
       ${[{ a: '1' }]} | ${[{ a: '1' }]}
     `('should return empty array when initialList = $initialList', ({ initialList, expectedList }) => {
       // given:
-      const { list } = renderGenericListHook(getListKey(), initialList);
+      const { list } = renderGenericListHook(getListKey(), initialList).result.current;
       // then:
       expect(list).toEqual(expectedList);
       expect(list).not.toBe(expectedList);
+    });
+
+    it('should use initialValue only at start', () => {
+      // given:
+      const key = 'key';
+      const initialValue = ['initial'];
+      const newValue = ['newValue'];
+      const newValue2: string[] = [];
+      const { result } = renderGenericListHook(key, initialValue);
+      expect(result.current.list).toBe(initialValue);
+      // when:
+      act(() => result.current.setList(newValue));
+      expect(result.current.list).toBe(newValue);
+      // when:
+      act(() => result.current.setList(newValue2));
+      expect(result.current.list).toBe(newValue2);
     });
   });
 
@@ -34,7 +48,7 @@ describe('useGenericList', () => {
       ${{ d: '1' }} | ${[{ d: '1' }]}
     `('should add item ($itemToAdd) when no initialList provided', ({ itemToAdd, expectedResult }) => {
       // given:
-      const { list, addItem } = renderGenericListHook(getListKey());
+      const { list, addItem } = renderGenericListHook(getListKey()).result.current;
       // when:
       act(() => addItem(itemToAdd));
       // then:
@@ -54,7 +68,7 @@ describe('useGenericList', () => {
       ${[{ d: '0' }, { d: '1' }]} | ${{ d: '2' }} | ${[{ d: '0' }, { d: '1' }, { d: '2' }]} | ${'[{ d: "0" }, { d: "1" }]'}
     `('should add $itemToAdd when initialList=$description', ({ initialList, itemToAdd, expectedResult }) => {
       // given:
-      const { list, addItem } = renderGenericListHook(getListKey(), initialList);
+      const { list, addItem } = renderGenericListHook(getListKey(), initialList).result.current;
       // when:
       act(() => addItem(itemToAdd));
       // then:
@@ -75,7 +89,8 @@ describe('useGenericList', () => {
       'should add "$itemToAdd" when distinct="$distinct" and initialList=$initialList',
       ({ initialList, itemToAdd, distinct, expectedResult }) => {
         // given:
-        const { list, addItem } = renderGenericListHook(getListKey(), initialList, undefined, { distinct });
+        const { list, addItem } = renderGenericListHook(getListKey(), initialList, undefined, { distinct }).result
+          .current;
         // when:
         act(() => addItem(itemToAdd));
         // then:
@@ -97,7 +112,8 @@ describe('useGenericList', () => {
       'should add "$itemToAdd" when prepend="$prepend" and initialList=$initialList',
       ({ initialList, itemToAdd, prepend, expectedResult }) => {
         // given:
-        const { list, addItem } = renderGenericListHook(getListKey(), initialList, undefined, { prepend });
+        const { list, addItem } = renderGenericListHook(getListKey(), initialList, undefined, { prepend }).result
+          .current;
         // when:
         act(() => addItem(itemToAdd));
         // then:
@@ -118,7 +134,8 @@ describe('useGenericList', () => {
       'should add "$itemToAdd" when skipIfExist="$skipIfExist" and initialList=$initialList for scalars',
       ({ initialList, itemToAdd, skipIfExist, expectedResult }) => {
         // given:
-        const { list, addItem } = renderGenericListHook(getListKey(), initialList, undefined, { skipIfExist });
+        const { list, addItem } = renderGenericListHook(getListKey(), initialList, undefined, { skipIfExist }).result
+          .current;
         // when:
         act(() => addItem(itemToAdd));
         // then:
@@ -140,7 +157,8 @@ describe('useGenericList', () => {
       ({ initialList, itemToAdd, skipIfExist, expectedResult }) => {
         // given:
         const areEqual = (item1: typeof itemToAdd, item2: typeof itemToAdd) => item1.a === item2.a;
-        const { list, addItem } = renderGenericListHook(getListKey(), initialList, areEqual, { skipIfExist });
+        const { list, addItem } = renderGenericListHook(getListKey(), initialList, areEqual, { skipIfExist }).result
+          .current;
         // when:
         act(() => addItem(itemToAdd));
         // then:
@@ -160,7 +178,8 @@ describe('useGenericList', () => {
       ({ initialList, itemToAdd, prepend, skipIfExist, expectedResult }) => {
         // given:
         const areEqual = (item1: typeof itemToAdd, item2: typeof itemToAdd) => item1.a === item2.a;
-        const { list, addItem } = renderGenericListHook(getListKey(), initialList, areEqual, { prepend, skipIfExist });
+        const { list, addItem } = renderGenericListHook(getListKey(), initialList, areEqual, { prepend, skipIfExist })
+          .result.current;
         // when:
         act(() => addItem(itemToAdd));
         // then:
@@ -182,7 +201,8 @@ describe('useGenericList', () => {
       ({ initialList, itemToAdd, prepend, distinct, expectedResult }) => {
         // given:
         const areEqual = (item1: typeof itemToAdd, item2: typeof itemToAdd) => item1.a === item2.a;
-        const { list, addItem } = renderGenericListHook(getListKey(), initialList, areEqual, { prepend, distinct });
+        const { list, addItem } = renderGenericListHook(getListKey(), initialList, areEqual, { prepend, distinct })
+          .result.current;
         // when:
         act(() => addItem(itemToAdd));
         // then:
@@ -202,7 +222,8 @@ describe('useGenericList', () => {
       ({ initialList, itemToAdd, distinct, skipIfExist, expectedResult }) => {
         // given:
         const areEqual = (item1: typeof itemToAdd, item2: typeof itemToAdd) => item1.a === item2.a;
-        const { list, addItem } = renderGenericListHook(getListKey(), initialList, areEqual, { distinct, skipIfExist });
+        const { list, addItem } = renderGenericListHook(getListKey(), initialList, areEqual, { distinct, skipIfExist })
+          .result.current;
         // when:
         act(() => addItem(itemToAdd));
         // then:
@@ -221,7 +242,7 @@ describe('useGenericList', () => {
       ${undefined}  | ${'5'}       | ${[]}
     `('should remove "$itemToRemove" from $initialList for scalars', ({ initialList, itemToRemove, expectedList }) => {
       // given:
-      const { list, removeItem } = renderGenericListHook(getListKey(), initialList);
+      const { list, removeItem } = renderGenericListHook(getListKey(), initialList).result.current;
       // when:
       act(() => removeItem(itemToRemove));
       // then:
@@ -237,7 +258,7 @@ describe('useGenericList', () => {
     `('should remove "$itemToRemove" from $initialList for objects', ({ initialList, itemToRemove, expectedList }) => {
       // given:
       const areEqual = (item1: typeof itemToRemove, item2: typeof itemToRemove) => item1.a === item2.a;
-      const { list, removeItem } = renderGenericListHook(getListKey(), initialList, areEqual);
+      const { list, removeItem } = renderGenericListHook(getListKey(), initialList, areEqual).result.current;
       // when:
       act(() => removeItem(itemToRemove));
       // then:
@@ -253,10 +274,10 @@ describe('useGenericList', () => {
       ${[]}              | ${['3']}
       ${['1', '2', '3']} | ${['7']}
       ${['1', '2', '3']} | ${[]}
-    `('should set list from initialList="$initialList" to newList="$newList', ({ initialList, newList }) => {
+    `('should set list from initialList="$initialList" to newList="$newList', async ({ initialList, newList }) => {
       // given:
-      const { useGenericList } = createInMemoryStateHooks();
-      const { result } = renderHook(() => useGenericList(getListKey(), initialList));
+      const key = getListKey();
+      const { result } = renderGenericListHook(key, initialList);
       // when:
       act(() => result.current.setList(newList));
       // then:
@@ -267,25 +288,23 @@ describe('useGenericList', () => {
   describe('multiple usage', () => {
     it('should return the same lists for multiple hook usages', () => {
       // given:
-      const key = 'someKey';
+      const key = getListKey();
       const initialList = ['1', '2', '3'];
-      const { useGenericList } = createInMemoryStateHooks();
       // when:
-      const { list: list1 } = renderHook(() => useGenericList(key, initialList)).result.current;
-      const { list: list2 } = renderHook(() => useGenericList(key, initialList)).result.current;
+      const { list: list1 } = renderGenericListHook(key, initialList).result.current;
+      const { list: list2 } = renderGenericListHook(key, initialList).result.current;
       // then:
       expect(list1).toBe(list2);
     });
 
     it('should addItem to all lists when the same key is used multiple times', () => {
       // given:
-      const key = 'someKey';
+      const key = getListKey();
       const initialList = ['1', '2', '3'];
       const itemToAdd1 = '4';
       const itemToAdd2 = '5';
-      const { useGenericList } = createInMemoryStateHooks();
-      const { list: list1, addItem: addItem1 } = renderHook(() => useGenericList(key, initialList)).result.current;
-      const { list: list2, addItem: addItem2 } = renderHook(() => useGenericList(key, initialList)).result.current;
+      const { list: list1, addItem: addItem1 } = renderGenericListHook(key, initialList).result.current;
+      const { list: list2, addItem: addItem2 } = renderGenericListHook(key, initialList).result.current;
 
       // when:
       act(() => addItem1(itemToAdd1)); // then:
@@ -300,15 +319,12 @@ describe('useGenericList', () => {
 
     it('should removeItem from all lists when the same key is used multiple times', () => {
       // given:
-      const key = 'someKey';
+      const key = getListKey();
       const initialList = ['1', '2', '3'];
       const itemToRemove1 = '2';
       const itemToRemove2 = '3';
-      const { useGenericList } = createInMemoryStateHooks();
-      const { list: list1, removeItem: removeItem1 } = renderHook(() => useGenericList(key, initialList)).result
-        .current;
-      const { list: list2, removeItem: removeItem2 } = renderHook(() => useGenericList(key, initialList)).result
-        .current;
+      const { list: list1, removeItem: removeItem1 } = renderGenericListHook(key, initialList).result.current;
+      const { list: list2, removeItem: removeItem2 } = renderGenericListHook(key, initialList).result.current;
 
       // when:
       act(() => removeItem1(itemToRemove1)); // then:

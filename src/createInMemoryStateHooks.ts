@@ -1,12 +1,11 @@
-import { SubscribableStateStorage } from './subscribableStateStorage/SubscribableStateStorage';
-import { InMemoryStorage } from './storages/inMemory/InMemoryStorage';
 import { createGenericValueHook } from './hooks/genericValue/createGenericValueHook';
 import { createGenericListHook } from './hooks/genericList/createGenericListHook';
+import { createInMemoryStorage } from './storages/inMemory';
 
 export const createInMemoryStateHooks = () => {
-  const storage = new SubscribableStateStorage(new InMemoryStorage());
-  const { useGenericValue } = createGenericValueHook(storage);
-  const { useGenericList } = createGenericListHook(storage);
+  const { useStorage } = createInMemoryStorage();
+  const { useGenericValue } = createGenericValueHook(useStorage);
+  const { useGenericList } = createGenericListHook(useStorage);
 
   return {
     useGenericValue,

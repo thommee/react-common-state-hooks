@@ -14,3 +14,6 @@ export interface StateStorage {
   setItem<T>(key: string, value: T): void;
   getItem<T>(key: string): T | undefined;
 }
+
+export type UseStorageApi<T> = [value: T, setValue: (value: T) => void];
+export type UseStorage = <T>(key: string, initialValue: T) => UseStorageApi<T>;

@@ -1,8 +1,3 @@
-// collection of objects
-// update collection item IN PLACE, by modifying collection:
-// if not exists: add new one at the end
-// if exists: filter out and add new one at the end
-
 function findIndex<T>(collection: T[], element: T, areEqual: AreListItemsEqual) {
   return collection.findIndex((it) => areEqual(it, element));
 }
@@ -40,10 +35,6 @@ export function inPlaceAdd<T>(
   return collection;
 }
 
-// collection of objects
-// remove collection item IN PLACE, by modifying collection:
-// search element by provided elements keys
-// removeDistinct(state.elements, element, 'key1', 'key2')
 export function inPlaceRemove<T>(collection: T[], element: T, areEqual: AreListItemsEqual): T[] {
   const index = findIndex(collection, element, areEqual);
   if (index >= 0) {
