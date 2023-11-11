@@ -3,8 +3,8 @@ import { createGenericValueHook } from './hooks/genericValue/createGenericValueH
 import { createGenericListHook } from './hooks/genericList/createGenericListHook';
 import { createGenericRecordHook } from './hooks/genericRecord/createGenericRecordHook';
 
-export const createInMemoryStateHooks = () => {
-  const { useStorage } = createInMemoryStorage();
+export const createInMemoryStateHooks = (namespace: string) => {
+  const { useStorage } = createInMemoryStorage(namespace);
   const { useGenericValue } = createGenericValueHook(useStorage);
   const { useGenericList } = createGenericListHook(useStorage);
   const { useGenericRecord } = createGenericRecordHook(useStorage);
