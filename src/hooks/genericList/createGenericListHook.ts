@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import { ListOptions, AreListItemsEqual, inPlaceAdd, inPlaceRemove } from './utils/Collections';
-import { UseStorage } from '../../types';
+import { UseStorage } from '../../storages/UseStorage';
 
 export const createGenericListHook = (useStorage: UseStorage) => {
   const useGenericList = <T>(

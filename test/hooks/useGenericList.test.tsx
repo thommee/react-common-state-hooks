@@ -1,5 +1,6 @@
 import { act } from '@testing-library/react';
-import { getInMemoryGenericListHook, getReduxGenericListHook } from './utils/createListHooksWrappers';
+import { getReduxGenericListHook } from './utils/createReduxWrappers';
+import { getInMemoryGenericListHook } from './utils/createInMemoryWrappers';
 
 describe.each`
   renderGenericListHook                                 | description

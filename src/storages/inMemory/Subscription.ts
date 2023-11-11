@@ -1,6 +1,8 @@
-import { StateChangeObserver, StateChangeSubscription } from '../../../types';
+export interface StateChangeObserver<T> {
+  (value: T): void;
+}
 
-export class BaseStateChangeSubscription implements StateChangeSubscription {
+export class Subscription {
   constructor(
     private readonly observers: Set<StateChangeObserver<any>>,
     private readonly observer: StateChangeObserver<any>,

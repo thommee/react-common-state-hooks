@@ -1,5 +1,6 @@
 import { act } from '@testing-library/react';
-import { getInMemoryGenericRecordHook, getReduxGenericRecordHook } from './utils/createRecordHooksWrappers';
+import { getReduxGenericRecordHook } from './utils/createReduxWrappers';
+import { getInMemoryGenericRecordHook } from './utils/createInMemoryWrappers';
 
 describe.each`
   renderGenericRecordHook                                   | description

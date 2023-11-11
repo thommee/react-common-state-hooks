@@ -1,12 +1,11 @@
-import { useSubscribableStorage } from './subscribableStorage/useSubscribableStorage';
-import { SubscribableStorage } from './subscribableStorage/SubscribableStorage';
 import { InMemoryStorage } from './InMemoryStorage';
-import { UseStorageApi } from '../../types';
+import { UseStorageApi } from '../UseStorage';
+import { useInMemoryStorage } from './useInMemoryStorage';
 
 export const createInMemoryStorage = () => {
-  const storage = new SubscribableStorage(new InMemoryStorage());
+  const storage = new InMemoryStorage();
   const useStorage = <T>(key: string, initialValue: T): UseStorageApi<T> =>
-    useSubscribableStorage(storage, key, initialValue);
+    useInMemoryStorage(storage, key, initialValue);
 
   return { useStorage };
 };

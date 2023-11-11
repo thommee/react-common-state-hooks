@@ -1,5 +1,5 @@
 import { createReducerSlice } from './createReducerSlice';
-import { UseStorageApi } from '../../types';
+import { UseStorageApi } from '../UseStorage';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback, useMemo } from 'react';
 

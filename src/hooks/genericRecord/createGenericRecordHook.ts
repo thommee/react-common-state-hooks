@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from 'react';
-import { UseStorage } from '../../types';
+import { UseStorage } from '../../storages/UseStorage';
 
 export const createGenericRecordHook = (useStorage: UseStorage) => {
   const useGenericRecord = <T>(name: string, initialValue: Record<string, T> = {}) => {

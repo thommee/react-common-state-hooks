@@ -1,12 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
-import { SubscribableStorage } from './SubscribableStorage';
-import { UseStorageApi } from '../../../types';
+import { InMemoryStorage } from './InMemoryStorage';
+import { UseStorageApi } from '../UseStorage';
 
-export const useSubscribableStorage = <T>(
-  storage: SubscribableStorage,
-  key: string,
-  initialValue: T,
-): UseStorageApi<T> => {
+export const useInMemoryStorage = <T>(storage: InMemoryStorage, key: string, initialValue: T): UseStorageApi<T> => {
   const [value, setValue] = useState(storage.getItem(key) ?? initialValue);
 
   useEffect(() => {
