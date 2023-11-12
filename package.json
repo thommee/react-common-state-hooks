@@ -1,15 +1,22 @@
 {
-  "name": "react-state-hooks",
+  "name": "@thommee/react-common-state-hooks",
   "version": "0.9.0",
-  "description": "Shareable state hooks for React",
+  "description": "Shareable, reusable state hooks for React",
   "author": "Tomasz Szuba",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
-    "url": "https://github.com/thommee/react-state-hooks"
+    "url": "git+https://github.com/thommee/react-common-state-hooks.git"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist", "README*", "docs"],
+  "files": [
+    "dist",
+    "README*",
+    "docs"
+  ],
   "peerDependencies": {
     "react": ">=16.0.1",
     "react-redux": ">=5.0.1"
@@ -38,8 +45,8 @@
     "lint": "eslint src",
     "test": "jest",
     "build": "rm -rf dist && tsc",
-    "pack" : "npm run build && npm pack",
-    "link" : "npm run build && npm link",
+    "pack": "npm run build && npm pack",
+    "link": "npm run build && npm link",
     "publish": "npm run lint && npm run test && npm run build && npm publish"
   },
   "jest": {

@@ -1,8 +1,8 @@
-## react-state-hooks
+## react-common-state-hooks
 ### Shareable State Hooks for React
 
 #### About the library
-`react-state-hooks` has been created to provide a simple way for creating reusable data sources
+`react-common-state-hooks` has been created to provide a simple way for creating reusable data sources
 ready for use anywhere in the application.
 The library allows you to define hooks for reading and modifying **the same** data, regardless of where it is used.
 
@@ -14,7 +14,7 @@ data types like simple values, lists & sets and records (maps):
 - `useGenericRecord`: hook for managing record-like data structures like maps and key-value storages.
 
 #### Storing Data
-`react-state-hooks` provides two types of data storages:
+`react-common-state-hooks` provides two types of data storages:
 - `inMemory`: data is stored in the application's memory
 - `redux`: data is stored in Redux (redux is not included in this library)
 
@@ -24,7 +24,7 @@ For saving data in Redux, use `createReduxStateHooks` to generate hooks.
 
 
 ### Installation
-`npm install react-state-hooks`
+`npm install react-common-state-hooks`
 
 ### Basic usage:
 First, We need to create generic hooks that we can later use 
@@ -33,7 +33,7 @@ directly in the application, or as a base for custom hooks.
 Example for `createInMemoryStateHooks`:
 ~~~typescript jsx
 // InMemoryGenericStateHooks.ts
-import { createInMemoryStateHooks } from 'react-state-hooks';
+import { createInMemoryStateHooks } from 'react-common-state-hooks';
 
 export const {
   useGenericValue,
@@ -45,7 +45,7 @@ export const {
 Example for `createReduxStateHooks`:
 ~~~typescript jsx
 // ReduxGenericStateHooks.ts
-import { createReduxStateHooks } from 'react-state-hooks';
+import { createReduxStateHooks } from 'react-common-state-hooks';
 
 export const {
   slice,
