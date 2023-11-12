@@ -1,10 +1,10 @@
 import { Subscription, StateChangeObserver } from './Subscription';
 
 export class InMemoryStorage {
-  private readonly observersMap: Map<string, Set<StateChangeObserver<any>>> = new Map();
+  private readonly observersMap: Map<string, Set<StateChangeObserver>> = new Map();
   private readonly storage: Map<string, any> = new Map();
 
-  subscribeOn<T>(key: string, observer: StateChangeObserver<T>): Subscription {
+  subscribeOn(key: string, observer: StateChangeObserver): Subscription {
     const observers = (this.observersMap.get(key) ?? new Set()).add(observer);
     this.observersMap.set(key, observers);
     return new Subscription(observers, observer);
