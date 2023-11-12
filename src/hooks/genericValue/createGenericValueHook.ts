@@ -1,6 +1,6 @@
 import { UseStorage } from '../../storages/UseStorage';
 
 export const createGenericValueHook = (useStorage: UseStorage) => {
-  const useGenericValue = <T>(key: string, initialState: T) => useStorage<T>(key, initialState);
+  const useGenericValue = <Value>(key: string, initialValue: Value) => useStorage<Value>(key, initialValue);
   return { useGenericValue };
 };

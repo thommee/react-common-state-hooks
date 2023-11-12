@@ -3,23 +3,23 @@ import { ListOptions, AreListItemsEqual, inPlaceAdd, inPlaceRemove } from './uti
 import { UseStorage } from '../../storages/UseStorage';
 
 export const createGenericListHook = (useStorage: UseStorage) => {
-  const useGenericList = <T>(
+  const useGenericList = <ListItem>(
     key: string,
-    initialValue: T[] = [],
+    initialValue: ListItem[] = [],
     areEqual: AreListItemsEqual = (a, b) => a === b,
     defaultOptions?: ListOptions,
   ) => {
-    const [list, setList] = useStorage<T[]>(key, initialValue);
+    const [list, setList] = useStorage<ListItem[]>(key, initialValue);
 
     const addItem = useCallback(
-      (item: T, options?: ListOptions) => {
-        setList(inPlaceAdd<T>(list, item, areEqual, { ...defaultOptions, ...options }));
+      (item: ListItem, options?: ListOptions) => {
+        setList(inPlaceAdd<ListItem>(list, item, areEqual, { ...defaultOptions, ...options }));
       },
       [areEqual, defaultOptions, list, setList],
     );
     const removeItem = useCallback(
-      (item: T) => {
-        setList(inPlaceRemove<T>(list, item, areEqual));
+      (item: ListItem) => {
+        setList(inPlaceRemove<ListItem>(list, item, areEqual));
       },
       [areEqual, list, setList],
     );
