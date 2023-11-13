@@ -29,11 +29,11 @@ describe.each`
         ({ initialValue, itemToAdd: { key, value }, expectedResult }) => {
           // given:
           const { result } = renderGenericRecordHook(getKey(), initialValue);
-          expect(result.current.record).toBe(initialValue);
+          expect(result.current[0]).toBe(initialValue);
           // when:
-          act(() => result.current.addItem(key, value)); // then:
-          expect(result.current.record[key]).toBe(value);
-          expect(result.current.record).toEqual(expectedResult);
+          act(() => result.current[1](key, value)); // then:
+          expect(result.current[0][key]).toBe(value);
+          expect(result.current[0]).toEqual(expectedResult);
         },
       );
     });
@@ -48,11 +48,11 @@ describe.each`
         ({ initialValue, keyToRemove, expectedResult }) => {
           // given:
           const { result } = renderGenericRecordHook(getKey(), initialValue);
-          expect(result.current.record).toBe(initialValue);
+          expect(result.current[0]).toBe(initialValue);
           // when:
-          act(() => result.current.removeItem(keyToRemove)); // then:
-          expect(result.current.record).not.toHaveProperty(keyToRemove);
-          expect(result.current.record).toEqual(expectedResult);
+          act(() => result.current[2](keyToRemove)); // then:
+          expect(result.current[0]).not.toHaveProperty(keyToRemove);
+          expect(result.current[0]).toEqual(expectedResult);
         },
       );
     });
@@ -67,11 +67,11 @@ describe.each`
         ({ initialValue, recordToSet, expectedResult }) => {
           // given:
           const { result } = renderGenericRecordHook(getKey(), initialValue);
-          expect(result.current.record).toBe(initialValue);
+          expect(result.current[0]).toBe(initialValue);
           // when:
-          act(() => result.current.setRecord(recordToSet)); // then:
-          expect(result.current.record).toBe(recordToSet);
-          expect(result.current.record).toEqual(expectedResult);
+          act(() => result.current[3](recordToSet)); // then:
+          expect(result.current[0]).toBe(recordToSet);
+          expect(result.current[0]).toEqual(expectedResult);
         },
       );
     });
