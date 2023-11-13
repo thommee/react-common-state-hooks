@@ -10,6 +10,10 @@ export class InMemoryStorage {
     return new Subscription(observers, observer);
   }
 
+  has(key: string) {
+    return this.storage.has(key);
+  }
+
   getItem<T>(key: string): T | undefined {
     return this.storage.get(key);
   }

@@ -12,7 +12,9 @@ export const createReduxStorage = (namespace: string) => {
     const selector = useMemo(() => createSelector<T>(key, initialValue), [initialValue, key]);
     const value = useSelector<unknown, T>(selector);
 
-    const setValue = useCallback((payload: T) => dispatch(action(payload)), [action, dispatch]);
+    const setValue = useCallback<UseStorageApi<T>[1]>((payload) => {
+      dispatch(action(( payload instanceof Function) ? payload(value) : payload));
+    }, [action, dispatch, value]);
 
     return useMemo(() => [value, setValue], [setValue, value]);
   };

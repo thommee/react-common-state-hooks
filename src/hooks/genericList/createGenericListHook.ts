@@ -3,19 +3,20 @@ import { ListOptions, AreListItemsEqual, add, remove } from './utils/Collections
 import { UseStorage } from '../../storages/UseStorage';
 
 export const createGenericListHook = (useStorage: UseStorage) => {
+  const defaultAreEqual = <T>(a: T, b: T) => a === b;
   const useGenericList = <ListItem>(
     key: string,
     initialValue: ListItem[] = [],
-    areEqual: AreListItemsEqual<ListItem> = (a, b) => a === b,
+    areEqual: AreListItemsEqual<ListItem> = defaultAreEqual,
     defaultOptions?: ListOptions,
   ) => {
     const [list, setList] = useStorage<ListItem[]>(key, initialValue);
 
     const addItem = useCallback(
       (item: ListItem, options?: ListOptions) => {
-         setList(add<ListItem>(list, item, areEqual, { ...defaultOptions, ...options }));
+         setList((l) => add<ListItem>(l, item, areEqual, { ...defaultOptions, ...options }));
       },
-      [areEqual, defaultOptions, list, setList],
+      [setList, areEqual, defaultOptions],
     );
     const removeItem = useCallback(
       (item: ListItem) => {
