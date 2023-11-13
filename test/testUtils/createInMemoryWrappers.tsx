@@ -1,4 +1,4 @@
-import { createInMemoryStateHooks } from '../../../src';
+import { createInMemoryStateHooks } from '../../src';
 import { renderHook } from '@testing-library/react';
 
 export function getInMemoryGenericListHook() {
