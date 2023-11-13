@@ -97,7 +97,7 @@ describe.each`
         'should add "$itemToAdd" when distinct="$distinct" and initialList=$initialList',
         ({ initialList, itemToAdd, distinct, expectedResult }) => {
           // given:
-          const { result } = renderGenericListHook(getListKey(), initialList, undefined, { distinct });
+          const { result } = renderGenericListHook(getListKey(), initialList, { distinct });
           // when:
           act(() => result.current[1](itemToAdd));
           // then:
@@ -118,7 +118,7 @@ describe.each`
         'should add "$itemToAdd" when prepend="$prepend" and initialList=$initialList',
         ({ initialList, itemToAdd, prepend, expectedResult }) => {
           // given:
-          const { result } = renderGenericListHook(getListKey(), initialList, undefined, { prepend });
+          const { result } = renderGenericListHook(getListKey(), initialList, { prepend });
           // when:
           act(() => result.current[1](itemToAdd));
           // then:
@@ -139,7 +139,7 @@ describe.each`
         '$#: should add "$itemToAdd" when skipIfExist="$skipIfExist" and initialList=$initialList for scalars',
         ({ initialList, itemToAdd, skipIfExist, expectedResult }) => {
           // given:
-          const { result } = renderGenericListHook(getListKey(), initialList, undefined, { skipIfExist });
+          const { result } = renderGenericListHook(getListKey(), initialList, { skipIfExist });
           // when:
           act(() => result.current[1](itemToAdd));
           // then:
@@ -161,7 +161,7 @@ describe.each`
         ({ initialList, itemToAdd, skipIfExist, expectedResult }) => {
           // given:
           const areEqual = (item1: typeof itemToAdd, item2: typeof itemToAdd) => item1.a === item2.a;
-          const { result } = renderGenericListHook(getListKey(), initialList, areEqual, { skipIfExist });
+          const { result } = renderGenericListHook(getListKey(), initialList, { areEqual, skipIfExist });
 
           // when:
           act(() => result.current[1](itemToAdd));
@@ -182,7 +182,7 @@ describe.each`
         ({ initialList, itemToAdd, prepend, skipIfExist, expectedResult }) => {
           // given:
           const areEqual = (item1: typeof itemToAdd, item2: typeof itemToAdd) => item1.a === item2.a;
-          const { result } = renderGenericListHook(getListKey(), initialList, areEqual, { prepend, skipIfExist })
+          const { result } = renderGenericListHook(getListKey(), initialList, { areEqual, prepend, skipIfExist })
           // when:
           act(() => result.current[1](itemToAdd));
           // then:
@@ -204,7 +204,7 @@ describe.each`
         ({ initialList, itemToAdd, prepend, distinct, expectedResult }) => {
           // given:
           const areEqual = (item1: typeof itemToAdd, item2: typeof itemToAdd) => item1.a === item2.a;
-          const { result } = renderGenericListHook(getListKey(), initialList, areEqual, { prepend, distinct });
+          const { result } = renderGenericListHook(getListKey(), initialList, { areEqual, prepend, distinct });
           // when:
           act(() => result.current[1](itemToAdd));
           // then:
@@ -224,7 +224,8 @@ describe.each`
         ({ initialList, itemToAdd, distinct, skipIfExist, expectedResult }) => {
           // given:
           const areEqual = (item1: typeof itemToAdd, item2: typeof itemToAdd) => item1.a === item2.a;
-          const { result } = renderGenericListHook(getListKey(), initialList, areEqual, {
+          const { result } = renderGenericListHook(getListKey(), initialList, {
+            areEqual,
             distinct,
             skipIfExist,
           });
@@ -267,7 +268,7 @@ describe.each`
         ({ initialList, itemToRemove, expectedList }) => {
           // given:
           const areEqual = (item1: typeof itemToRemove, item2: typeof itemToRemove) => item1.a === item2.a;
-          const { result } = renderGenericListHook(getListKey(), initialList, areEqual);
+          const { result } = renderGenericListHook(getListKey(), initialList, { areEqual });
           // when:
           act(() => result.current[2](itemToRemove));
           // then:
