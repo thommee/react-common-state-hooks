@@ -1,7 +1,7 @@
 {
   "name": "@thommee/react-common-state-hooks",
-  "version": "0.9.1",
-  "description": "Shareable, reusable state hooks for React",
+  "version": "0.10.0",
+  "description": "Shareable state hooks for React",
   "author": "Tomasz Szuba",
   "license": "MIT",
   "publishConfig": {
