@@ -18,18 +18,44 @@ describe.each`
     const getListKey = () => 's.' + Math.random() + '.key';
 
 
-    describe('preserve', () => {
-      it('should preserve modifiers', () => {
+    describe('stable modifiers references', () => {
+      it('should have stable .addItem modifier', () => {
         // given:
         const key = getListKey();
         const initialList = ['1', '2', '3'];
         const { result } = renderGenericListHook(key, initialList);
-        const { current: { addItem } } = result;
+        const { current: [, addItem] } = result;
 
         // when:
-        act(() => result.current.addItem('5'));
+        act(() => result.current[1]('5'));
         // then:
-        expect(addItem).toBe(result.current.addItem);
+        expect(addItem).toBe(result.current[1]);
+      });
+
+      it('should have stable .removeItem modifier', () => {
+        // given:
+        const key = getListKey();
+        const initialList = ['1', '2', '3'];
+        const { result } = renderGenericListHook(key, initialList);
+        const { current: [,, removeItem] } = result;
+
+        // when:
+        act(() => result.current[2]('3'));
+        // then:
+        expect(removeItem).toBe(result.current[2]);
+      });
+
+      it('should have stable .setList modifier', () => {
+        // given:
+        const key = getListKey();
+        const initialList = ['1', '2', '3'];
+        const { result } = renderGenericListHook(key, initialList);
+        const { current: [,,, setList] } = result;
+
+        // when:
+        act(() => result.current[3](['9']));
+        // then:
+        expect(setList).toBe(result.current[3]);
       });
     });
   },

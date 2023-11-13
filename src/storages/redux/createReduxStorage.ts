@@ -1,7 +1,7 @@
 import { createReducerSlice } from './createReducerSlice';
 import { UseStorageApi } from '../UseStorage';
 import { useDispatch, useSelector } from 'react-redux';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 
 export const createReduxStorage = (namespace: string) => {
   const { reducer, name, createAction, createSelector } = createReducerSlice(namespace);
@@ -11,10 +11,16 @@ export const createReduxStorage = (namespace: string) => {
     const action = useMemo(() => createAction<T>(key), [key]);
     const selector = useMemo(() => createSelector<T>(key, initialValue), [initialValue, key]);
     const value = useSelector<unknown, T>(selector);
+    const refValue = useRef(value);
+
+    useEffect(() => {
+      refValue.current = value;
+    }, [value]);
 
     const setValue = useCallback<UseStorageApi<T>[1]>((payload) => {
-      dispatch(action(( payload instanceof Function) ? payload(value) : payload));
-    }, [action, dispatch, value]);
+      const newValue = ( payload instanceof Function) ? payload(refValue.current) : payload;
+      dispatch(action(newValue));
+    }, [action, dispatch, refValue]);
 
     return useMemo(() => [value, setValue], [setValue, value]);
   };
