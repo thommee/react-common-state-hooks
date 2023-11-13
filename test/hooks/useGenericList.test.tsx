@@ -27,10 +27,10 @@ describe.each`
         ${[{ a: '1' }]} | ${[{ a: '1' }]}
       `('should return empty array when initialList = $initialList', ({ initialList, expectedList }) => {
         // given:
-        const { list } = renderGenericListHook(getListKey(), initialList).result.current;
+        const { result } = renderGenericListHook(getListKey(), initialList);
         // then:
-        expect(list).toEqual(expectedList);
-        expect(list).not.toBe(expectedList);
+        expect(result.current.list).toEqual(expectedList);
+        expect(result.current.list).not.toBe(expectedList);
       });
 
       it('should use initialValue only at start', () => {
@@ -57,12 +57,12 @@ describe.each`
         ${{ d: '1' }} | ${[{ d: '1' }]}
       `('should add item ($itemToAdd) when no initialList provided', ({ itemToAdd, expectedResult }) => {
         // given:
-        const { list, addItem } = renderGenericListHook(getListKey()).result.current;
+        const { result } = renderGenericListHook(getListKey());
         // when:
-        act(() => addItem(itemToAdd));
+        act(() => result.current.addItem(itemToAdd));
         // then:
-        expect(list).toStrictEqual(expectedResult);
-        expect(list[0]).toBe(itemToAdd);
+        expect(result.current.list).toStrictEqual(expectedResult);
+        expect(result.current.list[0]).toBe(itemToAdd);
       });
 
       it.each`
@@ -77,13 +77,12 @@ describe.each`
         ${[{ d: '0' }, { d: '1' }]} | ${{ d: '2' }} | ${[{ d: '0' }, { d: '1' }, { d: '2' }]} | ${'[{ d: "0" }, { d: "1" }]'}
       `('should add $itemToAdd when initialList=$description', ({ initialList, itemToAdd, expectedResult }) => {
         // given:
-        const { list, addItem } = renderGenericListHook(getListKey(), initialList).result.current;
+        const { result } = renderGenericListHook(getListKey(), initialList);
         // when:
-        act(() => addItem(itemToAdd));
+        act(() => result.current.addItem(itemToAdd));
         // then:
-        expect(list[0]).toBe(initialList[0]);
-        expect(list[expectedResult.length - 1]).toBe(itemToAdd);
-        expect(list).toStrictEqual(expectedResult);
+        expect(result.current.list[expectedResult.length - 1]).toBe(itemToAdd);
+        expect(result.current.list).toStrictEqual(expectedResult);
       });
 
       it.each`
@@ -98,14 +97,12 @@ describe.each`
         'should add "$itemToAdd" when distinct="$distinct" and initialList=$initialList',
         ({ initialList, itemToAdd, distinct, expectedResult }) => {
           // given:
-          const { list, addItem } = renderGenericListHook(getListKey(), initialList, undefined, { distinct }).result
-            .current;
+          const { result } = renderGenericListHook(getListKey(), initialList, undefined, { distinct });
           // when:
-          act(() => addItem(itemToAdd));
+          act(() => result.current.addItem(itemToAdd));
           // then:
-          expect(list[0]).toBe(initialList[0]);
-          expect(list[expectedResult.length - 1]).toBe(itemToAdd);
-          expect(list).toStrictEqual(expectedResult);
+          expect(result.current.list[expectedResult.length - 1]).toBe(itemToAdd);
+          expect(result.current.list).toStrictEqual(expectedResult);
         },
       );
 
@@ -121,13 +118,12 @@ describe.each`
         'should add "$itemToAdd" when prepend="$prepend" and initialList=$initialList',
         ({ initialList, itemToAdd, prepend, expectedResult }) => {
           // given:
-          const { list, addItem } = renderGenericListHook(getListKey(), initialList, undefined, { prepend }).result
-            .current;
+          const { result } = renderGenericListHook(getListKey(), initialList, undefined, { prepend });
           // when:
-          act(() => addItem(itemToAdd));
+          act(() => result.current.addItem(itemToAdd));
           // then:
-          expect(list[prepend ? 0 : expectedResult.length - 1]).toBe(itemToAdd);
-          expect(list).toStrictEqual(expectedResult);
+          expect(result.current.list[prepend ? 0 : expectedResult.length - 1]).toBe(itemToAdd);
+          expect(result.current.list).toStrictEqual(expectedResult);
         },
       );
 
@@ -140,16 +136,15 @@ describe.each`
         ${['0', '1']} | ${'1'}    | ${true}     | ${['0', '1']}
         ${['0', '1']} | ${'1'}    | ${false}    | ${['0', '1', '1']}
       `(
-        'should add "$itemToAdd" when skipIfExist="$skipIfExist" and initialList=$initialList for scalars',
+        '$#: should add "$itemToAdd" when skipIfExist="$skipIfExist" and initialList=$initialList for scalars',
         ({ initialList, itemToAdd, skipIfExist, expectedResult }) => {
           // given:
-          const { list, addItem } = renderGenericListHook(getListKey(), initialList, undefined, { skipIfExist }).result
-            .current;
+          const { result } = renderGenericListHook(getListKey(), initialList, undefined, { skipIfExist });
           // when:
-          act(() => addItem(itemToAdd));
+          act(() => result.current.addItem(itemToAdd));
           // then:
-          expect(list[expectedResult.length - 1]).toEqual(itemToAdd);
-          expect(list).toStrictEqual(expectedResult);
+          expect(result.current.list[expectedResult.length - 1]).toEqual(itemToAdd);
+          expect(result.current.list).toStrictEqual(expectedResult);
         },
       );
 
@@ -166,13 +161,13 @@ describe.each`
         ({ initialList, itemToAdd, skipIfExist, expectedResult }) => {
           // given:
           const areEqual = (item1: typeof itemToAdd, item2: typeof itemToAdd) => item1.a === item2.a;
-          const { list, addItem } = renderGenericListHook(getListKey(), initialList, areEqual, { skipIfExist }).result
-            .current;
+          const { result } = renderGenericListHook(getListKey(), initialList, areEqual, { skipIfExist });
+
           // when:
-          act(() => addItem(itemToAdd));
+          act(() => result.current.addItem(itemToAdd));
           // then:
-          expect(list[expectedResult.length - 1])[skipIfExist ? 'toEqual' : 'toBe'](itemToAdd);
-          expect(list).toStrictEqual(expectedResult);
+          expect(result.current.list[expectedResult.length - 1])[skipIfExist ? 'toEqual' : 'toBe'](itemToAdd);
+          expect(result.current.list).toStrictEqual(expectedResult);
         },
       );
 
@@ -187,15 +182,14 @@ describe.each`
         ({ initialList, itemToAdd, prepend, skipIfExist, expectedResult }) => {
           // given:
           const areEqual = (item1: typeof itemToAdd, item2: typeof itemToAdd) => item1.a === item2.a;
-          const { list, addItem } = renderGenericListHook(getListKey(), initialList, areEqual, { prepend, skipIfExist })
-            .result.current;
+          const { result } = renderGenericListHook(getListKey(), initialList, areEqual, { prepend, skipIfExist })
           // when:
-          act(() => addItem(itemToAdd));
+          act(() => result.current.addItem(itemToAdd));
           // then:
-          expect(list[prepend && !skipIfExist ? 0 : expectedResult.length - 1])[skipIfExist ? 'toEqual' : 'toBe'](
+          expect(result.current.list[prepend && !skipIfExist ? 0 : expectedResult.length - 1])[skipIfExist ? 'toEqual' : 'toBe'](
             itemToAdd,
           );
-          expect(list).toStrictEqual(expectedResult);
+          expect(result.current.list).toStrictEqual(expectedResult);
         },
       );
 
@@ -210,13 +204,12 @@ describe.each`
         ({ initialList, itemToAdd, prepend, distinct, expectedResult }) => {
           // given:
           const areEqual = (item1: typeof itemToAdd, item2: typeof itemToAdd) => item1.a === item2.a;
-          const { list, addItem } = renderGenericListHook(getListKey(), initialList, areEqual, { prepend, distinct })
-            .result.current;
+          const { result } = renderGenericListHook(getListKey(), initialList, areEqual, { prepend, distinct });
           // when:
-          act(() => addItem(itemToAdd));
+          act(() => result.current.addItem(itemToAdd));
           // then:
-          expect(list[prepend ? 0 : expectedResult.length - 1])[distinct ? 'toBe' : 'toEqual'](itemToAdd);
-          expect(list).toStrictEqual(expectedResult);
+          expect(result.current.list[prepend ? 0 : expectedResult.length - 1])[distinct ? 'toBe' : 'toEqual'](itemToAdd);
+          expect(result.current.list).toStrictEqual(expectedResult);
         },
       );
 
@@ -231,15 +224,15 @@ describe.each`
         ({ initialList, itemToAdd, distinct, skipIfExist, expectedResult }) => {
           // given:
           const areEqual = (item1: typeof itemToAdd, item2: typeof itemToAdd) => item1.a === item2.a;
-          const { list, addItem } = renderGenericListHook(getListKey(), initialList, areEqual, {
+          const { result } = renderGenericListHook(getListKey(), initialList, areEqual, {
             distinct,
             skipIfExist,
-          }).result.current;
+          });
           // when:
-          act(() => addItem(itemToAdd));
+          act(() => result.current.addItem(itemToAdd));
           // then:
-          expect(list[expectedResult.length - 1])[skipIfExist ? 'toEqual' : 'toBe'](itemToAdd);
-          expect(list).toStrictEqual(expectedResult);
+          expect(result.current.list[expectedResult.length - 1])[skipIfExist ? 'toEqual' : 'toBe'](itemToAdd);
+          expect(result.current.list).toStrictEqual(expectedResult);
         },
       );
     });
@@ -255,11 +248,11 @@ describe.each`
         'should remove "$itemToRemove" from $initialList for scalars',
         ({ initialList, itemToRemove, expectedList }) => {
           // given:
-          const { list, removeItem } = renderGenericListHook(getListKey(), initialList).result.current;
+          const { result} = renderGenericListHook(getListKey(), initialList);
           // when:
-          act(() => removeItem(itemToRemove));
+          act(() => result.current.removeItem(itemToRemove));
           // then:
-          expect(list).toStrictEqual(expectedList);
+          expect(result.current.list).toStrictEqual(expectedList);
         },
       );
 
@@ -274,11 +267,11 @@ describe.each`
         ({ initialList, itemToRemove, expectedList }) => {
           // given:
           const areEqual = (item1: typeof itemToRemove, item2: typeof itemToRemove) => item1.a === item2.a;
-          const { list, removeItem } = renderGenericListHook(getListKey(), initialList, areEqual).result.current;
+          const { result } = renderGenericListHook(getListKey(), initialList, areEqual);
           // when:
-          act(() => removeItem(itemToRemove));
+          act(() => result.current.removeItem(itemToRemove));
           // then:
-          expect(list).toStrictEqual(expectedList);
+          expect(result.current.list).toStrictEqual(expectedList);
         },
       );
     });
@@ -320,18 +313,18 @@ describe.each`
         const initialList = ['1', '2', '3'];
         const itemToAdd1 = '4';
         const itemToAdd2 = '5';
-        const { list: list1, addItem: addItem1 } = renderGenericListHook(key, initialList).result.current;
-        const { list: list2, addItem: addItem2 } = renderGenericListHook(key, initialList).result.current;
+        const { result: result1 } = renderGenericListHook(key, initialList);
+        const { result: result2 } = renderGenericListHook(key, initialList);
 
         // when:
-        act(() => addItem1(itemToAdd1)); // then:
-        expect(list1).toEqual(['1', '2', '3', '4']);
-        expect(list1).toBe(list2);
+        act(() => result1.current.addItem(itemToAdd1)); // then:
+        expect(result1.current.list).toEqual(['1', '2', '3', '4']);
+        expect(result1.current.list).toBe(result2.current.list);
 
         // when:
-        act(() => addItem2(itemToAdd2)); // then:
-        expect(list2).toEqual(['1', '2', '3', '4', '5']);
-        expect(list1).toBe(list2);
+        act(() => result2.current.addItem(itemToAdd2)); // then:
+        expect(result2.current.list).toEqual(['1', '2', '3', '4', '5']);
+        expect(result1.current.list).toBe(result2.current.list);
       });
 
       it('should removeItem from all lists when the same key is used multiple times', () => {
@@ -340,18 +333,18 @@ describe.each`
         const initialList = ['1', '2', '3'];
         const itemToRemove1 = '2';
         const itemToRemove2 = '3';
-        const { list: list1, removeItem: removeItem1 } = renderGenericListHook(key, initialList).result.current;
-        const { list: list2, removeItem: removeItem2 } = renderGenericListHook(key, initialList).result.current;
+        const { result: result1 } = renderGenericListHook(key, initialList);
+        const { result: result2 } = renderGenericListHook(key, initialList);
 
         // when:
-        act(() => removeItem1(itemToRemove1)); // then:
-        expect(list1).toEqual(['1', '3']);
-        expect(list1).toBe(list2);
+        act(() => result1.current.removeItem(itemToRemove1)); // then:
+        expect(result1.current.list).toEqual(['1', '3']);
+        expect(result1.current.list).toBe(result2.current.list);
 
         // when:
-        act(() => removeItem2(itemToRemove2)); // then:
-        expect(list2).toEqual(['1']);
-        expect(list1).toBe(list2);
+        act(() => result2.current.removeItem(itemToRemove2)); // then:
+        expect(result2.current.list).toEqual(['1']);
+        expect(result1.current.list).toBe(result2.current.list);
       });
     });
   },

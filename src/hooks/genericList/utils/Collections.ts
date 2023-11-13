@@ -1,4 +1,4 @@
-function findIndex<T>(collection: T[], element: T, areEqual: AreListItemsEqual) {
+function findIndex<T>(collection: T[], element: T, areEqual: AreListItemsEqual<T>) {
   return collection.findIndex((it) => areEqual(it, element));
 }
 
@@ -8,19 +8,22 @@ export type ListOptions = {
   prepend?: boolean;
 };
 
-export type AreListItemsEqual = <T>(t1: T, t2: T) => boolean;
-export function inPlaceAdd<T>(
+export interface AreListItemsEqual<T> {
+  (t1: T, t2: T): boolean
+}
+export function add<T>(
   collection: T[],
   element: T,
-  areEqual: AreListItemsEqual,
+  areEqual: AreListItemsEqual<T>,
   options: ListOptions = {},
 ): T[] {
-  const index = findIndex(collection, element, areEqual);
+  const c = [...collection];
+  const index = findIndex(c, element, areEqual);
   const exist = index >= 0;
 
   if (!exist) {
-    collection[options.prepend ? 'unshift' : 'push'](element);
-    return collection;
+    c[options.prepend ? 'unshift' : 'push'](element);
+    return c;
   }
 
   if (options.skipIfExist) {
@@ -28,17 +31,19 @@ export function inPlaceAdd<T>(
   }
 
   if (options.distinct) {
-    collection.splice(index, 1);
+    c.splice(index, 1);
   }
 
-  collection[options.prepend ? 'unshift' : 'push'](element);
-  return collection;
+  c[options.prepend ? 'unshift' : 'push'](element);
+  return c;
 }
 
-export function inPlaceRemove<T>(collection: T[], element: T, areEqual: AreListItemsEqual): T[] {
+export function remove<T>(collection: T[], element: T, areEqual: AreListItemsEqual<T>): T[] {
   const index = findIndex(collection, element, areEqual);
   if (index >= 0) {
-    collection.splice(index, 1);
+    const c = [...collection];
+    c.splice(index, 1);
+    return c;
   }
   return collection;
 }
