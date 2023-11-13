@@ -6,8 +6,8 @@ type UseGenericListApi<ListItem> = [
   list: ListItem[],
   addItem: (listItem: ListItem) => void,
   removeItem: (listItem: ListItem) => void,
-  setList: SetValue<ListItem[]>
-]
+  setList: SetValue<ListItem[]>,
+];
 export const createGenericListHook = (useStorage: UseStorage) => {
   const useGenericList = <ListItem>(
     key: string,
@@ -18,7 +18,7 @@ export const createGenericListHook = (useStorage: UseStorage) => {
 
     const addItem = useCallback(
       (item: ListItem, options?: ListOptions<ListItem>) => {
-         setList((l) => add<ListItem>(l, item, { ...defaultOptions, ...options }));
+        setList((l) => add<ListItem>(l, item, { ...defaultOptions, ...options }));
       },
       [setList, defaultOptions],
     );
@@ -29,7 +29,7 @@ export const createGenericListHook = (useStorage: UseStorage) => {
       [defaultOptions?.areEqual, setList],
     );
 
-    return useMemo(() => ([list, addItem, removeItem, setList]), [addItem, removeItem, list, setList]);
+    return useMemo(() => [list, addItem, removeItem, setList], [addItem, removeItem, list, setList]);
   };
 
   return { useGenericList };

@@ -1,10 +1,7 @@
 {
   "root": true,
   "extends": [
-    "eslint:recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "@react-native-community"
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint", "prettier", "jest"],

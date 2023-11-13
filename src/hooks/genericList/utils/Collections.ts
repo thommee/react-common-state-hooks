@@ -12,13 +12,9 @@ export type ListOptions<T> = {
 const defaultAreEqual = <T>(a: T, b: T) => a === b;
 
 export interface AreListItemsEqual<T> {
-  (t1: T, t2: T): boolean
+  (t1: T, t2: T): boolean;
 }
-export function add<T>(
-  collection: T[],
-  element: T,
-  options: ListOptions<T> = {},
-): T[] {
+export function add<T>(collection: T[], element: T, options: ListOptions<T> = {}): T[] {
   const c = [...collection];
   const index = findIndex(c, element, options.areEqual ?? defaultAreEqual);
   const exist = index >= 0;

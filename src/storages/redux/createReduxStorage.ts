@@ -17,10 +17,13 @@ export const createReduxStorage = (namespace: string) => {
       refValue.current = value;
     }, [value]);
 
-    const setValue = useCallback<UseStorageApi<T>[1]>((payload) => {
-      const newValue = ( payload instanceof Function) ? payload(refValue.current) : payload;
-      dispatch(action(newValue));
-    }, [action, dispatch, refValue]);
+    const setValue = useCallback<UseStorageApi<T>[1]>(
+      (payload) => {
+        const newValue = payload instanceof Function ? payload(refValue.current) : payload;
+        dispatch(action(newValue));
+      },
+      [action, dispatch, refValue],
+    );
 
     return useMemo(() => [value, setValue], [setValue, value]);
   };

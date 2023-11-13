@@ -10,10 +10,17 @@ export const useInMemoryStorage = <T>(storage: InMemoryStorage, key: string, ini
     return () => subscription.unsubscribe();
   }, [key, storage]);
 
-  const set = useCallback<UseStorageApi<T>[1]>((newValue) => {
-    storage.setItem(key, newValue instanceof Function ? newValue(
-      storage.has(key) ? (storage.getItem(key) as T) : initialValue) : newValue);
-  }, [initialValue, key, storage]);
+  const set = useCallback<UseStorageApi<T>[1]>(
+    (newValue) => {
+      storage.setItem(
+        key,
+        newValue instanceof Function
+          ? newValue(storage.has(key) ? (storage.getItem(key) as T) : initialValue)
+          : newValue,
+      );
+    },
+    [initialValue, key, storage],
+  );
 
   return useMemo(() => [value, set], [set, value]);
 };
