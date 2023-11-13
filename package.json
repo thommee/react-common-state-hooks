@@ -1,7 +1,7 @@
 {
   "name": "@thommee/react-common-state-hooks",
-  "version": "0.9.1",
-  "description": "Shareable, reusable state hooks for React",
+  "version": "1.0.0",
+  "description": "Shareable state hooks for React",
   "author": "Tomasz Szuba",
   "license": "MIT",
   "publishConfig": {
@@ -26,12 +26,11 @@
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
+    "@react-native-community/eslint-config": "^3.2.0",
     "@testing-library/react": "^14.1.0",
     "@types/jest": "^29.5.8",
     "@types/react": "*",
     "@types/react-redux": "*",
-    "@typescript-eslint/eslint-plugin": "6.10.0",
-    "@typescript-eslint/parser": "6.10.0",
     "babel-jest": "^29.7.0",
     "eslint": "^8.53.0",
     "eslint-plugin-jest": "^27.6.0",
@@ -47,7 +46,7 @@
     "build": "rm -rf dist && tsc",
     "pack": "npm run build && npm pack",
     "link": "npm run build && npm link",
-    "publish": "npm run lint && npm run test && npm run build && npm publish"
+    "dist": "npm run lint && npm run test && npm run build && npm publish"
   },
   "jest": {
     "testEnvironment": "jsdom"

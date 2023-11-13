@@ -2,23 +2,21 @@ function findIndex<T>(collection: T[], element: T, areEqual: AreListItemsEqual<T
   return collection.findIndex((it) => areEqual(it, element));
 }
 
-export type ListOptions = {
+export type ListOptions<T> = {
   distinct?: boolean;
   skipIfExist?: boolean; // do not update e.g. move to the top
   prepend?: boolean;
+  areEqual?: AreListItemsEqual<T>;
 };
 
+const defaultAreEqual = <T>(a: T, b: T) => a === b;
+
 export interface AreListItemsEqual<T> {
-  (t1: T, t2: T): boolean
+  (t1: T, t2: T): boolean;
 }
-export function add<T>(
-  collection: T[],
-  element: T,
-  areEqual: AreListItemsEqual<T>,
-  options: ListOptions = {},
-): T[] {
+export function add<T>(collection: T[], element: T, options: ListOptions<T> = {}): T[] {
   const c = [...collection];
-  const index = findIndex(c, element, areEqual);
+  const index = findIndex(c, element, options.areEqual ?? defaultAreEqual);
   const exist = index >= 0;
 
   if (!exist) {
@@ -38,8 +36,8 @@ export function add<T>(
   return c;
 }
 
-export function remove<T>(collection: T[], element: T, areEqual: AreListItemsEqual<T>): T[] {
-  const index = findIndex(collection, element, areEqual);
+export function remove<T>(collection: T[], element: T, areEqual?: AreListItemsEqual<T>): T[] {
+  const index = findIndex(collection, element, areEqual ?? defaultAreEqual);
   if (index >= 0) {
     const c = [...collection];
     c.splice(index, 1);

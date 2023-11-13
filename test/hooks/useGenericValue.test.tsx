@@ -1,6 +1,6 @@
 import { act } from '@testing-library/react';
-import { getReduxGenericValueHook } from './utils/createReduxWrappers';
-import { getInMemoryGenericValueHook } from './utils/createInMemoryWrappers';
+import { getReduxGenericValueHook } from '../testUtils/createReduxWrappers';
+import { getInMemoryGenericValueHook } from '../testUtils/createInMemoryWrappers';
 
 describe.each`
   renderGenericValueHook                                  | description
@@ -24,19 +24,17 @@ describe.each`
       const { result: result1 } = renderGenericValueHook(key1, initialValue1);
       const { result: result2 } = renderGenericValueHook(key2, initialValue2);
 
-      const [value1, setValue1] = result1.current;
-      expect(value1).toBe(initialValue1);
-      const [value2, setValue2] = result2.current;
-      expect(value2).toBe(initialValue2);
+      expect(result1.current[0]).toBe(initialValue1);
+      expect(result2.current[0]).toBe(initialValue2);
 
       // when:
-      act(() => setValue1('1_1')); // then:
+      act(() => result1.current[1]('1_1')); // then:
       expect(result1.current[0]).toBe('1_1');
       // when:
-      act(() => setValue2('2_2')); // then:
+      act(() => result2.current[1]('2_2')); // then:
       expect(result2.current[0]).toBe('2_2');
       // when:
-      act(() => setValue1('1_2')); // then:
+      act(() => result1.current[1]('1_2')); // then:
       expect(result1.current[0]).toBe('1_2');
     });
 
@@ -45,13 +43,12 @@ describe.each`
       const key = 'key';
       const initialValue = 'initial';
       const { result } = renderGenericValueHook(key, initialValue);
-      const [value, setValue] = result.current;
-      expect(value).toBe(initialValue);
+      expect(result.current[0]).toBe(initialValue);
       // when:
-      act(() => setValue('newValue')); // then:
+      act(() => result.current[1]('newValue')); // then:
       expect(result.current[0]).toBe('newValue');
       // when:
-      act(() => setValue(undefined));
+      act(() => result.current[1](undefined));
       expect(result.current[0]).toBe(undefined);
     });
   },

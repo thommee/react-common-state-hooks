@@ -1,30 +1,35 @@
 import { useCallback, useMemo } from 'react';
-import { ListOptions, AreListItemsEqual, add, remove } from './utils/Collections';
-import { UseStorage } from '../../storages/UseStorage';
+import { ListOptions, add, remove } from './utils/Collections';
+import { SetValue, UseStorage } from '../../storages/UseStorage';
 
+type UseGenericListApi<ListItem> = [
+  list: ListItem[],
+  addItem: (listItem: ListItem) => void,
+  removeItem: (listItem: ListItem) => void,
+  setList: SetValue<ListItem[]>,
+];
 export const createGenericListHook = (useStorage: UseStorage) => {
   const useGenericList = <ListItem>(
     key: string,
     initialValue: ListItem[] = [],
-    areEqual: AreListItemsEqual<ListItem> = (a, b) => a === b,
-    defaultOptions?: ListOptions,
-  ) => {
+    defaultOptions?: ListOptions<ListItem>,
+  ): UseGenericListApi<ListItem> => {
     const [list, setList] = useStorage<ListItem[]>(key, initialValue);
 
     const addItem = useCallback(
-      (item: ListItem, options?: ListOptions) => {
-         setList(add<ListItem>(list, item, areEqual, { ...defaultOptions, ...options }));
+      (item: ListItem, options?: ListOptions<ListItem>) => {
+        setList((l) => add<ListItem>(l, item, { ...defaultOptions, ...options }));
       },
-      [areEqual, defaultOptions, list, setList],
+      [setList, defaultOptions],
     );
     const removeItem = useCallback(
       (item: ListItem) => {
-        setList(remove<ListItem>(list, item, areEqual));
+        setList((l) => remove<ListItem>(l, item, defaultOptions?.areEqual));
       },
-      [areEqual, list, setList],
+      [defaultOptions?.areEqual, setList],
     );
 
-    return useMemo(() => ({ addItem, removeItem, list, setList }), [addItem, removeItem, list, setList]);
+    return useMemo(() => [list, addItem, removeItem, setList], [addItem, removeItem, list, setList]);
   };
 
   return { useGenericList };
