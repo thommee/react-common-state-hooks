@@ -1,6 +1,6 @@
 {
   "name": "@thommee/react-common-state-hooks",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Shareable state hooks for React",
   "author": "Tomasz Szuba",
   "license": "MIT",

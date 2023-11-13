@@ -24,7 +24,7 @@ For saving data in Redux, use `createReduxStateHooks` to generate hooks.
 
 
 ### Installation
-`npm install react-common-state-hooks`
+`npm install @thommee/react-common-state-hooks`
 
 ### Basic usage:
 First, We need to create generic hooks that we can later use 
