@@ -29,10 +29,9 @@ describe.each`
         ({ initialValue, itemToAdd: { key, value }, expectedResult }) => {
           // given:
           const { result } = renderGenericRecordHook(getKey(), initialValue);
-          const { record, addItem } = result.current;
-          expect(record).toBe(initialValue);
+          expect(result.current.record).toBe(initialValue);
           // when:
-          act(() => addItem(key, value)); // then:
+          act(() => result.current.addItem(key, value)); // then:
           expect(result.current.record[key]).toBe(value);
           expect(result.current.record).toEqual(expectedResult);
         },
@@ -49,10 +48,9 @@ describe.each`
         ({ initialValue, keyToRemove, expectedResult }) => {
           // given:
           const { result } = renderGenericRecordHook(getKey(), initialValue);
-          const { record, removeItem } = result.current;
-          expect(record).toBe(initialValue);
+          expect(result.current.record).toBe(initialValue);
           // when:
-          act(() => removeItem(keyToRemove)); // then:
+          act(() => result.current.removeItem(keyToRemove)); // then:
           expect(result.current.record).not.toHaveProperty(keyToRemove);
           expect(result.current.record).toEqual(expectedResult);
         },
@@ -69,10 +67,9 @@ describe.each`
         ({ initialValue, recordToSet, expectedResult }) => {
           // given:
           const { result } = renderGenericRecordHook(getKey(), initialValue);
-          const { record, setRecord } = result.current;
-          expect(record).toBe(initialValue);
+          expect(result.current.record).toBe(initialValue);
           // when:
-          act(() => setRecord(recordToSet)); // then:
+          act(() => result.current.setRecord(recordToSet)); // then:
           expect(result.current.record).toBe(recordToSet);
           expect(result.current.record).toEqual(expectedResult);
         },
