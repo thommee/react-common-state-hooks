@@ -1,10 +1,16 @@
 ## react-generic-state-hooks
-### Shareable State Hooks for React
+### Generic State Hooks for React
 
 #### About the library
 `react-generic-state-hooks` has been created to provide a simple way for creating reusable data sources
 ready for use anywhere in the application.
 The library allows you to define hooks for reading and modifying **the same** data, regardless of where it is used.
+
+With that, you'll be able to calmly create your application and enjoy the creative process.
+It's all about making development smoother and more enjoyable.
+
+If you choose redux-way for creating hooks, you'll never have to create actions and reducers again.
+It will all be done for you.
 
 #### Types of hooks
 The library provides three different types of hooks dedicated for most common used
@@ -14,14 +20,10 @@ data types like simple values, lists & sets and records (maps):
 - `useGenericRecord`: hook for managing record-like data structures like maps and key-value storages.
 
 #### Storing Data
-`react-generic-state-hooks` provides two types of data storages:
+`react-generic-state-hooks` provides three types of data storages:
 - `inMemory`: data is stored in the application's memory
-- `redux`: data is stored in Redux (redux is not included in this library)
-
-If you like to store data in application's memory,
-you should use `createInMemoryStateHooks`. to generate hooks. 
-For saving data in Redux, use `createReduxStateHooks` to generate hooks.
-
+- `localStorage`: data is stored in local storage
+- `redux`: data is stored in Redux (not included in this library)
 
 ### Installation
 `npm install react-generic-state-hooks`
@@ -30,9 +32,14 @@ For saving data in Redux, use `createReduxStateHooks` to generate hooks.
 First, We need to create generic hooks that we can later use 
 directly in the application, or as a base for custom hooks.
 
-Example for `createInMemoryStateHooks`:
+You should use:
+- `createInMemoryStateHooks` for storing data in application memory
+- `createLocalStorageStateHooks` for storing data in local storage
+- `createReduxStateHooks` for storing data in redux
+
+Examples:
 ~~~typescript jsx
-// InMemoryGenericStateHooks.ts
+// inMemoryStateHooks.ts
 import { createInMemoryStateHooks } from 'react-generic-state-hooks';
 
 export const {
@@ -41,10 +48,18 @@ export const {
   useGenericRecord
 } = createInMemoryStateHooks('my-namespace');
 ~~~
-
-Example for `createReduxStateHooks`:
 ~~~typescript jsx
-// ReduxGenericStateHooks.ts
+// localStorageStateHooks.ts
+import { createInMemoryStateHooks } from 'react-generic-state-hooks';
+
+export const {
+  useGenericValue,
+  useGenericList,
+  useGenericRecord
+} = createInMemoryStateHooks('my-namespace');
+~~~
+~~~typescript jsx
+// reduxStateHooks.ts
 import { createReduxStateHooks } from 'react-generic-state-hooks';
 
 export const {
@@ -54,15 +69,13 @@ export const {
   useGenericRecord
 } = createReduxStateHooks('my-namespace');
 
-// We need to conect generated slice.reducer to Redux store.
+// ---------------------------------------------------------
 // RootReducer.ts
+// We need to connect generated "slice.reducer" to Redux store.
 import { slice } from './ReduxGenericStateHooks';
 
-// ...
 const rootReducer = combineReducers({
-  // ...
   [slice.name]: slice.reducer
-  // ...
 });
 
 export { rootReducer };
@@ -78,7 +91,7 @@ const MyComponent = () => {
   return (
     <>
       <div>count: {value}</div>
-      <button onClick={() => setValue(value+1)}>click me</button>
+      <button onClick={() => setValue(value + 1)}>click me</button>
     </>
   );
 }
@@ -86,14 +99,14 @@ const MyComponent = () => {
 
 ### Creating Custom Hooks
 If you plan to use the same data in multiple places in the application, 
-a better approach would be to create a dedicated custom hook (and encapsulate its configuration in one place):
+a better approach would be to create a dedicated hooks based on generic hooks:
 ~~~typescript jsx
 // useCounter.ts
-import { useGenericValue } from './inMemoryGenericStateHooks';
+import { useGenericValue } from './inMemoryStateHooks';
 
 export const useCounter = (initialValue: number = 0) => useGenericValue('counter', initialValue);
 ~~~
-Hooks created this way can be used just like generic hooks, in any place of your application:
+Just like generic hooks, you can use them in any place of your application:
 ~~~typescript jsx
 // MyComponent.tsx
 import { useCounter } from './useCounter';
