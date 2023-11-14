@@ -1,6 +1,7 @@
-import { createUseInMemoryStorage } from './storages/inMemory';
 import { createStateHooks } from './hooks/createStateHooks';
+import { createUseGenericStorage } from './storages/genericStorage';
+import { InMemoryStorage } from './storages/inMemory';
 
 export const createInMemoryStateHooks = (namespace: string) => {
-  return createStateHooks(createUseInMemoryStorage(namespace));
+  return createStateHooks(createUseGenericStorage(InMemoryStorage, namespace));
 };

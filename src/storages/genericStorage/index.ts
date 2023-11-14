@@ -1,0 +1,1 @@
+export { createUseGenericStorage } from './createUseGenericStorage';

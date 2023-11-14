@@ -1,6 +1,6 @@
 import { Storage } from '../genericStorage/Storage';
 
-export class LocalStorageStorage implements Storage {
+export class LocalStorage implements Storage {
   private readonly storage = new Map<string, any>();
   constructor(private readonly namespace: string) {
     this.init();
