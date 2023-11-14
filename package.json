@@ -1,5 +1,5 @@
 {
-  "name": "@thommee/react-common-state-hooks",
+  "name": "react-generic-state-hooks",
   "version": "1.0.0",
   "description": "Shareable state hooks for React",
   "author": "Tomasz Szuba",
@@ -8,7 +8,7 @@
     "access": "public"
   },
   "repository": {
-    "url": "git+https://github.com/thommee/react-common-state-hooks.git"
+    "url": "git+https://github.com/thommee/react-generic-state-hooks.git"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
