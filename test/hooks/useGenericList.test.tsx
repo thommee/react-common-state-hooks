@@ -1,11 +1,13 @@
 import { act } from '@testing-library/react';
 import { getReduxGenericListHook } from '../testUtils/createReduxWrappers';
 import { getInMemoryGenericListHook } from '../testUtils/createInMemoryWrappers';
+import { getLocalStorageGenericListHook } from '../testUtils/createLocalStorageWrappers';
 
 describe.each`
-  renderGenericListHook                                 | description
-  ${getReduxGenericListHook().renderGenericListHook}    | ${'redux'}
-  ${getInMemoryGenericListHook().renderGenericListHook} | ${'inMemory'}
+  renderGenericListHook                                     | description
+  ${getReduxGenericListHook().renderGenericListHook}        | ${'redux'}
+  ${getInMemoryGenericListHook().renderGenericListHook}     | ${'inMemory'}
+  ${getLocalStorageGenericListHook().renderGenericListHook} | ${'localStorage'}
 `(
   '$description: useGenericList',
   ({
@@ -49,7 +51,6 @@ describe.each`
         expect(result.current[0]).toBe(newValue2);
       });
     });
-
     describe('.addItem', () => {
       it.each`
         itemToAdd     | expectedResult
@@ -182,13 +183,13 @@ describe.each`
         ({ initialList, itemToAdd, prepend, skipIfExist, expectedResult }) => {
           // given:
           const areEqual = (item1: typeof itemToAdd, item2: typeof itemToAdd) => item1.a === item2.a;
-          const { result } = renderGenericListHook(getListKey(), initialList, { areEqual, prepend, skipIfExist })
+          const { result } = renderGenericListHook(getListKey(), initialList, { areEqual, prepend, skipIfExist });
           // when:
           act(() => result.current[1](itemToAdd));
           // then:
-          expect(result.current[0][prepend && !skipIfExist ? 0 : expectedResult.length - 1])[skipIfExist ? 'toEqual' : 'toBe'](
-            itemToAdd,
-          );
+          expect(result.current[0][prepend && !skipIfExist ? 0 : expectedResult.length - 1])[
+            skipIfExist ? 'toEqual' : 'toBe'
+          ](itemToAdd);
           expect(result.current[0]).toStrictEqual(expectedResult);
         },
       );
@@ -237,7 +238,6 @@ describe.each`
         },
       );
     });
-
     describe('.removeItem', () => {
       it.each`
         initialList   | itemToRemove | expectedList
@@ -249,7 +249,7 @@ describe.each`
         'should remove "$itemToRemove" from $initialList for scalars',
         ({ initialList, itemToRemove, expectedList }) => {
           // given:
-          const { result} = renderGenericListHook(getListKey(), initialList);
+          const { result } = renderGenericListHook(getListKey(), initialList);
           // when:
           act(() => result.current[2](itemToRemove));
           // then:
@@ -276,7 +276,6 @@ describe.each`
         },
       );
     });
-
     describe('.setList', () => {
       it.each`
         initialList        | newList
@@ -295,7 +294,6 @@ describe.each`
         expect(result.current[0]).toBe(newList);
       });
     });
-
     describe('multiple usage', () => {
       it('should return the same lists for multiple hook usages', () => {
         // given:
@@ -306,6 +304,20 @@ describe.each`
         const [list2] = renderGenericListHook(key, initialList).result.current;
         // then:
         expect(list1).toBe(list2);
+      });
+
+      it('should return the same lists when initialized after save', () => {
+        // given:
+        const key = getListKey();
+        const initialList = ['1', '2', '3'];
+        const itemToAdd = '4';
+        // when:
+        const { result: result1 } = renderGenericListHook(key, initialList);
+        act(() => result1.current[1](itemToAdd)); // .addItem
+        // then:
+        const { result: result2 } = renderGenericListHook(key, initialList);
+        expect(result1.current[0]).toBe(result2.current[0]);
+        expect(result2.current[0]).toEqual([...initialList, itemToAdd]);
       });
 
       it('should addItem to all lists when the same key is used multiple times', () => {

@@ -1,11 +1,13 @@
 import { act } from '@testing-library/react';
 import { getReduxGenericRecordHook } from '../testUtils/createReduxWrappers';
 import { getInMemoryGenericRecordHook } from '../testUtils/createInMemoryWrappers';
+import { getLocalStorageGenericRecordHook } from '../testUtils/createLocalStorageWrappers';
 
 describe.each`
-  renderGenericRecordHook                                   | description
-  ${getReduxGenericRecordHook().renderGenericRecordHook}    | ${'redux'}
-  ${getInMemoryGenericRecordHook().renderGenericRecordHook} | ${'inMemory'}
+  renderGenericRecordHook                                       | description
+  ${getReduxGenericRecordHook().renderGenericRecordHook}        | ${'redux'}
+  ${getInMemoryGenericRecordHook().renderGenericRecordHook}     | ${'inMemory'}
+  ${getLocalStorageGenericRecordHook().renderGenericRecordHook} | ${'localStorage'}
 `(
   '$description: useGenericRecord',
   ({
@@ -74,6 +76,72 @@ describe.each`
           expect(result.current[0]).toEqual(expectedResult);
         },
       );
+    });
+    describe('multiple usage', () => {
+      it('should return the same records for multiple hook usages', () => {
+        // given:
+        const key = getKey();
+        const initialRecord = { a: '1', b: '2' };
+        // when:
+        const [record1] = renderGenericRecordHook(key, initialRecord).result.current;
+        const [record2] = renderGenericRecordHook(key, initialRecord).result.current;
+        // then:
+        expect(record1).toBe(record2);
+      });
+
+      it('should return the same records when initialized after save', () => {
+        // given:
+        const key = getKey();
+        const initialRecord = { a: '1', b: '2' };
+        const itemToAdd = { key: 'c', value: '3' };
+        // when:
+        const { result: result1 } = renderGenericRecordHook(key, initialRecord);
+        act(() => result1.current[1](itemToAdd.key, itemToAdd.value)); // .addItem
+        // then:
+        const { result: result2 } = renderGenericRecordHook(key, initialRecord);
+        expect(result1.current[0]).toBe(result2.current[0]);
+        expect(result2.current[0]).toEqual({ ...initialRecord, [itemToAdd.key]: itemToAdd.value });
+      });
+
+      it('should addItem to all records when the same key is used multiple times', () => {
+        // given:
+        const key = getKey();
+        const initialRecord = { a: '1', b: '2' };
+        const itemToAdd1 = { key: 'c', value: '3' };
+        const itemToAdd2 = { key: 'd', value: '4' };
+        const { result: result1 } = renderGenericRecordHook(key, initialRecord);
+        const { result: result2 } = renderGenericRecordHook(key, initialRecord);
+
+        // when:
+        act(() => result1.current[1](itemToAdd1.key, itemToAdd1.value)); // then:
+        expect(result1.current[0]).toEqual({ a: '1', b: '2', c: '3' });
+        expect(result1.current[0]).toBe(result2.current[0]);
+
+        // when:
+        act(() => result2.current[1](itemToAdd2.key, itemToAdd2.value)); // then:
+        expect(result2.current[0]).toEqual({ a: '1', b: '2', c: '3', d: '4' });
+        expect(result1.current[0]).toBe(result2.current[0]);
+      });
+
+      it('should removeItem from all records when the same key is used multiple times', () => {
+        // given:
+        const key = getKey();
+        const initialRecord = { a: '1', b: '2', c: '3', d: '4' };
+        const itemToRemove1 = { key: 'c', value: '3' };
+        const itemToRemove2 = { key: 'd', value: '4' };
+        const { result: result1 } = renderGenericRecordHook(key, initialRecord);
+        const { result: result2 } = renderGenericRecordHook(key, initialRecord);
+
+        // when:
+        act(() => result1.current[2](itemToRemove1.key)); // then:
+        expect(result1.current[0]).toEqual({ a: '1', b: '2', d: '4' });
+        expect(result1.current[0]).toBe(result2.current[0]);
+
+        // when:
+        act(() => result2.current[2](itemToRemove2.key)); // then:
+        expect(result2.current[0]).toEqual({ a: '1', b: '2' });
+        expect(result1.current[0]).toBe(result2.current[0]);
+      });
     });
   },
 );

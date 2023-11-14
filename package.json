@@ -41,8 +41,9 @@
     "typescript": "^5.2.2"
   },
   "scripts": {
-    "lint": "eslint src",
+    "lint": "eslint src && tsc --noEmit",
     "test": "jest",
+    "lt": "npm run lint && npm run test",
     "build": "rm -rf dist && tsc",
     "pack": "npm run build && npm pack",
     "link": "npm run build && npm link",

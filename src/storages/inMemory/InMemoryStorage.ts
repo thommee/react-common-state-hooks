@@ -1,31 +1,25 @@
-import { Subscription, StateChangeObserver } from './Subscription';
+import { Storage } from '../genericStorage/Storage';
 
-export class InMemoryStorage {
-  private readonly observersMap: Map<string, Set<StateChangeObserver>> = new Map();
+export class InMemoryStorage implements Storage {
   private readonly storage: Map<string, any> = new Map();
-
-  subscribeOn(key: string, observer: StateChangeObserver): Subscription {
-    const observers = (this.observersMap.get(key) ?? new Set()).add(observer);
-    this.observersMap.set(key, observers);
-    return new Subscription(observers, observer);
-  }
 
   has(key: string) {
     return this.storage.has(key);
   }
 
-  getItem<T>(key: string): T | undefined {
+  get<T>(key: string): T | undefined {
     return this.storage.get(key);
   }
 
-  setItem<T>(key: string, value: T): void {
+  set<T>(key: string, value: T): void {
     this.storage.set(key, value);
-    this.notifyObservers(key, value);
   }
 
-  private notifyObservers<T>(key: string, value: T): void {
-    this.observersMap.get(key)?.forEach((observer) => {
-      observer(value);
-    });
+  remove(key: string): void {
+    this.storage.delete(key);
+  }
+
+  clear(): void {
+    this.storage.clear();
   }
 }
