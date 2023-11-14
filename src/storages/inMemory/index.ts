@@ -1,1 +1,1 @@
-export { createInMemoryStorage } from './createInMemoryStorage';
+export { createUseInMemoryStorage } from './createUseInMemoryStorage';

@@ -1,1 +1,1 @@
-export { createLocalStorageStorage } from './createLocalStorageStorage';
+export { createUseLocalStorage } from './createUseLocalStorage';
