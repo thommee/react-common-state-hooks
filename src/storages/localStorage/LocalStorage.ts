@@ -1,7 +1,7 @@
 import { Storage } from '../genericStorage/Storage';
 
 export class LocalStorage implements Storage {
-  private readonly storage = new Map<string, unknown>();
+  private readonly storage = new Map<string, any>();
   constructor(private readonly namespace: string) {
     this.init();
   }
@@ -10,12 +10,12 @@ export class LocalStorage implements Storage {
     this.loadData(this.namespace, this.storage);
   }
 
-  private loadData(namespace: string, storage: Map<string, unknown>) {
+  private loadData(key: string, storage: Map<string, unknown>) {
     this.storage.clear();
-    const rawData = window.localStorage.getItem(namespace);
+    const rawData = window.localStorage.getItem(key);
     const data = rawData ? JSON.parse(rawData) : undefined;
     if (typeof data === 'object') {
-      for (const key in data) {
+      for (key in data) {
         storage.set(key, data[key]);
       }
     }
@@ -29,7 +29,7 @@ export class LocalStorage implements Storage {
     return this.storage.has(key);
   }
 
-  get(key: string) {
+  get<T>(key: string): T | undefined {
     return this.storage.get(key);
   }
 
