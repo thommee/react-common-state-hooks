@@ -3,7 +3,7 @@
 
 #### About the library
 `react-generic-state-hooks` has been created to provide a simple way for creating reusable data sources
-ready for use anywhere in the application.
+ready for use anywhere in your application.
 The library allows you to define hooks for reading and modifying **the same** data, regardless of where it is used.
 
 With that, you'll be able to calmly create your application and enjoy the creative process.
@@ -21,7 +21,7 @@ data types like simple values, lists & sets and records (maps):
 
 #### Storing Data
 `react-generic-state-hooks` provides three types of data storages:
-- `inMemory`: data is stored in the application's memory
+- `inMemory`: data is stored in application's memory
 - `localStorage`: data is stored in local storage
 - `redux`: data is stored in Redux (not included in this library)
 
@@ -30,9 +30,9 @@ data types like simple values, lists & sets and records (maps):
 
 ### Basic usage:
 First, We need to create generic hooks that we can later use 
-directly in the application, or as a base for custom hooks.
+directly in your application, or as a base for custom hooks.
 
-You should use:
+#### Hooks creators:
 - `createInMemoryStateHooks` for storing data in application memory
 - `createLocalStorageStateHooks` for storing data in local storage
 - `createReduxStateHooks` for storing data in redux
@@ -98,7 +98,7 @@ const MyComponent = () => {
 ~~~
 
 ### Creating Custom Hooks
-If you plan to use the same data in multiple places in the application, 
+If you plan to use the same data in multiple places in your application, 
 a better approach would be to create a dedicated hooks based on generic hooks:
 ~~~typescript jsx
 // useCounter.ts
@@ -120,4 +120,11 @@ const MyComponent = () => {
     </>
   );
 }
+~~~
+
+### Values returned by hooks
+~~~typescript jsx
+const [value, setValue] = useGenericValue('myValue', 0);
+const [list, addItem, removeItem, setList] = useGenericList('myList', []);
+const [record, addItem, removeItem, setRecord] = useGenericRecord('myRecord', {});
 ~~~
