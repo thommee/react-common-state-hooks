@@ -72,7 +72,7 @@ export const {
 // ---------------------------------------------------------
 // RootReducer.ts
 // We need to connect generated "slice.reducer" to Redux store.
-import { slice } from './ReduxGenericStateHooks';
+import { slice } from './reduxStateHooks';
 
 const rootReducer = combineReducers({
   [slice.name]: slice.reducer
