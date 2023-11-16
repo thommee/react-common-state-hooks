@@ -1,13 +1,13 @@
 import { Storage } from '../genericStorage/Storage';
 
 export class InMemoryStorage implements Storage {
-  private readonly storage: Map<string, any> = new Map();
+  private readonly storage: Map<string, unknown> = new Map();
 
   has(key: string) {
     return this.storage.has(key);
   }
 
-  get<T>(key: string): T | undefined {
+  get(key: string) {
     return this.storage.get(key);
   }
 

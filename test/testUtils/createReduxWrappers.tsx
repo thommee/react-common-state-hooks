@@ -4,8 +4,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { renderHook } from '@testing-library/react';
 
-export function getReduxGenericListHook() {
-  const namespace = 'redux:namespace';
+export function getReduxGenericListHook(namespace = 'redux:namespace') {
   const { useGenericList, slice, createSelector, createAction } = createReduxStateHooks(namespace);
   const store = createStore(combineReducers({ [slice.name]: slice.reducer }));
   const Wrapper = ({ children }: React.PropsWithChildren) => <Provider store={store}>{children}</Provider>;
@@ -16,8 +15,7 @@ export function getReduxGenericListHook() {
   return { useGenericList, Wrapper, renderGenericHook, store, createSelector, createAction };
 }
 
-export function getReduxGenericRecordHook() {
-  const namespace = 'redux:namespace';
+export function getReduxGenericRecordHook(namespace = 'redux:namespace') {
   const { useGenericRecord, slice, createSelector, createAction } = createReduxStateHooks(namespace);
   const store = createStore(combineReducers({ [slice.name]: slice.reducer }));
   const Wrapper = ({ children }: React.PropsWithChildren) => <Provider store={store}>{children}</Provider>;
@@ -28,8 +26,7 @@ export function getReduxGenericRecordHook() {
   return { useGenericRecord, Wrapper, renderGenericHook, store, createSelector, createAction };
 }
 
-export function getReduxGenericValueHook() {
-  const namespace = 'redux:namespace';
+export function getReduxGenericValueHook(namespace = 'redux:namespace') {
   const { useGenericValue, slice, createSelector, createAction } = createReduxStateHooks(namespace);
   const store = createStore(combineReducers({ [slice.name]: slice.reducer }));
   const Wrapper = ({ children }: React.PropsWithChildren) => <Provider store={store}>{children}</Provider>;
