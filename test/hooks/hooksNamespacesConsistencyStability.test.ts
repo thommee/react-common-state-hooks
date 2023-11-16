@@ -5,32 +5,28 @@ import { getLocalStorageGenericValueHook } from '../testUtils/createLocalStorage
 
 describe('namespaces consistency', () => {
   const getKey = () => 's.' + Math.random() + '.key';
+  const initialList1 = ['1'];
+  const initialList2 = ['2'];
 
   function prepareReduxTest() {
     const key = getKey();
-    const initialList1 = ['1'];
-    const initialList2 = ['2'];
-    const { renderGenericHook: r1, store, slice } = getReduxGenericValueHook('ns1');
-    const { renderGenericHook: r2 } = getReduxGenericValueHook('ns1', store, slice);
-    return { key, initialList1, initialList2, r1, r2 };
+    const { renderGenericHook: r1, store, slice } = getReduxGenericValueHook('nsr1');
+    const { renderGenericHook: r2 } = getReduxGenericValueHook('nsr1', store, slice);
+    return { key, r1, r2 };
   }
 
   function prepareInMemoryTest() {
     const key = getKey();
-    const initialList1 = ['1'];
-    const initialList2 = ['2'];
-    const { renderGenericHook: r1 } = getInMemoryGenericValueHook('ns1');
-    const { renderGenericHook: r2 } = getReduxGenericValueHook('ns1');
-    return { key, initialList1, initialList2, r1, r2 };
+    const { renderGenericHook: r1 } = getInMemoryGenericValueHook('nsm1');
+    const { renderGenericHook: r2 } = getInMemoryGenericValueHook('nsm1');
+    return { key, r1, r2 };
   }
 
   function prepareLocalStorageTest() {
     const key = getKey();
-    const initialList1 = ['1'];
-    const initialList2 = ['2'];
-    const { renderGenericHook: r1 } = getLocalStorageGenericValueHook('ns1');
-    const { renderGenericHook: r2 } = getLocalStorageGenericValueHook('ns1');
-    return { key, initialList1, initialList2, r1, r2 };
+    const { renderGenericHook: r1 } = getLocalStorageGenericValueHook('nsl1');
+    const { renderGenericHook: r2 } = getLocalStorageGenericValueHook('nsl1');
+    return { key, r1, r2 };
   }
 
   describe.each`
@@ -41,21 +37,21 @@ describe('namespaces consistency', () => {
   `(
     'consistency: $prepareTest.name',
     ({ prepareTest }: { prepareTest: typeof prepareReduxTest | typeof prepareInMemoryTest }) => {
-      it('should have consistent values', () => {
+      it('should preserve different initial values - exception for consistency', () => {
         // given:
-        const { key, initialList1, initialList2, r1, r2 } = prepareTest();
+        const { key, r1, r2 } = prepareTest();
 
         // when:
         const { result: result1 } = r1(key, initialList1);
         const { result: result2 } = r2(key, initialList2);
         // then:
         expect(result1.current[0]).toBe(initialList1);
-        expect(result2.current[0]).toBe(initialList1);
+        expect(result2.current[0]).toBe(initialList2);
       });
       it('should have consistent values when loaded in different order', () => {
         // given:
         const newList1 = ['789'];
-        const { key, initialList1, initialList2, r1, r2 } = prepareReduxTest();
+        const { key, r1, r2 } = prepareReduxTest();
         // when:
         const { result: result1 } = r1(key, initialList1);
         act(() => result1.current[1](newList1));
@@ -68,7 +64,7 @@ describe('namespaces consistency', () => {
         // given:
         const newList1 = ['4'];
         const newList2 = ['8'];
-        const { key, initialList1, initialList2, r1, r2 } = prepareReduxTest();
+        const { key, r1, r2 } = prepareReduxTest();
         // when:
         const { result: result1 } = r1(key, initialList1);
         const { result: result2 } = r2(key, initialList2);

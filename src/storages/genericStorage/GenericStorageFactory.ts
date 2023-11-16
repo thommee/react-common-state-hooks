@@ -12,11 +12,11 @@ export class GenericStorageFactory {
     return this.storages.get(namespace) as GenericStorage;
   }
 
-  private static getFactory(storage: StorageConstructor) {
-    if (!GenericStorageFactory.genericStorages.has(storage)) {
-      GenericStorageFactory.genericStorages.set(storage, new GenericStorageFactory(storage));
+  private static getFactory(storageConstructor: StorageConstructor) {
+    if (!GenericStorageFactory.genericStorages.has(storageConstructor)) {
+      GenericStorageFactory.genericStorages.set(storageConstructor, new GenericStorageFactory(storageConstructor));
     }
-    return GenericStorageFactory.genericStorages.get(storage) as GenericStorageFactory;
+    return GenericStorageFactory.genericStorages.get(storageConstructor) as GenericStorageFactory;
   }
 
   static getStorage(storage: StorageConstructor, namespace: string) {
