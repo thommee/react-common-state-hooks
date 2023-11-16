@@ -19,10 +19,10 @@ describe('stable api reference', () => {
   const getKey = () => 's.' + Math.random() + '.key';
 
   describe.each`
-    renderGenericListHook                                     | description
-    ${getReduxGenericListHook().renderGenericHook}            | ${'redux'}
-    ${getInMemoryGenericListHook().renderGenericListHook}     | ${'inMemory'}
-    ${getLocalStorageGenericListHook().renderGenericListHook} | ${'localStorage'}
+    renderGenericListHook                                 | description
+    ${getReduxGenericListHook().renderGenericHook}        | ${'redux'}
+    ${getInMemoryGenericListHook().renderGenericHook}     | ${'inMemory'}
+    ${getLocalStorageGenericListHook().renderGenericHook} | ${'localStorage'}
   `(
     'useGenericListHook: $description',
     ({
@@ -30,8 +30,8 @@ describe('stable api reference', () => {
     }: {
       renderGenericListHook:
         | ReturnType<typeof getReduxGenericListHook>['renderGenericHook']
-        | ReturnType<typeof getInMemoryGenericListHook>['renderGenericListHook']
-        | ReturnType<typeof getLocalStorageGenericListHook>['renderGenericListHook'];
+        | ReturnType<typeof getInMemoryGenericListHook>['renderGenericHook']
+        | ReturnType<typeof getLocalStorageGenericListHook>['renderGenericHook'];
     }) => {
       it('should have stable list value', () => {
         // given:
@@ -92,10 +92,10 @@ describe('stable api reference', () => {
   );
 
   describe.each`
-    renderGenericValueHook                                      | description
-    ${getReduxGenericValueHook().renderGenericHook}             | ${'redux'}
-    ${getInMemoryGenericValueHook().renderGenericValueHook}     | ${'inMemory'}
-    ${getLocalStorageGenericValueHook().renderGenericValueHook} | ${'localStorage'}
+    renderGenericValueHook                                 | description
+    ${getReduxGenericValueHook().renderGenericHook}        | ${'redux'}
+    ${getInMemoryGenericValueHook().renderGenericHook}     | ${'inMemory'}
+    ${getLocalStorageGenericValueHook().renderGenericHook} | ${'localStorage'}
   `(
     'useGenericValueHook: $description',
     ({
@@ -103,8 +103,8 @@ describe('stable api reference', () => {
     }: {
       renderGenericValueHook:
         | ReturnType<typeof getReduxGenericValueHook>['renderGenericHook']
-        | ReturnType<typeof getInMemoryGenericValueHook>['renderGenericValueHook']
-        | ReturnType<typeof getLocalStorageGenericValueHook>['renderGenericValueHook'];
+        | ReturnType<typeof getInMemoryGenericValueHook>['renderGenericHook']
+        | ReturnType<typeof getLocalStorageGenericValueHook>['renderGenericHook'];
     }) => {
       it('should have stable value', () => {
         // given:
@@ -136,10 +136,10 @@ describe('stable api reference', () => {
   );
 
   describe.each`
-    renderGenericRecordHook                                       | description
-    ${getReduxGenericRecordHook().renderGenericHook}              | ${'redux'}
-    ${getInMemoryGenericRecordHook().renderGenericRecordHook}     | ${'inMemory'}
-    ${getLocalStorageGenericRecordHook().renderGenericRecordHook} | ${'localStorage'}
+    renderGenericRecordHook                                 | description
+    ${getReduxGenericRecordHook().renderGenericHook}        | ${'redux'}
+    ${getInMemoryGenericRecordHook().renderGenericHook}     | ${'inMemory'}
+    ${getLocalStorageGenericRecordHook().renderGenericHook} | ${'localStorage'}
   `(
     'useGenericRecordHook: $description',
     ({
@@ -147,8 +147,8 @@ describe('stable api reference', () => {
     }: {
       renderGenericRecordHook:
         | ReturnType<typeof getReduxGenericRecordHook>['renderGenericHook']
-        | ReturnType<typeof getInMemoryGenericRecordHook>['renderGenericRecordHook']
-        | ReturnType<typeof getLocalStorageGenericRecordHook>['renderGenericRecordHook'];
+        | ReturnType<typeof getInMemoryGenericRecordHook>['renderGenericHook']
+        | ReturnType<typeof getLocalStorageGenericRecordHook>['renderGenericHook'];
     }) => {
       it('should have stable record value', () => {
         // given:

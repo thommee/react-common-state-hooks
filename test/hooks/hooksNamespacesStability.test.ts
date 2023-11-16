@@ -7,10 +7,10 @@ describe('namespaces', () => {
   const getKey = () => 's.' + Math.random() + '.key';
 
   describe.each`
-    renderGenericValueHook1                                           | renderGenericValueHook2                                           | description
-    ${getReduxGenericValueHook('nsa1').renderGenericHook}             | ${getReduxGenericValueHook('nsa2').renderGenericHook}             | ${'redux'}
-    ${getInMemoryGenericValueHook('nsb1').renderGenericValueHook}     | ${getInMemoryGenericValueHook('nsb2').renderGenericValueHook}     | ${'inMemory'}
-    ${getLocalStorageGenericValueHook('nsc1').renderGenericValueHook} | ${getLocalStorageGenericValueHook('nsc2').renderGenericValueHook} | ${'localStorage'}
+    renderGenericValueHook1                                      | renderGenericValueHook2                                      | description
+    ${getReduxGenericValueHook('nsa1').renderGenericHook}        | ${getReduxGenericValueHook('nsa2').renderGenericHook}        | ${'redux'}
+    ${getInMemoryGenericValueHook('nsb1').renderGenericHook}     | ${getInMemoryGenericValueHook('nsb2').renderGenericHook}     | ${'inMemory'}
+    ${getLocalStorageGenericValueHook('nsc1').renderGenericHook} | ${getLocalStorageGenericValueHook('nsc2').renderGenericHook} | ${'localStorage'}
   `(
     'separation: $description',
     ({
@@ -19,12 +19,12 @@ describe('namespaces', () => {
     }: {
       renderGenericValueHook1:
         | ReturnType<typeof getReduxGenericValueHook>['renderGenericHook']
-        | ReturnType<typeof getInMemoryGenericValueHook>['renderGenericValueHook']
-        | ReturnType<typeof getLocalStorageGenericValueHook>['renderGenericValueHook'];
+        | ReturnType<typeof getInMemoryGenericValueHook>['renderGenericHook']
+        | ReturnType<typeof getLocalStorageGenericValueHook>['renderGenericHook'];
       renderGenericValueHook2:
         | ReturnType<typeof getReduxGenericValueHook>['renderGenericHook']
-        | ReturnType<typeof getInMemoryGenericValueHook>['renderGenericValueHook']
-        | ReturnType<typeof getLocalStorageGenericValueHook>['renderGenericValueHook'];
+        | ReturnType<typeof getInMemoryGenericValueHook>['renderGenericHook']
+        | ReturnType<typeof getLocalStorageGenericValueHook>['renderGenericHook'];
     }) => {
       it('should have stable value', () => {
         // given:

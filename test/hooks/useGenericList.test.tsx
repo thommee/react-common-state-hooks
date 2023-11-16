@@ -4,10 +4,10 @@ import { getInMemoryGenericListHook } from '../testUtils/createInMemoryWrappers'
 import { getLocalStorageGenericListHook } from '../testUtils/createLocalStorageWrappers';
 
 describe.each`
-  renderGenericListHook                                     | description
-  ${getReduxGenericListHook().renderGenericHook}            | ${'redux'}
-  ${getInMemoryGenericListHook().renderGenericListHook}     | ${'inMemory'}
-  ${getLocalStorageGenericListHook().renderGenericListHook} | ${'localStorage'}
+  renderGenericListHook                                 | description
+  ${getReduxGenericListHook().renderGenericHook}        | ${'redux'}
+  ${getInMemoryGenericListHook().renderGenericHook}     | ${'inMemory'}
+  ${getLocalStorageGenericListHook().renderGenericHook} | ${'localStorage'}
 `(
   '$description: useGenericList',
   ({
@@ -15,7 +15,7 @@ describe.each`
   }: {
     renderGenericListHook:
       | ReturnType<typeof getReduxGenericListHook>['renderGenericHook']
-      | ReturnType<typeof getInMemoryGenericListHook>['renderGenericListHook'];
+      | ReturnType<typeof getInMemoryGenericListHook>['renderGenericHook'];
   }) => {
     const getListKey = () => 's.' + Math.random() + '.key';
 
