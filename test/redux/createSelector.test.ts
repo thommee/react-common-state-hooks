@@ -6,7 +6,7 @@ import {
 import { act } from '@testing-library/react';
 
 describe('create selector', () => {
-  describe('renderGenericValueHook', () => {
+  describe('getReduxGenericValueHook', () => {
     const { renderGenericHook, store, createSelector } = getReduxGenericValueHook();
     const initialValue = { some: 'value' };
     it('should have initial value', () => {
@@ -46,7 +46,7 @@ describe('create selector', () => {
     });
   });
 
-  describe('renderGenericListHook', () => {
+  describe('getReduxGenericListHook', () => {
     const { renderGenericHook, store, createSelector } = getReduxGenericListHook();
     const initialValue = [{ some: 'value' }, { second: 'item' }];
     describe('initialValue', () => {
@@ -98,7 +98,7 @@ describe('create selector', () => {
     });
   });
 
-  describe('renderGenericRecordHook', () => {
+  describe('getReduxGenericRecordHook', () => {
     const { renderGenericHook, store, createSelector } = getReduxGenericRecordHook();
     const initialValue = { some: 'value', second: 'item' };
     describe('initialValue', () => {
