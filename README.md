@@ -42,38 +42,27 @@ Examples:
 // inMemoryStateHooks.ts
 import { createInMemoryStateHooks } from 'react-generic-state-hooks';
 
-export const {
-  useGenericValue,
-  useGenericList,
-  useGenericRecord
+export const { useGenericValue, useGenericList, useGenericRecord
 } = createInMemoryStateHooks('my-namespace');
 ~~~
 ~~~typescript jsx
 // localStorageStateHooks.ts
-import { createInMemoryStateHooks } from 'react-generic-state-hooks';
+import { createLocalStorageStateHooks } from 'react-generic-state-hooks';
 
-export const {
-  useGenericValue,
-  useGenericList,
-  useGenericRecord
-} = createInMemoryStateHooks('my-namespace');
+export const { useGenericValue, useGenericList, useGenericRecord
+} = createLocalStorageStateHooks('my-namespace');
 ~~~
 ~~~typescript jsx
 // reduxStateHooks.ts
 import { createReduxStateHooks } from 'react-generic-state-hooks';
 
-export const {
-  slice,
-  createSelector,
-  createAction,  
-  useGenericValue,
-  useGenericList,
-  useGenericRecord
+export const { slice, createSelector, createAction,
+  useGenericValue, useGenericList, useGenericRecord
 } = createReduxStateHooks('my-namespace');
 
 // ---------------------------------------------------------
 // RootReducer.ts
-// We need to connect generated "slice.reducer" to Redux store.
+// Connect "slice.reducer" to Redux store.
 import { slice } from './reduxStateHooks';
 
 const rootReducer = combineReducers({
