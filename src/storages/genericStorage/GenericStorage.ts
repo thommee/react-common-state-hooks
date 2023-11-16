@@ -16,7 +16,7 @@ export class GenericStorage {
     return this.storage.has(key);
   }
 
-  get<T>(key: string): T | undefined {
+  get(key: string) {
     return this.storage.get(key);
   }
 

@@ -3,7 +3,7 @@ import { UseStorageApi } from '../UseStorage';
 import { GenericStorage } from './GenericStorage';
 
 export const useGenericStorage = <T>(storage: GenericStorage, key: string, initialValue: T): UseStorageApi<T> => {
-  const [value, setValue] = useState(storage.get(key) ?? initialValue);
+  const [value, setValue] = useState<T>((storage.get(key) as T) ?? initialValue);
 
   useEffect(() => {
     const subscription = storage.subscribeOn(key, setValue);
