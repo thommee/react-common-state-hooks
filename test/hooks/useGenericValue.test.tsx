@@ -5,7 +5,7 @@ import { getLocalStorageGenericValueHook } from '../testUtils/createLocalStorage
 
 describe.each`
   renderGenericValueHook                                      | description
-  ${getReduxGenericValueHook().renderGenericValueHook}        | ${'redux'}
+  ${getReduxGenericValueHook().renderGenericHook}             | ${'redux'}
   ${getInMemoryGenericValueHook().renderGenericValueHook}     | ${'inMemory'}
   ${getLocalStorageGenericValueHook().renderGenericValueHook} | ${'localStorage'}
 `(
@@ -14,7 +14,7 @@ describe.each`
     renderGenericValueHook,
   }: {
     renderGenericValueHook:
-      | ReturnType<typeof getReduxGenericValueHook>['renderGenericValueHook']
+      | ReturnType<typeof getReduxGenericValueHook>['renderGenericHook']
       | ReturnType<typeof getInMemoryGenericValueHook>['renderGenericValueHook'];
   }) => {
     const getKey = () => 's.' + Math.random() + '.key';

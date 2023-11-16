@@ -5,7 +5,7 @@ import { getLocalStorageGenericRecordHook } from '../testUtils/createLocalStorag
 
 describe.each`
   renderGenericRecordHook                                       | description
-  ${getReduxGenericRecordHook().renderGenericRecordHook}        | ${'redux'}
+  ${getReduxGenericRecordHook().renderGenericHook}              | ${'redux'}
   ${getInMemoryGenericRecordHook().renderGenericRecordHook}     | ${'inMemory'}
   ${getLocalStorageGenericRecordHook().renderGenericRecordHook} | ${'localStorage'}
 `(
@@ -14,7 +14,7 @@ describe.each`
     renderGenericRecordHook,
   }: {
     renderGenericRecordHook:
-      | ReturnType<typeof getReduxGenericRecordHook>['renderGenericRecordHook']
+      | ReturnType<typeof getReduxGenericRecordHook>['renderGenericHook']
       | ReturnType<typeof getInMemoryGenericRecordHook>['renderGenericRecordHook'];
   }) => {
     const getKey = () => 's.' + Math.random() + '.key';

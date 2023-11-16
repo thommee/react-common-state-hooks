@@ -2,17 +2,17 @@ import {
   getReduxGenericListHook,
   getReduxGenericRecordHook,
   getReduxGenericValueHook,
-} from './testUtils/createReduxWrappers';
+} from '../testUtils/createReduxWrappers';
 import { act } from '@testing-library/react';
 
 describe('create selector', () => {
   describe('renderGenericValueHook', () => {
-    const { renderGenericValueHook, store, createSelector } = getReduxGenericValueHook();
+    const { renderGenericHook, store, createSelector } = getReduxGenericValueHook();
     const initialValue = { some: 'value' };
     it('should have initial value', () => {
       const key = 'kv1';
       const selector = createSelector(key, initialValue); // given
-      const { result } = renderGenericValueHook(key, initialValue); // when
+      const { result } = renderGenericHook(key, initialValue); // when
       expect(initialValue).toBe(selector(store.getState())); // then
       expect(initialValue).toBe(result.current[0]); // then
     });
@@ -20,7 +20,7 @@ describe('create selector', () => {
       // given
       const key = 'kv2';
       const selector = createSelector(key, initialValue);
-      const { result } = renderGenericValueHook(key, initialValue);
+      const { result } = renderGenericHook(key, initialValue);
       const newValue = { other: 'data' };
       expect(initialValue).toBe(selector(store.getState()));
       // when
@@ -33,7 +33,7 @@ describe('create selector', () => {
       // given
       const key = 'kv3';
       const selector = createSelector(key, initialValue);
-      const { result } = renderGenericValueHook(key, initialValue);
+      const { result } = renderGenericHook(key, initialValue);
       const storedValue = { stored: 'value' };
       const updatedValue = { updated: 'value' };
       expect(initialValue).toBe(selector(store.getState()));
@@ -47,13 +47,13 @@ describe('create selector', () => {
   });
 
   describe('renderGenericListHook', () => {
-    const { renderGenericListHook, store, createSelector } = getReduxGenericListHook();
+    const { renderGenericHook, store, createSelector } = getReduxGenericListHook();
     const initialValue = [{ some: 'value' }, { second: 'item' }];
     describe('initialValue', () => {
       it('should have initial value', () => {
         const key = 'kv1';
         const selector = createSelector(key, initialValue); // given
-        const { result } = renderGenericListHook(key, initialValue); // when
+        const { result } = renderGenericHook(key, initialValue); // when
         expect(initialValue).toBe(selector(store.getState())); // then
         expect(initialValue).toBe(result.current[0]); // then
       });
@@ -62,7 +62,7 @@ describe('create selector', () => {
       // given
       const key = 'kv2';
       const selector = createSelector(key, initialValue);
-      const { result } = renderGenericListHook(key, initialValue);
+      const { result } = renderGenericHook(key, initialValue);
       const newItem = { other: 'data' };
       expect(initialValue).toBe(selector(store.getState()));
       // when
@@ -75,7 +75,7 @@ describe('create selector', () => {
       // given
       const key = 'kv3';
       const selector = createSelector(key, initialValue);
-      const { result } = renderGenericListHook(key, initialValue);
+      const { result } = renderGenericHook(key, initialValue);
       expect(initialValue).toBe(selector(store.getState()));
       // when
       act(() => result.current[2](initialValue[1])); // .removeItem
@@ -87,7 +87,7 @@ describe('create selector', () => {
       // given
       const key = 'kv4';
       const selector = createSelector(key, initialValue);
-      const { result } = renderGenericListHook(key, initialValue);
+      const { result } = renderGenericHook(key, initialValue);
       const newList = [{ nyNem: 'list' }];
       expect(initialValue).toBe(selector(store.getState()));
       // when
@@ -99,13 +99,13 @@ describe('create selector', () => {
   });
 
   describe('renderGenericRecordHook', () => {
-    const { renderGenericRecordHook, store, createSelector } = getReduxGenericRecordHook();
+    const { renderGenericHook, store, createSelector } = getReduxGenericRecordHook();
     const initialValue = { some: 'value', second: 'item' };
     describe('initialValue', () => {
       it('should have initial value', () => {
         const key = 'kv1';
         const selector = createSelector(key, initialValue); // given
-        const { result } = renderGenericRecordHook(key, initialValue); // when
+        const { result } = renderGenericHook(key, initialValue); // when
         expect(initialValue).toBe(selector(store.getState())); // then
         expect(initialValue).toBe(result.current[0]); // then
       });
@@ -114,20 +114,20 @@ describe('create selector', () => {
       // given
       const key = 'kv2';
       const selector = createSelector(key, initialValue);
-      const { result } = renderGenericRecordHook(key, initialValue);
+      const { result } = renderGenericHook(key, initialValue);
       const newItem = { key: 'other', value: 'data' };
       expect(initialValue).toBe(selector(store.getState()));
       // when
       act(() => result.current[1](newItem.key, newItem.value)); // .addItem
       // then
       expect(result.current[0]).toBe(selector(store.getState()));
-      expect(result.current[0]).toEqual({...initialValue, [newItem.key]: newItem.value});
+      expect(result.current[0]).toEqual({ ...initialValue, [newItem.key]: newItem.value });
     });
     it('.removeItem: should return stored value', () => {
       // given
       const key = 'kv3';
       const selector = createSelector(key, initialValue);
-      const { result } = renderGenericRecordHook(key, initialValue);
+      const { result } = renderGenericHook(key, initialValue);
       expect(initialValue).toBe(selector(store.getState()));
       // when
       act(() => result.current[2]('second')); // .removeItem
@@ -139,7 +139,7 @@ describe('create selector', () => {
       // given
       const key = 'kv4';
       const selector = createSelector(key, initialValue);
-      const { result } = renderGenericRecordHook(key, initialValue);
+      const { result } = renderGenericHook(key, initialValue);
       const newRecord = { myNew: 'record' };
       expect(initialValue).toBe(selector(store.getState()));
       // when

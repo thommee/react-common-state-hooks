@@ -32,5 +32,6 @@ export const createReduxStorage = (namespace: string) => {
     slice: { name, reducer },
     useStorage,
     createSelector,
+    createAction,
   };
 };

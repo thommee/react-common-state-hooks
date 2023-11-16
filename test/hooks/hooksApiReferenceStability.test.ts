@@ -3,19 +3,19 @@ import {
   getReduxGenericListHook,
   getReduxGenericRecordHook,
   getReduxGenericValueHook,
-} from './testUtils/createReduxWrappers';
+} from '../testUtils/createReduxWrappers';
 import {
   getInMemoryGenericListHook,
   getInMemoryGenericRecordHook,
   getInMemoryGenericValueHook,
-} from './testUtils/createInMemoryWrappers';
+} from '../testUtils/createInMemoryWrappers';
 
 describe('stable api reference', () => {
   const getKey = () => 's.' + Math.random() + '.key';
 
   describe.each`
     renderGenericListHook                                 | description
-    ${getReduxGenericListHook().renderGenericListHook}    | ${'redux'}
+    ${getReduxGenericListHook().renderGenericHook}        | ${'redux'}
     ${getInMemoryGenericListHook().renderGenericListHook} | ${'inMemory'}
   `(
     'useGenericListHook: $description',
@@ -23,7 +23,7 @@ describe('stable api reference', () => {
       renderGenericListHook,
     }: {
       renderGenericListHook:
-        | ReturnType<typeof getReduxGenericListHook>['renderGenericListHook']
+        | ReturnType<typeof getReduxGenericListHook>['renderGenericHook']
         | ReturnType<typeof getInMemoryGenericListHook>['renderGenericListHook'];
     }) => {
       it('should have stable list value', () => {
@@ -86,7 +86,7 @@ describe('stable api reference', () => {
 
   describe.each`
     renderGenericValueHook                                  | description
-    ${getReduxGenericValueHook().renderGenericValueHook}    | ${'redux'}
+    ${getReduxGenericValueHook().renderGenericHook}         | ${'redux'}
     ${getInMemoryGenericValueHook().renderGenericValueHook} | ${'inMemory'}
   `(
     'useGenericValueHook: $description',
@@ -94,7 +94,7 @@ describe('stable api reference', () => {
       renderGenericValueHook,
     }: {
       renderGenericValueHook:
-        | ReturnType<typeof getReduxGenericValueHook>['renderGenericValueHook']
+        | ReturnType<typeof getReduxGenericValueHook>['renderGenericHook']
         | ReturnType<typeof getInMemoryGenericValueHook>['renderGenericValueHook'];
     }) => {
       it('should have stable value', () => {
@@ -128,7 +128,7 @@ describe('stable api reference', () => {
 
   describe.each`
     renderGenericRecordHook                                   | description
-    ${getReduxGenericRecordHook().renderGenericRecordHook}    | ${'redux'}
+    ${getReduxGenericRecordHook().renderGenericHook}          | ${'redux'}
     ${getInMemoryGenericRecordHook().renderGenericRecordHook} | ${'inMemory'}
   `(
     'useGenericRecordHook: $description',
@@ -136,7 +136,7 @@ describe('stable api reference', () => {
       renderGenericRecordHook,
     }: {
       renderGenericRecordHook:
-        | ReturnType<typeof getReduxGenericRecordHook>['renderGenericRecordHook']
+        | ReturnType<typeof getReduxGenericRecordHook>['renderGenericHook']
         | ReturnType<typeof getInMemoryGenericRecordHook>['renderGenericRecordHook'];
     }) => {
       it('should have stable record value', () => {
