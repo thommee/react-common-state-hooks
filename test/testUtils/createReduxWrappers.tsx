@@ -6,38 +6,36 @@ import { renderHook } from '@testing-library/react';
 
 export function getReduxGenericListHook() {
   const namespace = 'redux:namespace';
-  const { useGenericList, slice, createSelector } = createReduxStateHooks(namespace);
+  const { useGenericList, slice, createSelector, createAction } = createReduxStateHooks(namespace);
   const store = createStore(combineReducers({ [slice.name]: slice.reducer }));
   const Wrapper = ({ children }: React.PropsWithChildren) => <Provider store={store}>{children}</Provider>;
 
-  const renderGenericListHook = (...args: Parameters<ReturnType<typeof createReduxStateHooks>['useGenericList']>) => {
+  const renderGenericHook = (...args: Parameters<ReturnType<typeof createReduxStateHooks>['useGenericList']>) => {
     return renderHook(() => useGenericList(...args), { wrapper: Wrapper });
   };
-  return { useGenericList, Wrapper, renderGenericListHook, store, createSelector };
+  return { useGenericList, Wrapper, renderGenericHook, store, createSelector, createAction };
 }
 
 export function getReduxGenericRecordHook() {
   const namespace = 'redux:namespace';
-  const { useGenericRecord, slice, createSelector } = createReduxStateHooks(namespace);
+  const { useGenericRecord, slice, createSelector, createAction } = createReduxStateHooks(namespace);
   const store = createStore(combineReducers({ [slice.name]: slice.reducer }));
   const Wrapper = ({ children }: React.PropsWithChildren) => <Provider store={store}>{children}</Provider>;
 
-  const renderGenericRecordHook = (
-    ...args: Parameters<ReturnType<typeof createReduxStateHooks>['useGenericRecord']>
-  ) => {
+  const renderGenericHook = (...args: Parameters<ReturnType<typeof createReduxStateHooks>['useGenericRecord']>) => {
     return renderHook(() => useGenericRecord(...args), { wrapper: Wrapper });
   };
-  return { useGenericRecord, Wrapper, renderGenericRecordHook, store, createSelector };
+  return { useGenericRecord, Wrapper, renderGenericHook, store, createSelector, createAction };
 }
 
 export function getReduxGenericValueHook() {
   const namespace = 'redux:namespace';
-  const { useGenericValue, slice, createSelector } = createReduxStateHooks(namespace);
+  const { useGenericValue, slice, createSelector, createAction } = createReduxStateHooks(namespace);
   const store = createStore(combineReducers({ [slice.name]: slice.reducer }));
   const Wrapper = ({ children }: React.PropsWithChildren) => <Provider store={store}>{children}</Provider>;
 
-  const renderGenericValueHook = (...args: Parameters<ReturnType<typeof createReduxStateHooks>['useGenericValue']>) => {
+  const renderGenericHook = (...args: Parameters<ReturnType<typeof createReduxStateHooks>['useGenericValue']>) => {
     return renderHook(() => useGenericValue(...args), { wrapper: Wrapper });
   };
-  return { useGenericValue, Wrapper, renderGenericValueHook, store, createSelector };
+  return { useGenericValue, Wrapper, renderGenericHook, store, createSelector, createAction };
 }

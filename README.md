@@ -64,6 +64,8 @@ import { createReduxStateHooks } from 'react-generic-state-hooks';
 
 export const {
   slice,
+  createSelector,
+  createAction,  
   useGenericValue,
   useGenericList,
   useGenericRecord
