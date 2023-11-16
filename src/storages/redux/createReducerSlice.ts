@@ -22,7 +22,7 @@ export const createReducerSlice = (name: string) => {
   const createSelector =
     <T, R extends RootState>(key: string, initialState: T) =>
     (rootState: R): T =>
-      Object.prototype.hasOwnProperty.call(rootState[name], key)
+      Object.prototype.hasOwnProperty.call(rootState[name] ?? {}, key)
         ? ((rootState[name] as ReducerState)?.[key] as T)
         : initialState;
 
