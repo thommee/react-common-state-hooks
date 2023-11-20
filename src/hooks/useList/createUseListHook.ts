@@ -2,18 +2,18 @@ import { useCallback, useMemo } from 'react';
 import { ListOptions, add, remove } from './utils/Collections';
 import { SetValue, UseStorage } from '../../storages/UseStorage';
 
-type UseGenericListApi<ListItem> = [
+type UseListApi<ListItem> = [
   list: ListItem[],
   addItem: (listItem: ListItem) => void,
   removeItem: (listItem: ListItem) => void,
   setList: SetValue<ListItem[]>,
 ];
-export const createGenericListHook = (useStorage: UseStorage) => {
-  const useGenericList = <ListItem>(
+export const createUseListHook = (useStorage: UseStorage) => {
+  const useList = <ListItem>(
     key: string,
     initialValue: ListItem[] = [],
     defaultOptions?: ListOptions<ListItem>,
-  ): UseGenericListApi<ListItem> => {
+  ): UseListApi<ListItem> => {
     const [list, setList] = useStorage<ListItem[]>(key, initialValue);
 
     const addItem = useCallback(
@@ -32,5 +32,5 @@ export const createGenericListHook = (useStorage: UseStorage) => {
     return useMemo(() => [list, addItem, removeItem, setList], [addItem, removeItem, list, setList]);
   };
 
-  return { useGenericList };
+  return { useList };
 };

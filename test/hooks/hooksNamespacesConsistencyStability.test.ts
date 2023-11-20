@@ -1,7 +1,7 @@
 import { act } from '@testing-library/react';
-import { getReduxGenericValueHook } from '../testUtils/createReduxWrappers';
-import { getInMemoryGenericValueHook } from '../testUtils/createInMemoryWrappers';
-import { getLocalStorageGenericValueHook } from '../testUtils/createLocalStorageWrappers';
+import { getReduxValueHook } from '../testUtils/createReduxWrappers';
+import { getInMemoryValueHook } from '../testUtils/createInMemoryWrappers';
+import { getLocalStorageValueHook } from '../testUtils/createLocalStorageWrappers';
 
 describe('namespaces consistency', () => {
   const getKey = () => 's.' + Math.random() + '.key';
@@ -10,22 +10,22 @@ describe('namespaces consistency', () => {
 
   function prepareReduxTest() {
     const key = getKey();
-    const { renderGenericHook: r1, store, slice } = getReduxGenericValueHook('nsr1');
-    const { renderGenericHook: r2 } = getReduxGenericValueHook('nsr1', store, slice);
+    const { renderGenericHook: r1, store, slice } = getReduxValueHook('nsr1');
+    const { renderGenericHook: r2 } = getReduxValueHook('nsr1', store, slice);
     return { key, r1, r2 };
   }
 
   function prepareInMemoryTest() {
     const key = getKey();
-    const { renderGenericHook: r1 } = getInMemoryGenericValueHook('nsm1');
-    const { renderGenericHook: r2 } = getInMemoryGenericValueHook('nsm1');
+    const { renderGenericHook: r1 } = getInMemoryValueHook('nsm1');
+    const { renderGenericHook: r2 } = getInMemoryValueHook('nsm1');
     return { key, r1, r2 };
   }
 
   function prepareLocalStorageTest() {
     const key = getKey();
-    const { renderGenericHook: r1 } = getLocalStorageGenericValueHook('nsl1');
-    const { renderGenericHook: r2 } = getLocalStorageGenericValueHook('nsl1');
+    const { renderGenericHook: r1 } = getLocalStorageValueHook('nsl1');
+    const { renderGenericHook: r2 } = getLocalStorageValueHook('nsl1');
     return { key, r1, r2 };
   }
 

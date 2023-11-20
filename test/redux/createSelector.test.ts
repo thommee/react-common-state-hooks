@@ -1,13 +1,9 @@
-import {
-  getReduxGenericListHook,
-  getReduxGenericRecordHook,
-  getReduxGenericValueHook,
-} from '../testUtils/createReduxWrappers';
+import { getReduxListHook, getReduxRecordHook, getReduxValueHook } from '../testUtils/createReduxWrappers';
 import { act } from '@testing-library/react';
 
 describe('create selector', () => {
   describe('getReduxGenericValueHook', () => {
-    const { renderGenericHook, store, createSelector } = getReduxGenericValueHook();
+    const { renderGenericHook, store, createSelector } = getReduxValueHook();
     const initialValue = { some: 'value' };
     it('should have initial value', () => {
       const key = 'kv1';
@@ -47,7 +43,7 @@ describe('create selector', () => {
   });
 
   describe('getReduxGenericListHook', () => {
-    const { renderGenericHook, store, createSelector } = getReduxGenericListHook();
+    const { renderGenericHook, store, createSelector } = getReduxListHook();
     const initialValue = [{ some: 'value' }, { second: 'item' }];
     describe('initialValue', () => {
       it('should have initial value', () => {
@@ -99,7 +95,7 @@ describe('create selector', () => {
   });
 
   describe('getReduxGenericRecordHook', () => {
-    const { renderGenericHook, store, createSelector } = getReduxGenericRecordHook();
+    const { renderGenericHook, store, createSelector } = getReduxRecordHook();
     const initialValue = { some: 'value', second: 'item' };
     describe('initialValue', () => {
       it('should have initial value', () => {

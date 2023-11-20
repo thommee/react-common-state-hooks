@@ -1,21 +1,21 @@
 import { act } from '@testing-library/react';
-import { getReduxGenericValueHook } from '../testUtils/createReduxWrappers';
-import { getInMemoryGenericValueHook } from '../testUtils/createInMemoryWrappers';
-import { getLocalStorageGenericValueHook } from '../testUtils/createLocalStorageWrappers';
+import { getReduxValueHook } from '../testUtils/createReduxWrappers';
+import { getInMemoryValueHook } from '../testUtils/createInMemoryWrappers';
+import { getLocalStorageValueHook } from '../testUtils/createLocalStorageWrappers';
 
 describe.each`
-  renderGenericValueHook                                 | description
-  ${getReduxGenericValueHook().renderGenericHook}        | ${'redux'}
-  ${getInMemoryGenericValueHook().renderGenericHook}     | ${'inMemory'}
-  ${getLocalStorageGenericValueHook().renderGenericHook} | ${'localStorage'}
+  renderValueHook                                 | description
+  ${getReduxValueHook().renderGenericHook}        | ${'redux'}
+  ${getInMemoryValueHook().renderGenericHook}     | ${'inMemory'}
+  ${getLocalStorageValueHook().renderGenericHook} | ${'localStorage'}
 `(
-  '$description: useGenericValue',
+  '$description: useValue',
   ({
-    renderGenericValueHook,
+    renderValueHook,
   }: {
-    renderGenericValueHook:
-      | ReturnType<typeof getReduxGenericValueHook>['renderGenericHook']
-      | ReturnType<typeof getInMemoryGenericValueHook>['renderGenericHook'];
+    renderValueHook:
+      | ReturnType<typeof getReduxValueHook>['renderGenericHook']
+      | ReturnType<typeof getInMemoryValueHook>['renderGenericHook'];
   }) => {
     const getKey = () => 's.' + Math.random() + '.key';
 
@@ -26,8 +26,8 @@ describe.each`
         const initialValue2 = '2';
         const key1 = 'testKey1';
         const key2 = 'testKey2';
-        const { result: result1 } = renderGenericValueHook(key1, initialValue1);
-        const { result: result2 } = renderGenericValueHook(key2, initialValue2);
+        const { result: result1 } = renderValueHook(key1, initialValue1);
+        const { result: result2 } = renderValueHook(key2, initialValue2);
 
         expect(result1.current[0]).toBe(initialValue1);
         expect(result2.current[0]).toBe(initialValue2);
@@ -46,7 +46,7 @@ describe.each`
         // given:
         const key = 'key';
         const initialValue = 'initial';
-        const { result } = renderGenericValueHook(key, initialValue);
+        const { result } = renderValueHook(key, initialValue);
         expect(result.current[0]).toBe(initialValue);
         // when:
         act(() => result.current[1]('newValue')); // then:
@@ -62,8 +62,8 @@ describe.each`
         const key = getKey();
         const initialValue = { some: 'value' };
         // when:
-        const [value1] = renderGenericValueHook(key, initialValue).result.current;
-        const [value2] = renderGenericValueHook(key, initialValue).result.current;
+        const [value1] = renderValueHook(key, initialValue).result.current;
+        const [value2] = renderValueHook(key, initialValue).result.current;
         // then:
         expect(value1).toBe(value2);
         expect(value1).toBe(initialValue);
@@ -75,10 +75,10 @@ describe.each`
         const initialValue = { a: '1', b: '2' };
         const newValue = { key: 'c', value: '3' };
         // when:
-        const { result: result1 } = renderGenericValueHook(key, initialValue);
+        const { result: result1 } = renderValueHook(key, initialValue);
         act(() => result1.current[1](newValue)); // .saveValue
         // then:
-        const { result: result2 } = renderGenericValueHook(key, initialValue);
+        const { result: result2 } = renderValueHook(key, initialValue);
         expect(result1.current[0]).toBe(result2.current[0]);
         expect(result2.current[0]).toBe(newValue);
       });

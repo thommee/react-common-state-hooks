@@ -1,26 +1,26 @@
 import { createInMemoryStateHooks } from '../../src';
 import { renderHook } from '@testing-library/react';
 
-export function getInMemoryGenericListHook(namespace = 'inMemory:namespace') {
-  const renderGenericHook = (...args: Parameters<ReturnType<typeof createInMemoryStateHooks>['useGenericList']>) => {
-    const { useGenericList } = createInMemoryStateHooks(namespace);
-    return renderHook(() => useGenericList(...args));
+export function getInMemoryListHook(namespace = 'inMemory:namespace') {
+  const renderGenericHook = (...args: Parameters<ReturnType<typeof createInMemoryStateHooks>['useList']>) => {
+    const { useList } = createInMemoryStateHooks(namespace);
+    return renderHook(() => useList(...args));
   };
   return { renderGenericHook };
 }
 
-export function getInMemoryGenericRecordHook(namespace = 'inMemory:namespace') {
-  const renderGenericHook = (...args: Parameters<ReturnType<typeof createInMemoryStateHooks>['useGenericRecord']>) => {
-    const { useGenericRecord } = createInMemoryStateHooks(namespace);
-    return renderHook(() => useGenericRecord(...args));
+export function getInMemoryRecordHook(namespace = 'inMemory:namespace') {
+  const renderGenericHook = (...args: Parameters<ReturnType<typeof createInMemoryStateHooks>['useRecord']>) => {
+    const { useRecord } = createInMemoryStateHooks(namespace);
+    return renderHook(() => useRecord(...args));
   };
   return { renderGenericHook };
 }
 
-export function getInMemoryGenericValueHook(namespace = 'inMemory:namespace') {
-  const renderGenericHook = (...args: Parameters<ReturnType<typeof createInMemoryStateHooks>['useGenericValue']>) => {
-    const { useGenericValue } = createInMemoryStateHooks(namespace);
-    return renderHook(() => useGenericValue(...args));
+export function getInMemoryValueHook(namespace = 'inMemory:namespace') {
+  const renderGenericHook = (...args: Parameters<ReturnType<typeof createInMemoryStateHooks>['useValue']>) => {
+    const { useValue } = createInMemoryStateHooks(namespace);
+    return renderHook(() => useValue(...args));
   };
   return { renderGenericHook };
 }

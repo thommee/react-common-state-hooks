@@ -1,43 +1,35 @@
 import { act } from '@testing-library/react';
+import { getReduxListHook, getReduxRecordHook, getReduxValueHook } from '../testUtils/createReduxWrappers';
+import { getInMemoryListHook, getInMemoryRecordHook, getInMemoryValueHook } from '../testUtils/createInMemoryWrappers';
 import {
-  getReduxGenericListHook,
-  getReduxGenericRecordHook,
-  getReduxGenericValueHook,
-} from '../testUtils/createReduxWrappers';
-import {
-  getInMemoryGenericListHook,
-  getInMemoryGenericRecordHook,
-  getInMemoryGenericValueHook,
-} from '../testUtils/createInMemoryWrappers';
-import {
-  getLocalStorageGenericListHook,
-  getLocalStorageGenericRecordHook,
-  getLocalStorageGenericValueHook,
+  getLocalStorageListHook,
+  getLocalStorageRecordHook,
+  getLocalStorageValueHook,
 } from '../testUtils/createLocalStorageWrappers';
 
 describe('stable api reference', () => {
   const getKey = () => 's.' + Math.random() + '.key';
 
   describe.each`
-    renderGenericListHook                                 | description
-    ${getReduxGenericListHook().renderGenericHook}        | ${'redux'}
-    ${getInMemoryGenericListHook().renderGenericHook}     | ${'inMemory'}
-    ${getLocalStorageGenericListHook().renderGenericHook} | ${'localStorage'}
+    renderListHook                                 | description
+    ${getReduxListHook().renderGenericHook}        | ${'redux'}
+    ${getInMemoryListHook().renderGenericHook}     | ${'inMemory'}
+    ${getLocalStorageListHook().renderGenericHook} | ${'localStorage'}
   `(
-    'useGenericListHook: $description',
+    'useListHook: $description',
     ({
-      renderGenericListHook,
+      renderListHook,
     }: {
-      renderGenericListHook:
-        | ReturnType<typeof getReduxGenericListHook>['renderGenericHook']
-        | ReturnType<typeof getInMemoryGenericListHook>['renderGenericHook']
-        | ReturnType<typeof getLocalStorageGenericListHook>['renderGenericHook'];
+      renderListHook:
+        | ReturnType<typeof getReduxListHook>['renderGenericHook']
+        | ReturnType<typeof getInMemoryListHook>['renderGenericHook']
+        | ReturnType<typeof getLocalStorageListHook>['renderGenericHook'];
     }) => {
       it('should have stable list value', () => {
         // given:
         const key = getKey();
         const initialList = ['1', '2', '3'];
-        const { result } = renderGenericListHook(key, initialList);
+        const { result } = renderListHook(key, initialList);
         const {
           current: [list],
         } = result;
@@ -50,7 +42,7 @@ describe('stable api reference', () => {
         // given:
         const key = getKey();
         const initialList = ['1', '2', '3'];
-        const { result } = renderGenericListHook(key, initialList);
+        const { result } = renderListHook(key, initialList);
         const {
           current: [, addItem],
         } = result;
@@ -64,7 +56,7 @@ describe('stable api reference', () => {
         // given:
         const key = getKey();
         const initialList = ['1', '2', '3'];
-        const { result } = renderGenericListHook(key, initialList);
+        const { result } = renderListHook(key, initialList);
         const {
           current: [, , removeItem],
         } = result;
@@ -78,7 +70,7 @@ describe('stable api reference', () => {
         // given:
         const key = getKey();
         const initialList = ['1', '2', '3'];
-        const { result } = renderGenericListHook(key, initialList);
+        const { result } = renderListHook(key, initialList);
         const {
           current: [, , , setList],
         } = result;
@@ -92,25 +84,25 @@ describe('stable api reference', () => {
   );
 
   describe.each`
-    renderGenericValueHook                                 | description
-    ${getReduxGenericValueHook().renderGenericHook}        | ${'redux'}
-    ${getInMemoryGenericValueHook().renderGenericHook}     | ${'inMemory'}
-    ${getLocalStorageGenericValueHook().renderGenericHook} | ${'localStorage'}
+    renderValueHook                                 | description
+    ${getReduxValueHook().renderGenericHook}        | ${'redux'}
+    ${getInMemoryValueHook().renderGenericHook}     | ${'inMemory'}
+    ${getLocalStorageValueHook().renderGenericHook} | ${'localStorage'}
   `(
-    'useGenericValueHook: $description',
+    'useValueHook: $description',
     ({
-      renderGenericValueHook,
+      renderValueHook,
     }: {
-      renderGenericValueHook:
-        | ReturnType<typeof getReduxGenericValueHook>['renderGenericHook']
-        | ReturnType<typeof getInMemoryGenericValueHook>['renderGenericHook']
-        | ReturnType<typeof getLocalStorageGenericValueHook>['renderGenericHook'];
+      renderValueHook:
+        | ReturnType<typeof getReduxValueHook>['renderGenericHook']
+        | ReturnType<typeof getInMemoryValueHook>['renderGenericHook']
+        | ReturnType<typeof getLocalStorageValueHook>['renderGenericHook'];
     }) => {
       it('should have stable value', () => {
         // given:
         const key = getKey();
         const initialValue = { some: 'value' };
-        const { result } = renderGenericValueHook(key, initialValue);
+        const { result } = renderValueHook(key, initialValue);
         const {
           current: [value],
         } = result;
@@ -123,7 +115,7 @@ describe('stable api reference', () => {
         // given:
         const key = getKey();
         const initialValue = { some: 'value' };
-        const { result } = renderGenericValueHook(key, initialValue);
+        const { result } = renderValueHook(key, initialValue);
         const {
           current: [, setValue],
         } = result;
@@ -136,25 +128,25 @@ describe('stable api reference', () => {
   );
 
   describe.each`
-    renderGenericRecordHook                                 | description
-    ${getReduxGenericRecordHook().renderGenericHook}        | ${'redux'}
-    ${getInMemoryGenericRecordHook().renderGenericHook}     | ${'inMemory'}
-    ${getLocalStorageGenericRecordHook().renderGenericHook} | ${'localStorage'}
+    renderRecordHook                                 | description
+    ${getReduxRecordHook().renderGenericHook}        | ${'redux'}
+    ${getInMemoryRecordHook().renderGenericHook}     | ${'inMemory'}
+    ${getLocalStorageRecordHook().renderGenericHook} | ${'localStorage'}
   `(
-    'useGenericRecordHook: $description',
+    'useRecordHook: $description',
     ({
-      renderGenericRecordHook,
+      renderRecordHook,
     }: {
-      renderGenericRecordHook:
-        | ReturnType<typeof getReduxGenericRecordHook>['renderGenericHook']
-        | ReturnType<typeof getInMemoryGenericRecordHook>['renderGenericHook']
-        | ReturnType<typeof getLocalStorageGenericRecordHook>['renderGenericHook'];
+      renderRecordHook:
+        | ReturnType<typeof getReduxRecordHook>['renderGenericHook']
+        | ReturnType<typeof getInMemoryRecordHook>['renderGenericHook']
+        | ReturnType<typeof getLocalStorageRecordHook>['renderGenericHook'];
     }) => {
       it('should have stable record value', () => {
         // given:
         const key = getKey();
         const initialList = { a: '5' };
-        const { result } = renderGenericRecordHook(key, initialList);
+        const { result } = renderRecordHook(key, initialList);
         const {
           current: [record],
         } = result;
@@ -167,7 +159,7 @@ describe('stable api reference', () => {
         // given:
         const key = getKey();
         const initialList = { a: '1' };
-        const { result } = renderGenericRecordHook(key, initialList);
+        const { result } = renderRecordHook(key, initialList);
         const {
           current: [, addItem],
         } = result;
@@ -181,7 +173,7 @@ describe('stable api reference', () => {
         // given:
         const key = getKey();
         const initialList = { a: '8' };
-        const { result } = renderGenericRecordHook(key, initialList);
+        const { result } = renderRecordHook(key, initialList);
         const {
           current: [, , removeItem],
         } = result;
@@ -195,7 +187,7 @@ describe('stable api reference', () => {
         // given:
         const key = getKey();
         const initialList = { a: '3' };
-        const { result } = renderGenericRecordHook(key, initialList);
+        const { result } = renderRecordHook(key, initialList);
         const {
           current: [, , , setList],
         } = result;

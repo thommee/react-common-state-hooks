@@ -1,12 +1,12 @@
-import { createGenericValueHook } from './genericValue/createGenericValueHook';
-import { createGenericListHook } from './genericList/createGenericListHook';
-import { createGenericRecordHook } from './genericRecord/createGenericRecordHook';
+import { createUseValueHook } from './useValue/createUseValueHook';
+import { createUseListHook } from './useList/createUseListHook';
+import { createUseRecordHook } from './useRecord/createUseRecordHook';
 import { UseStorage } from '../storages/UseStorage';
 
 export const createStateHooks = <T extends { useStorage: UseStorage }>({ useStorage, ...rest }: T) => {
-  const { useGenericValue } = createGenericValueHook(useStorage);
-  const { useGenericList } = createGenericListHook(useStorage);
-  const { useGenericRecord } = createGenericRecordHook(useStorage);
+  const { useValue } = createUseValueHook(useStorage);
+  const { useList } = createUseListHook(useStorage);
+  const { useRecord } = createUseRecordHook(useStorage);
 
-  return { ...rest, useGenericValue, useGenericList, useGenericRecord };
+  return { ...rest, useValue, useList, useRecord };
 };

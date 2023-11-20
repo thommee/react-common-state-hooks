@@ -13,11 +13,11 @@ If you choose redux-way for creating hooks, you'll never have to create actions 
 It will all be done for you.
 
 #### Types of hooks
-The library provides three different types of hooks dedicated for most common used
+The library provides three types of generic hooks dedicated for most common used
 data types like simple values, lists & sets and records (maps):
-- `useGenericValue`: basic hook for reading and storing any values
-- `useGenericList`: hook dedicated to use with list and sets
-- `useGenericRecord`: hook for managing record-like data structures like maps and key-value storages.
+- `useValue`: basic hook for reading and storing any values
+- `useList`: hook dedicated to use with list and sets
+- `useRecord`: hook for managing record-like data structures like maps and key-value storages.
 
 #### Storing Data
 `react-generic-state-hooks` provides three types of data storages:
@@ -42,14 +42,14 @@ Examples:
 // inMemoryStateHooks.ts
 import { createInMemoryStateHooks } from 'react-generic-state-hooks';
 
-export const { useGenericValue, useGenericList, useGenericRecord
+export const { useValue, useList, useRecord
 } = createInMemoryStateHooks('my-namespace');
 ~~~
 ~~~typescript jsx
 // localStorageStateHooks.ts
 import { createLocalStorageStateHooks } from 'react-generic-state-hooks';
 
-export const { useGenericValue, useGenericList, useGenericRecord
+export const { useValue, useList, useRecord
 } = createLocalStorageStateHooks('my-namespace');
 ~~~
 ~~~typescript jsx
@@ -57,12 +57,11 @@ export const { useGenericValue, useGenericList, useGenericRecord
 import { createReduxStateHooks } from 'react-generic-state-hooks';
 
 export const { slice, createSelector, createAction,
-  useGenericValue, useGenericList, useGenericRecord
+  useValue, useList, useRecord
 } = createReduxStateHooks('my-namespace');
 
-// ---------------------------------------------------------
-// RootReducer.ts
-// We need to connect generated "slice.reducer" to Redux store.
+// --------------------------------------------------------------
+// RootReducer: Connect generated "slice.reducer" to Redux store:
 import { slice } from './ReduxGenericStateHooks';
 
 const rootReducer = combineReducers({
@@ -75,10 +74,10 @@ That's all! Now, you can use generic hooks in any place of your application:
 
 ~~~typescript jsx
 // MyComponent.tsx
-import { useGenericValue } from './inMemoryStateHooks';
+import { useValue } from './inMemoryStateHooks';
 
 const MyComponent = () => {
-  const [value, setValue] = useGenericValue('counter', 0);
+  const [value, setValue] = useValue('counter', 0);
   return (
     <>
       <div>count: {value}</div>
@@ -93,9 +92,9 @@ If you plan to use the same data in multiple places in the application,
 a better approach would be to create a dedicated hooks based on generic hooks:
 ~~~typescript jsx
 // useCounter.ts
-import { useGenericValue } from './inMemoryStateHooks';
+import { useValue } from './inMemoryStateHooks';
 
-export const useCounter = (initialValue: number = 0) => useGenericValue('counter', initialValue);
+export const useCounter = (initialValue: number = 0) => useValue('counter', initialValue);
 ~~~
 Just like generic hooks, you can use them in any place of your application:
 ~~~typescript jsx

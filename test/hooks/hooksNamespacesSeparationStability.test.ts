@@ -1,7 +1,7 @@
 import { act } from '@testing-library/react';
-import { getReduxGenericValueHook } from '../testUtils/createReduxWrappers';
-import { getInMemoryGenericValueHook } from '../testUtils/createInMemoryWrappers';
-import { getLocalStorageGenericValueHook } from '../testUtils/createLocalStorageWrappers';
+import { getReduxValueHook } from '../testUtils/createReduxWrappers';
+import { getInMemoryValueHook } from '../testUtils/createInMemoryWrappers';
+import { getLocalStorageValueHook } from '../testUtils/createLocalStorageWrappers';
 
 describe('namespaces', () => {
   const getKey = () => 's.' + Math.random() + '.key';
@@ -10,8 +10,8 @@ describe('namespaces', () => {
     const key = getKey();
     const initialList1 = ['1'];
     const initialList2 = ['2'];
-    const { renderGenericHook: r1, store, slice } = getReduxGenericValueHook('ns1');
-    const { renderGenericHook: r2 } = getReduxGenericValueHook('ns2', store, slice);
+    const { renderGenericHook: r1, store, slice } = getReduxValueHook('ns1');
+    const { renderGenericHook: r2 } = getReduxValueHook('ns2', store, slice);
     return { key, initialList1, initialList2, r1, r2 };
   }
 
@@ -19,8 +19,8 @@ describe('namespaces', () => {
     const key = getKey();
     const initialList1 = ['1'];
     const initialList2 = ['2'];
-    const { renderGenericHook: r1 } = getInMemoryGenericValueHook('ns1');
-    const { renderGenericHook: r2 } = getReduxGenericValueHook('ns2');
+    const { renderGenericHook: r1 } = getInMemoryValueHook('ns1');
+    const { renderGenericHook: r2 } = getReduxValueHook('ns2');
     return { key, initialList1, initialList2, r1, r2 };
   }
 
@@ -28,8 +28,8 @@ describe('namespaces', () => {
     const key = getKey();
     const initialList1 = ['1'];
     const initialList2 = ['2'];
-    const { renderGenericHook: r1 } = getLocalStorageGenericValueHook('ns1');
-    const { renderGenericHook: r2 } = getLocalStorageGenericValueHook('ns2');
+    const { renderGenericHook: r1 } = getLocalStorageValueHook('ns1');
+    const { renderGenericHook: r2 } = getLocalStorageValueHook('ns2');
     return { key, initialList1, initialList2, r1, r2 };
   }
 

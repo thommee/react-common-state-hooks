@@ -1,32 +1,26 @@
 import { createLocalStorageStateHooks } from '../../src';
 import { renderHook } from '@testing-library/react';
 
-export function getLocalStorageGenericListHook(namespace = 'localStorage:namespace') {
-  const renderGenericHook = (
-    ...args: Parameters<ReturnType<typeof createLocalStorageStateHooks>['useGenericList']>
-  ) => {
-    const { useGenericList } = createLocalStorageStateHooks(namespace);
-    return renderHook(() => useGenericList(...args));
+export function getLocalStorageListHook(namespace = 'localStorage:namespace') {
+  const renderGenericHook = (...args: Parameters<ReturnType<typeof createLocalStorageStateHooks>['useList']>) => {
+    const { useList } = createLocalStorageStateHooks(namespace);
+    return renderHook(() => useList(...args));
   };
   return { renderGenericHook };
 }
 
-export function getLocalStorageGenericRecordHook(namespace = 'localStorage:namespace') {
-  const renderGenericHook = (
-    ...args: Parameters<ReturnType<typeof createLocalStorageStateHooks>['useGenericRecord']>
-  ) => {
-    const { useGenericRecord } = createLocalStorageStateHooks(namespace);
-    return renderHook(() => useGenericRecord(...args));
+export function getLocalStorageRecordHook(namespace = 'localStorage:namespace') {
+  const renderGenericHook = (...args: Parameters<ReturnType<typeof createLocalStorageStateHooks>['useRecord']>) => {
+    const { useRecord } = createLocalStorageStateHooks(namespace);
+    return renderHook(() => useRecord(...args));
   };
   return { renderGenericHook };
 }
 
-export function getLocalStorageGenericValueHook(namespace = 'localStorage:namespace') {
-  const renderGenericHook = (
-    ...args: Parameters<ReturnType<typeof createLocalStorageStateHooks>['useGenericValue']>
-  ) => {
-    const { useGenericValue } = createLocalStorageStateHooks(namespace);
-    return renderHook(() => useGenericValue(...args));
+export function getLocalStorageValueHook(namespace = 'localStorage:namespace') {
+  const renderGenericHook = (...args: Parameters<ReturnType<typeof createLocalStorageStateHooks>['useValue']>) => {
+    const { useValue } = createLocalStorageStateHooks(namespace);
+    return renderHook(() => useValue(...args));
   };
   return { renderGenericHook };
 }

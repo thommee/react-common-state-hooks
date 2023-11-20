@@ -1,21 +1,21 @@
 import { act } from '@testing-library/react';
-import { getReduxGenericRecordHook } from '../testUtils/createReduxWrappers';
-import { getInMemoryGenericRecordHook } from '../testUtils/createInMemoryWrappers';
-import { getLocalStorageGenericRecordHook } from '../testUtils/createLocalStorageWrappers';
+import { getReduxRecordHook } from '../testUtils/createReduxWrappers';
+import { getInMemoryRecordHook } from '../testUtils/createInMemoryWrappers';
+import { getLocalStorageRecordHook } from '../testUtils/createLocalStorageWrappers';
 
 describe.each`
-  renderGenericRecordHook                                 | description
-  ${getReduxGenericRecordHook().renderGenericHook}        | ${'redux'}
-  ${getInMemoryGenericRecordHook().renderGenericHook}     | ${'inMemory'}
-  ${getLocalStorageGenericRecordHook().renderGenericHook} | ${'localStorage'}
+  renderRecordHook                                 | description
+  ${getReduxRecordHook().renderGenericHook}        | ${'redux'}
+  ${getInMemoryRecordHook().renderGenericHook}     | ${'inMemory'}
+  ${getLocalStorageRecordHook().renderGenericHook} | ${'localStorage'}
 `(
-  '$description: useGenericRecord',
+  '$description: useRecord',
   ({
-    renderGenericRecordHook,
+    renderRecordHook,
   }: {
-    renderGenericRecordHook:
-      | ReturnType<typeof getReduxGenericRecordHook>['renderGenericHook']
-      | ReturnType<typeof getInMemoryGenericRecordHook>['renderGenericHook'];
+    renderRecordHook:
+      | ReturnType<typeof getReduxRecordHook>['renderGenericHook']
+      | ReturnType<typeof getInMemoryRecordHook>['renderGenericHook'];
   }) => {
     const getKey = () => 's.' + Math.random() + '.key';
 
@@ -30,7 +30,7 @@ describe.each`
         'should update value from "$initialValue" with "$itemToAdd"',
         ({ initialValue, itemToAdd: { key, value }, expectedResult }) => {
           // given:
-          const { result } = renderGenericRecordHook(getKey(), initialValue);
+          const { result } = renderRecordHook(getKey(), initialValue);
           expect(result.current[0]).toBe(initialValue);
           // when:
           act(() => result.current[1](key, value)); // then:
@@ -49,7 +49,7 @@ describe.each`
         'should remove value from "$initialValue" with "$itemToRemove"',
         ({ initialValue, keyToRemove, expectedResult }) => {
           // given:
-          const { result } = renderGenericRecordHook(getKey(), initialValue);
+          const { result } = renderRecordHook(getKey(), initialValue);
           expect(result.current[0]).toBe(initialValue);
           // when:
           act(() => result.current[2](keyToRemove)); // then:
@@ -68,7 +68,7 @@ describe.each`
         'should set record from "$initialValue" with "$recordToSet"',
         ({ initialValue, recordToSet, expectedResult }) => {
           // given:
-          const { result } = renderGenericRecordHook(getKey(), initialValue);
+          const { result } = renderRecordHook(getKey(), initialValue);
           expect(result.current[0]).toBe(initialValue);
           // when:
           act(() => result.current[3](recordToSet)); // then:
@@ -83,8 +83,8 @@ describe.each`
         const key = getKey();
         const initialRecord = { a: '1', b: '2' };
         // when:
-        const [record1] = renderGenericRecordHook(key, initialRecord).result.current;
-        const [record2] = renderGenericRecordHook(key, initialRecord).result.current;
+        const [record1] = renderRecordHook(key, initialRecord).result.current;
+        const [record2] = renderRecordHook(key, initialRecord).result.current;
         // then:
         expect(record1).toBe(record2);
       });
@@ -95,10 +95,10 @@ describe.each`
         const initialRecord = { a: '1', b: '2' };
         const itemToAdd = { key: 'c', value: '3' };
         // when:
-        const { result: result1 } = renderGenericRecordHook(key, initialRecord);
+        const { result: result1 } = renderRecordHook(key, initialRecord);
         act(() => result1.current[1](itemToAdd.key, itemToAdd.value)); // .addItem
         // then:
-        const { result: result2 } = renderGenericRecordHook(key, initialRecord);
+        const { result: result2 } = renderRecordHook(key, initialRecord);
         expect(result1.current[0]).toBe(result2.current[0]);
         expect(result2.current[0]).toEqual({ ...initialRecord, [itemToAdd.key]: itemToAdd.value });
       });
@@ -109,8 +109,8 @@ describe.each`
         const initialRecord = { a: '1', b: '2' };
         const itemToAdd1 = { key: 'c', value: '3' };
         const itemToAdd2 = { key: 'd', value: '4' };
-        const { result: result1 } = renderGenericRecordHook(key, initialRecord);
-        const { result: result2 } = renderGenericRecordHook(key, initialRecord);
+        const { result: result1 } = renderRecordHook(key, initialRecord);
+        const { result: result2 } = renderRecordHook(key, initialRecord);
 
         // when:
         act(() => result1.current[1](itemToAdd1.key, itemToAdd1.value)); // then:
@@ -129,8 +129,8 @@ describe.each`
         const initialRecord = { a: '1', b: '2', c: '3', d: '4' };
         const itemToRemove1 = { key: 'c', value: '3' };
         const itemToRemove2 = { key: 'd', value: '4' };
-        const { result: result1 } = renderGenericRecordHook(key, initialRecord);
-        const { result: result2 } = renderGenericRecordHook(key, initialRecord);
+        const { result: result1 } = renderRecordHook(key, initialRecord);
+        const { result: result2 } = renderRecordHook(key, initialRecord);
 
         // when:
         act(() => result1.current[2](itemToRemove1.key)); // then:

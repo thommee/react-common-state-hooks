@@ -1,16 +1,12 @@
-import {
-  getReduxGenericListHook,
-  getReduxGenericRecordHook,
-  getReduxGenericValueHook,
-} from '../testUtils/createReduxWrappers';
+import { getReduxListHook, getReduxRecordHook, getReduxValueHook } from '../testUtils/createReduxWrappers';
 import { act } from '@testing-library/react';
 
 describe('create action', () => {
   describe.each`
-    getHook                      | initialValue       | setValue           | updatedValue
-    ${getReduxGenericListHook}   | ${['1']}           | ${['2']}           | ${['3']}
-    ${getReduxGenericRecordHook} | ${{ a: 'redux1' }} | ${{ b: 'redux2' }} | ${{ c: 'redux3' }}
-    ${getReduxGenericValueHook}  | ${'r1'}            | ${'r2'}            | ${'r3'}
+    getHook               | initialValue       | setValue           | updatedValue
+    ${getReduxListHook}   | ${['1']}           | ${['2']}           | ${['3']}
+    ${getReduxRecordHook} | ${{ a: 'redux1' }} | ${{ b: 'redux2' }} | ${{ c: 'redux3' }}
+    ${getReduxValueHook}  | ${'r1'}            | ${'r2'}            | ${'r3'}
   `('$getHook.name', ({ getHook, initialValue, setValue, updatedValue }) => {
     const { renderGenericHook, store, createAction, createSelector } = getHook();
 

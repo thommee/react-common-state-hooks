@@ -1,17 +1,17 @@
 import { useCallback, useMemo } from 'react';
 import { SetValue, UseStorage } from '../../storages/UseStorage';
 
-type UseGenericRecordApi<RecordItem> = [
+type UseRecordApi<RecordItem> = [
   record: Record<string, RecordItem>,
   addItem: (key: string, listItem: RecordItem) => void,
   removeItem: (key: string) => void,
   setRecord: SetValue<Record<string, RecordItem>>,
 ];
-export const createGenericRecordHook = (useStorage: UseStorage) => {
-  const useGenericRecord = <RecordItem>(
+export const createUseRecordHook = (useStorage: UseStorage) => {
+  const useRecord = <RecordItem>(
     name: string,
     initialValue: Record<string, RecordItem> = {},
-  ): UseGenericRecordApi<RecordItem> => {
+  ): UseRecordApi<RecordItem> => {
     const [record, setRecord] = useStorage<Record<string, RecordItem>>(name, initialValue);
 
     const addItem = useCallback(
@@ -32,5 +32,5 @@ export const createGenericRecordHook = (useStorage: UseStorage) => {
     return useMemo(() => [record, addItem, removeItem, setRecord], [addItem, removeItem, record, setRecord]);
   };
 
-  return { useGenericRecord };
+  return { useRecord };
 };
