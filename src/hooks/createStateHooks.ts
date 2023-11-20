@@ -8,5 +8,5 @@ export const createStateHooks = <T extends { useStorage: UseStorage }>({ useStor
   const { useGenericList } = createGenericListHook(useStorage);
   const { useGenericRecord } = createGenericRecordHook(useStorage);
 
-  return { useStorage, ...rest, useGenericValue, useGenericList, useGenericRecord };
+  return { ...rest, useGenericValue, useGenericList, useGenericRecord };
 };

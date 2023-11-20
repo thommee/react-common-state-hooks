@@ -28,17 +28,10 @@ export const createReduxStorage = (namespace: string) => {
     return useMemo(() => [value, setValue], [setValue, value]);
   };
 
-  const create = <T>(key: string, initialValue: T) => [
-    (): UseStorageApi<T> => useStorage(key, initialValue),
-    createSelector(key, initialValue),
-    createAction(key),
-  ];
-
   return {
     slice: { name, reducer },
     useStorage,
     createSelector,
     createAction,
-    create,
   };
 };
