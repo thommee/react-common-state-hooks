@@ -6,40 +6,14 @@
 ready for use anywhere in the application.
 The library allows you to define hooks for reading and modifying **the same** data, regardless of where it is used.
 
-With that, you'll be able to calmly create your application and enjoy the creative process.
-It's all about making development smoother and more enjoyable.
+### [Docs, tutorials and examples can be found here.](https://thommee.github.io/react-generic-state-hooks/)
 
-If you choose redux-way for creating hooks, you'll never have to create actions and reducers again.
-It will all be done for you.
-
-#### Types of hooks
-The library provides three types of generic hooks dedicated for most common used
-data types like simple values, lists & sets and records (maps):
-- `useValue`: basic hook for reading and storing any values
-- `useList`: hook dedicated to use with list and sets
-- `useRecord`: hook for managing record-like data structures like maps and key-value storages.
-
-#### Storing Data
-`react-generic-state-hooks` provides three types of data storages:
-- `inMemory`: data is stored in the application's memory
-- `localStorage`: data is stored in local storage
-- `sessionStorage`: data is stored in session storage
-- `redux`: data is stored in Redux (not included in this library)
-
+## Quick guide
 ### Installation
 `npm install react-generic-state-hooks`
 
 ### Basic usage:
-First, We need to create generic hooks that we can later use 
-directly in the application, or as a base for custom hooks.
 
-Each storage type has its own hooks creation function:
-- `createInMemoryStateHooks` for storing data in application memory
-- `createLocalStorageStateHooks` for storing data in local storage
-- `createSessionStorageStateHooks` for storing data in session storage
-- `createReduxStateHooks` for storing data in redux
-
-Examples:
 ~~~typescript jsx
 // inMemoryStateHooks.ts
 import { createInMemoryStateHooks } from 'react-generic-state-hooks';
@@ -47,39 +21,7 @@ import { createInMemoryStateHooks } from 'react-generic-state-hooks';
 export const { useValue, useList, useRecord
 } = createInMemoryStateHooks('my-namespace');
 ~~~
-~~~typescript jsx
-// localStorageStateHooks.ts
-import { createLocalStorageStateHooks } from 'react-generic-state-hooks';
-
-export const { useValue, useList, useRecord
-} = createLocalStorageStateHooks('my-namespace');
-~~~
-~~~typescript jsx
-// sessionStorageStateHooks.ts
-import { createSessionStorageStateHooks } from 'react-generic-state-hooks';
-
-export const { useValue, useList, useRecord
-} = createSessionStorageStateHooks('my-namespace');
-~~~
-~~~typescript jsx
-// reduxStateHooks.ts
-import { createReduxStateHooks } from 'react-generic-state-hooks';
-
-export const { slice, createSelector, createAction,
-  useValue, useList, useRecord
-} = createReduxStateHooks('my-namespace');
-
-// --------------------------------------------------------------
-// RootReducer: Connect generated "slice.reducer" to Redux store:
-import { slice } from './ReduxGenericStateHooks';
-
-const rootReducer = combineReducers({
-  [slice.name]: slice.reducer
-});
-
-export { rootReducer };
-~~~
-That's all! Now, you can use generic hooks in any place of your application:
+ Now, you can use generic hooks in any place of your application:
 
 ~~~typescript jsx
 // MyComponent.tsx
@@ -102,8 +44,7 @@ a better approach would be to create a dedicated hooks based on generic hooks:
 ~~~typescript jsx
 // useCounter.ts
 import { useValue } from './inMemoryStateHooks';
-
-export const useCounter = (initialValue: number = 0) => useValue('counter', initialValue);
+export const useCounter = () => useValue('counter', 0);
 ~~~
 Just like generic hooks, you can use them in any place of your application:
 ~~~typescript jsx
@@ -120,3 +61,6 @@ const MyComponent = () => {
   );
 }
 ~~~
+
+##### [Click here for full documentation](https://thommee.github.io/react-generic-state-hooks/)
+

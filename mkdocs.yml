@@ -1,0 +1,69 @@
+site_name: React Generic State Hooks
+repo_url: https://github.com/thommee/react-generic-state-hooks
+repo_name: react-generic-state-hooks
+edit_uri: edit/main/docs/
+markdown_extensions:
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      use_pygments: true
+      line_spans: __span
+#      linenums: true
+#      linenums_style: pymdownx-inline
+#      anchor_linenums: true
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+theme:
+  name: material
+  features:
+#    - navigation.sections
+#    - navigation.indexes
+    - navigation.expand
+    - navigation.path
+    - navigation.footer
+    - navigation.instant
+    - content.action.edit
+    - content.code.select
+    - content.code.copy
+    - content.tabs.link
+#    - toc.follow
+  palette:
+      # Palette toggle for light mode
+    - scheme: default
+      media: "(prefers-color-scheme: light)"
+      primary: purple
+      accent: purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      media: "(prefers-color-scheme: dark)"
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+nav:
+  - Introduction: 'index.md'
+  - Getting Started:
+    - Installation: 'installation.md'
+    - Basic Usage: 'basic-usage.md'
+#  - Advanced usage:
+#      - Redux: 'advanced-usage/redux.md'
+#      - inMemory: 'advanced-usage/in-memory.md'
+#      - localStorage: 'advanced-usage/local-storage.md'
+#      - sessionStorage: 'advanced-usage/session-storage.md'
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/tomaszszuba/
+    - icon: fontawesome/brands/github
+      link: https://github.com/thommee
+copyright: Copyright &copy; 2023 - now Tomasz Szuba
