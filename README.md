@@ -23,6 +23,7 @@ data types like simple values, lists & sets and records (maps):
 `react-generic-state-hooks` provides three types of data storages:
 - `inMemory`: data is stored in the application's memory
 - `localStorage`: data is stored in local storage
+- `sessionStorage`: data is stored in session storage
 - `redux`: data is stored in Redux (not included in this library)
 
 ### Installation
@@ -32,9 +33,10 @@ data types like simple values, lists & sets and records (maps):
 First, We need to create generic hooks that we can later use 
 directly in the application, or as a base for custom hooks.
 
-You should use:
+Each storage type has its own hooks creation function:
 - `createInMemoryStateHooks` for storing data in application memory
 - `createLocalStorageStateHooks` for storing data in local storage
+- `createSessionStorageStateHooks` for storing data in session storage
 - `createReduxStateHooks` for storing data in redux
 
 Examples:
@@ -51,6 +53,13 @@ import { createLocalStorageStateHooks } from 'react-generic-state-hooks';
 
 export const { useValue, useList, useRecord
 } = createLocalStorageStateHooks('my-namespace');
+~~~
+~~~typescript jsx
+// sessionStorageStateHooks.ts
+import { createSessionStorageStateHooks } from 'react-generic-state-hooks';
+
+export const { useValue, useList, useRecord
+} = createSessionStorageStateHooks('my-namespace');
 ~~~
 ~~~typescript jsx
 // reduxStateHooks.ts

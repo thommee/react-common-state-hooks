@@ -2,6 +2,7 @@ import { act } from '@testing-library/react';
 import { getReduxValueHook } from '../testUtils/createReduxWrappers';
 import { getInMemoryValueHook } from '../testUtils/createInMemoryWrappers';
 import { getLocalStorageValueHook } from '../testUtils/createLocalStorageWrappers';
+import { getSessionStorageValueHook } from '../testUtils/createSessionStorageWrappers';
 
 describe('namespaces', () => {
   const getKey = () => 's.' + Math.random() + '.key';
@@ -10,8 +11,8 @@ describe('namespaces', () => {
     const key = getKey();
     const initialList1 = ['1'];
     const initialList2 = ['2'];
-    const { renderGenericHook: r1, store, slice } = getReduxValueHook('ns1');
-    const { renderGenericHook: r2 } = getReduxValueHook('ns2', store, slice);
+    const { renderGenericHook: r1, store, slice } = getReduxValueHook('nsr1');
+    const { renderGenericHook: r2 } = getReduxValueHook('nsr2', store, slice);
     return { key, initialList1, initialList2, r1, r2 };
   }
 
@@ -19,8 +20,8 @@ describe('namespaces', () => {
     const key = getKey();
     const initialList1 = ['1'];
     const initialList2 = ['2'];
-    const { renderGenericHook: r1 } = getInMemoryValueHook('ns1');
-    const { renderGenericHook: r2 } = getReduxValueHook('ns2');
+    const { renderGenericHook: r1 } = getInMemoryValueHook('nsm1');
+    const { renderGenericHook: r2 } = getReduxValueHook('nsm2');
     return { key, initialList1, initialList2, r1, r2 };
   }
 
@@ -28,8 +29,16 @@ describe('namespaces', () => {
     const key = getKey();
     const initialList1 = ['1'];
     const initialList2 = ['2'];
-    const { renderGenericHook: r1 } = getLocalStorageValueHook('ns1');
-    const { renderGenericHook: r2 } = getLocalStorageValueHook('ns2');
+    const { renderGenericHook: r1 } = getLocalStorageValueHook('nsl1');
+    const { renderGenericHook: r2 } = getLocalStorageValueHook('nsl2');
+    return { key, initialList1, initialList2, r1, r2 };
+  }
+  function prepareSessionStorageTest() {
+    const key = getKey();
+    const initialList1 = ['1'];
+    const initialList2 = ['2'];
+    const { renderGenericHook: r1 } = getSessionStorageValueHook('nss1');
+    const { renderGenericHook: r2 } = getSessionStorageValueHook('nss2');
     return { key, initialList1, initialList2, r1, r2 };
   }
 
@@ -38,6 +47,7 @@ describe('namespaces', () => {
     ${prepareReduxTest}
     ${prepareInMemoryTest}
     ${prepareLocalStorageTest}
+    ${prepareSessionStorageTest}
   `(
     'separation: $prepareTest.name',
     ({ prepareTest }: { prepareTest: typeof prepareReduxTest | typeof prepareInMemoryTest }) => {

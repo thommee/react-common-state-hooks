@@ -2,12 +2,14 @@ import { act } from '@testing-library/react';
 import { getReduxValueHook } from '../testUtils/createReduxWrappers';
 import { getInMemoryValueHook } from '../testUtils/createInMemoryWrappers';
 import { getLocalStorageValueHook } from '../testUtils/createLocalStorageWrappers';
+import { getSessionStorageValueHook } from '../testUtils/createSessionStorageWrappers';
 
 describe.each`
-  renderValueHook                                 | description
-  ${getReduxValueHook().renderGenericHook}        | ${'redux'}
-  ${getInMemoryValueHook().renderGenericHook}     | ${'inMemory'}
-  ${getLocalStorageValueHook().renderGenericHook} | ${'localStorage'}
+  renderValueHook                                   | description
+  ${getReduxValueHook().renderGenericHook}          | ${'redux'}
+  ${getInMemoryValueHook().renderGenericHook}       | ${'inMemory'}
+  ${getLocalStorageValueHook().renderGenericHook}   | ${'localStorage'}
+  ${getSessionStorageValueHook().renderGenericHook} | ${'sessionStorage'}
 `(
   '$description: useValue',
   ({

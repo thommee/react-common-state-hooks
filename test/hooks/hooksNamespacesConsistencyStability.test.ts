@@ -2,6 +2,7 @@ import { act } from '@testing-library/react';
 import { getReduxValueHook } from '../testUtils/createReduxWrappers';
 import { getInMemoryValueHook } from '../testUtils/createInMemoryWrappers';
 import { getLocalStorageValueHook } from '../testUtils/createLocalStorageWrappers';
+import { getSessionStorageValueHook } from '../testUtils/createSessionStorageWrappers';
 
 describe('namespaces consistency', () => {
   const getKey = () => 's.' + Math.random() + '.key';
@@ -28,12 +29,19 @@ describe('namespaces consistency', () => {
     const { renderGenericHook: r2 } = getLocalStorageValueHook('nsl1');
     return { key, r1, r2 };
   }
+  function prepareSessionStorageTest() {
+    const key = getKey();
+    const { renderGenericHook: r1 } = getSessionStorageValueHook('nss1');
+    const { renderGenericHook: r2 } = getSessionStorageValueHook('nss1');
+    return { key, r1, r2 };
+  }
 
   describe.each`
     prepareTest
     ${prepareReduxTest}
     ${prepareInMemoryTest}
     ${prepareLocalStorageTest}
+    ${prepareSessionStorageTest}
   `(
     'consistency: $prepareTest.name',
     ({ prepareTest }: { prepareTest: typeof prepareReduxTest | typeof prepareInMemoryTest }) => {

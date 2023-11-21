@@ -2,12 +2,14 @@ import { act } from '@testing-library/react';
 import { getReduxListHook } from '../testUtils/createReduxWrappers';
 import { getInMemoryListHook } from '../testUtils/createInMemoryWrappers';
 import { getLocalStorageListHook } from '../testUtils/createLocalStorageWrappers';
+import { getSessionStorageListHook } from '../testUtils/createSessionStorageWrappers';
 
 describe.each`
-  renderListHook                                 | description
-  ${getReduxListHook().renderGenericHook}        | ${'redux'}
-  ${getInMemoryListHook().renderGenericHook}     | ${'inMemory'}
-  ${getLocalStorageListHook().renderGenericHook} | ${'localStorage'}
+  renderListHook                                   | description
+  ${getReduxListHook().renderGenericHook}          | ${'redux'}
+  ${getInMemoryListHook().renderGenericHook}       | ${'inMemory'}
+  ${getLocalStorageListHook().renderGenericHook}   | ${'localStorage'}
+  ${getSessionStorageListHook().renderGenericHook} | ${'sessionStorage'}
 `(
   '$description: useList',
   ({

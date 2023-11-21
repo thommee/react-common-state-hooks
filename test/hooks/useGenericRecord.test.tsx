@@ -2,12 +2,14 @@ import { act } from '@testing-library/react';
 import { getReduxRecordHook } from '../testUtils/createReduxWrappers';
 import { getInMemoryRecordHook } from '../testUtils/createInMemoryWrappers';
 import { getLocalStorageRecordHook } from '../testUtils/createLocalStorageWrappers';
+import { getSessionStorageRecordHook } from '../testUtils/createSessionStorageWrappers';
 
 describe.each`
-  renderRecordHook                                 | description
-  ${getReduxRecordHook().renderGenericHook}        | ${'redux'}
-  ${getInMemoryRecordHook().renderGenericHook}     | ${'inMemory'}
-  ${getLocalStorageRecordHook().renderGenericHook} | ${'localStorage'}
+  renderRecordHook                                   | description
+  ${getReduxRecordHook().renderGenericHook}          | ${'redux'}
+  ${getInMemoryRecordHook().renderGenericHook}       | ${'inMemory'}
+  ${getLocalStorageRecordHook().renderGenericHook}   | ${'localStorage'}
+  ${getSessionStorageRecordHook().renderGenericHook} | ${'sessionStorage'}
 `(
   '$description: useRecord',
   ({

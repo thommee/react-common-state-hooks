@@ -7,14 +7,21 @@ import {
   getLocalStorageValueHook,
 } from '../testUtils/createLocalStorageWrappers';
 
+import {
+  getSessionStorageRecordHook,
+  getSessionStorageListHook,
+  getSessionStorageValueHook,
+} from '../testUtils/createSessionStorageWrappers';
+
 describe('stable api reference', () => {
   const getKey = () => 's.' + Math.random() + '.key';
 
   describe.each`
-    renderListHook                                 | description
-    ${getReduxListHook().renderGenericHook}        | ${'redux'}
-    ${getInMemoryListHook().renderGenericHook}     | ${'inMemory'}
-    ${getLocalStorageListHook().renderGenericHook} | ${'localStorage'}
+    renderListHook                                   | description
+    ${getReduxListHook().renderGenericHook}          | ${'redux'}
+    ${getInMemoryListHook().renderGenericHook}       | ${'inMemory'}
+    ${getLocalStorageListHook().renderGenericHook}   | ${'localStorage'}
+    ${getSessionStorageListHook().renderGenericHook} | ${'sessionStorage'}
   `(
     'useListHook: $description',
     ({
@@ -84,10 +91,11 @@ describe('stable api reference', () => {
   );
 
   describe.each`
-    renderValueHook                                 | description
-    ${getReduxValueHook().renderGenericHook}        | ${'redux'}
-    ${getInMemoryValueHook().renderGenericHook}     | ${'inMemory'}
-    ${getLocalStorageValueHook().renderGenericHook} | ${'localStorage'}
+    renderValueHook                                   | description
+    ${getReduxValueHook().renderGenericHook}          | ${'redux'}
+    ${getInMemoryValueHook().renderGenericHook}       | ${'inMemory'}
+    ${getLocalStorageValueHook().renderGenericHook}   | ${'localStorage'}
+    ${getSessionStorageValueHook().renderGenericHook} | ${'sessionStorage'}
   `(
     'useValueHook: $description',
     ({
@@ -128,10 +136,11 @@ describe('stable api reference', () => {
   );
 
   describe.each`
-    renderRecordHook                                 | description
-    ${getReduxRecordHook().renderGenericHook}        | ${'redux'}
-    ${getInMemoryRecordHook().renderGenericHook}     | ${'inMemory'}
-    ${getLocalStorageRecordHook().renderGenericHook} | ${'localStorage'}
+    renderRecordHook                                   | description
+    ${getReduxRecordHook().renderGenericHook}          | ${'redux'}
+    ${getInMemoryRecordHook().renderGenericHook}       | ${'inMemory'}
+    ${getLocalStorageRecordHook().renderGenericHook}   | ${'localStorage'}
+    ${getSessionStorageRecordHook().renderGenericHook} | ${'sessionStorage'}
   `(
     'useRecordHook: $description',
     ({
