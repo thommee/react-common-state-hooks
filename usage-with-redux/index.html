@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../installation/">
+        <link rel="prev" href="../basic-usage/">
       
-      
-        <link rel="next" href="../usage-with-redux/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>Basic Usage - React Generic State Hooks</title>
+        <title>Usage with Redux - React Generic State Hooks</title>
       
     
     
@@ -75,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#generating-hooks" class="md-skip">
+        <a href="#creating-generic-hooks" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Basic Usage
+              Usage with Redux
             
           </span>
         </div>
@@ -325,6 +323,26 @@
                 
   
   
+  
+    <li class="md-nav__item">
+      <a href="../basic-usage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Usage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -338,7 +356,7 @@
           
   
   <span class="md-ellipsis">
-    Basic Usage
+    Usage with Redux
   </span>
   
 
@@ -349,7 +367,7 @@
         
   
   <span class="md-ellipsis">
-    Basic Usage
+    Usage with Redux
   </span>
   
 
@@ -369,58 +387,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#generating-hooks" class="md-nav__link">
+  <a href="#creating-generic-hooks" class="md-nav__link">
     <span class="md-ellipsis">
-      Generating hooks
+      Creating Generic Hooks
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Generating hooks">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hooks-creation-function-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hooks creation function types
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Hooks creation function types">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#usage-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usage examples
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-custom-hooks" class="md-nav__link">
+  <a href="#connecting-to-redux" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating Custom Hooks
+      Connecting to redux
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Creating Custom Hooks">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-custom-hook-selector-and-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a custom hook, selector and action
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a custom hook, selector and action">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#custon-hook-example" class="md-nav__link">
+  <a href="#hook-usage" class="md-nav__link">
     <span class="md-ellipsis">
-      Custon hook example
+      Hook Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selector-and-action-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selector and Action Usage
     </span>
   </a>
   
@@ -435,26 +441,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../usage-with-redux/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Usage with Redux
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -492,58 +478,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#generating-hooks" class="md-nav__link">
+  <a href="#creating-generic-hooks" class="md-nav__link">
     <span class="md-ellipsis">
-      Generating hooks
+      Creating Generic Hooks
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Generating hooks">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hooks-creation-function-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hooks creation function types
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Hooks creation function types">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#usage-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usage examples
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-custom-hooks" class="md-nav__link">
+  <a href="#connecting-to-redux" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating Custom Hooks
+      Connecting to redux
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Creating Custom Hooks">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-custom-hook-selector-and-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a custom hook, selector and action
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a custom hook, selector and action">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#custon-hook-example" class="md-nav__link">
+  <a href="#hook-usage" class="md-nav__link">
     <span class="md-ellipsis">
-      Custon hook example
+      Hook Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selector-and-action-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selector and Action Usage
     </span>
   </a>
   
@@ -569,7 +543,7 @@
                   
 
   
-    <a href="https://github.com/thommee/react-generic-state-hooks/edit/main/docs/basic-usage.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/thommee/react-generic-state-hooks/edit/main/docs/usage-with-redux.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -577,99 +551,73 @@
   
 
 
-  <h1>Basic Usage</h1>
+  <h1>Usage with Redux</h1>
 
-<h3 id="generating-hooks">Generating hooks</h3>
-<p>First, we need to create generic hooks that we can later use
-directly in the application or as a base for custom hooks.</p>
-<h4 id="hooks-creation-function-types">Hooks creation function types</h4>
-<p>For creating generic hooks we can use four functions.<br/>
-Each of them stores data in different type of storage:</p>
-<ul>
-<li><code>createInMemoryStateHooks</code> stores data in the application memory</li>
-<li><code>createLocalStorageStateHooks</code> stores data in local storage</li>
-<li><code>createSessionStorageStateHooks</code> stores data in session storage</li>
-<li><code>createReduxStateHooks</code> stores data in Redux</li>
-</ul>
-<h5 id="usage-examples">Usage examples</h5>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">InMemory</label><label for="__tabbed_1_2">LocalStorage</label><label for="__tabbed_1_3">SessionStorage</label><label for="__tabbed_1_4">Redux</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="language-typescript highlight"><span class="filename">inMemoryStateHooks.ts</span><pre><span></span><code><span id="__span-0-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createInMemoryStateHooks</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-generic-state-hooks&#39;</span><span class="p">;</span>
+<h3 id="creating-generic-hooks">Creating Generic Hooks</h3>
+<p><code>createReduxStateHooks()</code> returns generic hooks, <code>slice</code> (reducer and its name), 
+<code>createSelector</code> and <code>createAction</code> helpers to work with Redux.</p>
+<div class="language-typescript highlight"><span class="filename">myNamespaceReduxGenericHooks.ts</span><pre><span></span><code><span id="__span-0-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createReduxStateHooks</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-generic-state-hooks&#39;</span><span class="p">;</span>
 </span><span id="__span-0-2">
-</span><span id="__span-0-3"><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useValue</span><span class="p">,</span><span class="w"> </span><span class="nx">useList</span><span class="p">,</span><span class="w"> </span><span class="nx">useRecord</span>
-</span><span id="__span-0-4"><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createInMemoryStateHooks</span><span class="p">(</span><span class="s1">&#39;my-namespace&#39;</span><span class="p">);</span>
+</span><span id="__span-0-3"><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><span class="w">  </span><span class="nx">useValue</span><span class="p">,</span><span class="w"> </span><span class="nx">useList</span><span class="p">,</span><span class="w"> </span><span class="nx">useRecord</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-0-5"><span class="w">  </span><span class="nx">slice</span><span class="p">,</span><span class="w"> </span><span class="nx">createSelector</span><span class="p">,</span><span class="w"> </span><span class="nx">createAction</span><span class="w">  </span>
+</span><span id="__span-0-6"><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createReduxStateHooks</span><span class="p">(</span><span class="s1">&#39;my-namespace&#39;</span><span class="p">);</span>
 </span></code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="language-typescript highlight"><span class="filename">localStorageStateHooks.ts</span><pre><span></span><code><span id="__span-1-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createLocalStorageStateHooks</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-generic-state-hooks&#39;</span><span class="p">;</span>
+<h3 id="connecting-to-redux">Connecting to redux</h3>
+<p>Generated <code>slice</code> object contains two properties: <code>name</code> - the key for connecting reducer to rootReducer, 
+and <code>reducer</code> - reducer itself.
+<div class="language-typescript highlight"><span class="filename">rootReducer.ts</span><pre><span></span><code><span id="__span-1-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">slice</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./myNamespaceReduxGenericHooks.ts&#39;</span><span class="p">;</span>
 </span><span id="__span-1-2">
-</span><span id="__span-1-3"><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useValue</span><span class="p">,</span><span class="w"> </span><span class="nx">useList</span><span class="p">,</span><span class="w"> </span><span class="nx">useRecord</span>
-</span><span id="__span-1-4"><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createLocalStorageStateHooks</span><span class="p">(</span><span class="s1">&#39;my-namespace&#39;</span><span class="p">);</span>
-</span></code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="language-typescript highlight"><span class="filename">sessionStorageStateHooks.ts</span><pre><span></span><code><span id="__span-2-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createSessionStorageStateHooks</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-generic-state-hooks&#39;</span><span class="p">;</span>
-</span><span id="__span-2-2">
-</span><span id="__span-2-3"><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useValue</span><span class="p">,</span><span class="w"> </span><span class="nx">useList</span><span class="p">,</span><span class="w"> </span><span class="nx">useRecord</span>
-</span><span id="__span-2-4"><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createSessionStorageStateHooks</span><span class="p">(</span><span class="s1">&#39;my-namespace&#39;</span><span class="p">);</span>
-</span></code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="language-typescript highlight"><span class="filename">reduxStateHooks.ts</span><pre><span></span><code><span id="__span-3-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createReduxStateHooks</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-generic-state-hooks&#39;</span><span class="p">;</span>
-</span><span id="__span-3-2">
-</span><span id="__span-3-3"><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">slice</span><span class="p">,</span><span class="w"> </span><span class="nx">createSelector</span><span class="p">,</span><span class="w"> </span><span class="nx">createAction</span><span class="p">,</span>
-</span><span id="__span-3-4"><span class="w">  </span><span class="nx">useValue</span><span class="p">,</span><span class="w"> </span><span class="nx">useList</span><span class="p">,</span><span class="w"> </span><span class="nx">useRecord</span>
-</span><span id="__span-3-5"><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createReduxStateHooks</span><span class="p">(</span><span class="s1">&#39;my-namespace&#39;</span><span class="p">);</span>
-</span><span id="__span-3-6">
-</span><span id="__span-3-7"><span class="c1">// --------------------------------------------------------------</span>
-</span><span id="__span-3-8"><span class="c1">// RootReducer: Connect generated &quot;slice.reducer&quot; to Redux store:</span>
-</span><span id="__span-3-9"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">slice</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./ReduxGenericStateHooks&#39;</span><span class="p">;</span>
-</span><span id="__span-3-10">
-</span><span id="__span-3-11"><span class="kd">const</span><span class="w"> </span><span class="nx">rootReducer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">combineReducers</span><span class="p">({</span>
-</span><span id="__span-3-12"><span class="w">  </span><span class="p">[</span><span class="nx">slice</span><span class="p">.</span><span class="nx">name</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">slice</span><span class="p">.</span><span class="nx">reducer</span>
-</span><span id="__span-3-13"><span class="p">});</span>
-</span><span id="__span-3-14">
-</span><span id="__span-3-15"><span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">rootReducer</span><span class="w"> </span><span class="p">};</span>
-</span></code></pre></div>
-</div>
-</div>
-</div>
-<p>Now, you can use them anywhere in your application:</p>
-<div class="language-typescript highlight"><span class="filename">MyComponent.tsx</span><pre><span></span><code><span id="__span-4-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useValue</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./inMemoryStateHooks&#39;</span><span class="p">;</span>
-</span><span id="__span-4-2">
-</span><span id="__span-4-3"><span class="kd">const</span><span class="w"> </span><span class="nx">MyComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-4"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">setValue</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useValue</span><span class="p">(</span><span class="s1">&#39;counter&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
-</span><span id="__span-4-5"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-6"><span class="w">    </span><span class="o">&lt;&gt;</span>
-</span><span id="__span-4-7"><span class="w">      </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">count</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">value</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span id="__span-4-8"><span class="w">      </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setValue</span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)}</span><span class="o">&gt;</span><span class="nx">click</span><span class="w"> </span><span class="nx">me</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
-</span><span id="__span-4-9"><span class="w">    </span><span class="o">&lt;</span><span class="err">/&gt;</span>
-</span><span id="__span-4-10"><span class="w">  </span><span class="p">);</span>
-</span><span id="__span-4-11"><span class="p">}</span>
-</span></code></pre></div>
-<h3 id="creating-custom-hooks">Creating Custom Hooks</h3>
-<p>If you plan to use the same data in multiple places in the application,
-a better approach would be to create dedicated hooks based on generic hooks.</p>
-<h4 id="custon-hook-example">Custon hook example</h4>
-<p><div class="language-typescript highlight"><span class="filename">useCounter.ts</span><pre><span></span><code><span id="__span-5-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useValue</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./inMemoryStateHooks&#39;</span><span class="p">;</span>
-</span><span id="__span-5-2">
-</span><span id="__span-5-3"><span class="kd">const</span><span class="w"> </span><span class="nx">initialValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-</span><span id="__span-5-4"><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">useCounter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">useValue</span><span class="p">(</span><span class="s1">&#39;counter&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="p">);</span>
-</span></code></pre></div>
-Just like generic hooks, you can use custom hooks anywhere in your application:
-<div class="language-jsx highlight"><span class="filename">MyComponent.tsx</span><pre><span></span><code><span id="__span-6-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useCounter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./useCounter&#39;</span><span class="p">;</span>
-</span><span id="__span-6-2">
-</span><span id="__span-6-3"><span class="kd">const</span><span class="w"> </span><span class="nx">MyComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-4"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">setValue</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useCounter</span><span class="p">();</span>
-</span><span id="__span-6-5"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-6-6"><span class="w">    </span><span class="p">&lt;&gt;</span>
-</span><span id="__span-6-7"><span class="w">      </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="nx">count</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">value</span><span class="p">}&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-6-8"><span class="w">      </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setValue</span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)}&gt;</span><span class="nx">click</span><span class="w"> </span><span class="nx">me</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-</span><span id="__span-6-9"><span class="w">    </span><span class="p">&lt;/&gt;</span>
-</span><span id="__span-6-10"><span class="w">  </span><span class="p">);</span>
-</span><span id="__span-6-11"><span class="p">}</span>
+</span><span id="__span-1-3"><span class="kd">const</span><span class="w"> </span><span class="nx">rootReducer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">combineReducers</span><span class="p">({</span>
+</span><span id="__span-1-4"><span class="w">  </span><span class="p">[</span><span class="nx">slice</span><span class="p">.</span><span class="nx">name</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">slice</span><span class="p">.</span><span class="nx">reducer</span><span class="p">,</span>
+</span><span id="__span-1-5"><span class="w">  </span><span class="c1">// ...other reducers</span>
+</span><span id="__span-1-6"><span class="p">});</span>
+</span><span id="__span-1-7">
+</span><span id="__span-1-8"><span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">rootReducer</span><span class="w"> </span><span class="p">};</span>
 </span></code></pre></div></p>
+<h3 id="creating-a-custom-hook-selector-and-action">Creating a custom hook, selector and action</h3>
+<p>There is no need to create a selector or action to use hooks with Redux.<br/>
+Only if you want to manually dispatch changes or manually select value from Redux,
+you will need to generate dedicated selectors and actions.</p>
+<div class="language-typescript highlight"><span class="filename">useCounter.ts</span><pre><span></span><code><span id="__span-2-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useValue</span><span class="p">,</span><span class="w"> </span><span class="nx">createSelector</span><span class="p">,</span><span class="w"> </span><span class="nx">createAction</span>
+</span><span id="__span-2-2"><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./myNamespaceReduxGenericHooks.ts&#39;</span><span class="p">;</span>
+</span><span id="__span-2-3">
+</span><span id="__span-2-4"><span class="kd">const</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;counter&#39;</span><span class="p">;</span>
+</span><span id="__span-2-5"><span class="kd">const</span><span class="w"> </span><span class="nx">initialValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-2-6">
+</span><span id="__span-2-7"><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">useCounter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">useValue</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="p">);</span>
+</span><span id="__span-2-8"><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">selectCounter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createSelector</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="p">);</span>
+</span><span id="__span-2-9"><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">setCounter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createAction</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+</span></code></pre></div>
+<h4 id="hook-usage">Hook Usage</h4>
+<div class="language-jsx highlight"><span class="filename">MyComponent.tsx</span><pre><span></span><code><span id="__span-3-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useCounter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./useCounter&#39;</span><span class="p">;</span>
+</span><span id="__span-3-2">
+</span><span id="__span-3-3"><span class="kd">const</span><span class="w"> </span><span class="nx">MyComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-4"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">setValue</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useCounter</span><span class="p">();</span>
+</span><span id="__span-3-5"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-3-6"><span class="w">    </span><span class="p">&lt;&gt;</span>
+</span><span id="__span-3-7"><span class="w">      </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="nx">count</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">value</span><span class="p">}&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-3-8"><span class="w">      </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setValue</span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)}&gt;</span><span class="nx">click</span><span class="w"> </span><span class="nx">me</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span><span id="__span-3-9"><span class="w">    </span><span class="p">&lt;/&gt;</span>
+</span><span id="__span-3-10"><span class="w">  </span><span class="p">);</span>
+</span><span id="__span-3-11"><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="selector-and-action-usage">Selector and Action Usage</h4>
+<div class="language-jsx highlight"><span class="filename">MyComponent.tsx</span><pre><span></span><code><span id="__span-4-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useSelector</span><span class="p">,</span><span class="w"> </span><span class="nx">useDispatch</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-redux&#39;</span><span class="p">;</span>
+</span><span id="__span-4-2"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">selectCounter</span><span class="p">,</span><span class="w"> </span><span class="nx">setCounter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./useCounter&#39;</span><span class="p">;</span>
+</span><span id="__span-4-3">
+</span><span id="__span-4-4"><span class="kd">const</span><span class="w"> </span><span class="nx">MyComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-5"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">dispatch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useDispatch</span><span class="p">();</span><span class="w">  </span>
+</span><span id="__span-4-6"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useSelector</span><span class="p">(</span><span class="nx">selectCounter</span><span class="p">);</span>
+</span><span id="__span-4-7">
+</span><span id="__span-4-8"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-4-9"><span class="w">    </span><span class="p">&lt;&gt;</span>
+</span><span id="__span-4-10"><span class="w">      </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="nx">count</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">value</span><span class="p">}&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-4-11"><span class="w">      </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">setCounter</span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">))}&gt;</span><span class="nx">click</span><span class="w"> </span><span class="nx">me</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span><span id="__span-4-12"><span class="w">    </span><span class="p">&lt;/&gt;</span>
+</span><span id="__span-4-13"><span class="w">  </span><span class="p">);</span>
+</span><span id="__span-4-14"><span class="p">}</span>
+</span></code></pre></div>
 
 
 
@@ -693,7 +641,7 @@ Just like generic hooks, you can use custom hooks anywhere in your application:
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../installation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Installation">
+          <a href="../basic-usage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Basic Usage">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -703,27 +651,11 @@ Just like generic hooks, you can use custom hooks anywhere in your application:
                 Previous
               </span>
               <div class="md-ellipsis">
-                Installation
+                Basic Usage
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../usage-with-redux/" class="md-footer__link md-footer__link--next" aria-label="Next: Usage with Redux">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Usage with Redux
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
