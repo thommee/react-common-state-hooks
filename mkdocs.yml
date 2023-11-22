@@ -35,8 +35,8 @@ theme:
       # Palette toggle for light mode
     - scheme: default
 #      media: "(prefers-color-scheme: light)"
-      primary: purple
-      accent: purple
+      primary: deep purple
+      accent: deep purple
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -53,11 +53,7 @@ nav:
   - Getting Started:
     - Installation: 'installation.md'
     - Basic Usage: 'basic-usage.md'
-#  - Advanced usage:
-#      - Redux: 'advanced-usage/redux.md'
-#      - inMemory: 'advanced-usage/in-memory.md'
-#      - localStorage: 'advanced-usage/local-storage.md'
-#      - sessionStorage: 'advanced-usage/session-storage.md'
+    - Usage with Redux: 'usage-with-redux.md'
 
 extra:
   generator: false
