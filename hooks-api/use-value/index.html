@@ -9,23 +9,23 @@
       
       
       
+        <link rel="prev" href="../../usage-with-redux/">
       
-        <link rel="next" href="installation/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.10">
     
     
       
-        <title>React Generic State Hooks</title>
+        <title>useValue - React Generic State Hooks</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.fad675c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fad675c6.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -44,7 +44,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#about-the-library" class="md-skip">
+        <a href="#interface-definition" class="md-skip">
           Skip to content
         </a>
       
@@ -89,7 +89,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="React Generic State Hooks" class="md-header__button md-logo" aria-label="React Generic State Hooks" data-md-component="logo">
+    <a href="../.." title="React Generic State Hooks" class="md-header__button md-logo" aria-label="React Generic State Hooks" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction
+              useValue
             
           </span>
         </div>
@@ -219,7 +219,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="React Generic State Hooks" class="md-nav__button md-logo" aria-label="React Generic State Hooks" data-md-component="logo">
+    <a href="../.." title="React Generic State Hooks" class="md-nav__button md-logo" aria-label="React Generic State Hooks" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -246,27 +246,9 @@
       
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Introduction
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -275,60 +257,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#about-the-library" class="md-nav__link">
-    <span class="md-ellipsis">
-      About the library
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#generic-hooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Generic hooks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#types-of-generic-hooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Types of generic hooks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#data-storages" class="md-nav__link">
-    <span class="md-ellipsis">
-      Data storages
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -377,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="installation/" class="md-nav__link">
+      <a href="../../installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -397,7 +325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="basic-usage/" class="md-nav__link">
+      <a href="../../basic-usage/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -417,7 +345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="usage-with-redux/" class="md-nav__link">
+      <a href="../../usage-with-redux/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -442,20 +370,20 @@
       
   
   
+    
+  
   
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -469,7 +397,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Hooks API
@@ -480,9 +408,27 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="hooks-api/use-value/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    useValue
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -491,6 +437,51 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#interface-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interface definition
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-data-directly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update data directly
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-data-by-callback-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update data by callback function
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -528,36 +519,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-the-library" class="md-nav__link">
+  <a href="#interface-definition" class="md-nav__link">
     <span class="md-ellipsis">
-      About the library
+      Interface definition
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#generic-hooks" class="md-nav__link">
+  <a href="#update-data-directly" class="md-nav__link">
     <span class="md-ellipsis">
-      Generic hooks
+      Update data directly
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#types-of-generic-hooks" class="md-nav__link">
+  <a href="#update-data-by-callback-function" class="md-nav__link">
     <span class="md-ellipsis">
-      Types of generic hooks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#data-storages" class="md-nav__link">
-    <span class="md-ellipsis">
-      Data storages
+      Update data by callback function
     </span>
   </a>
   
@@ -578,7 +560,7 @@
                   
 
   
-    <a href="https://github.com/thommee/react-generic-state-hooks/edit/main/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/thommee/react-generic-state-hooks/edit/main/docs/hooks-api/use-value.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -586,29 +568,32 @@
   
 
 
-  <h1>Introduction</h1>
+  <h1>useValue</h1>
 
-<h4 id="about-the-library">About the library</h4>
-<p><code>react-generic-state-hooks</code> provides a simple way to create reusable data sources.
-The library allows you to create generic hooks for managing application data.</p>
-<h4 id="generic-hooks">Generic hooks</h4>
-<p>Generic hooks have the ability to store and return data and are fully reusable.<br/>
-It means that data stored in them is persisted during the app's lifecycle.<br/>
-Additionally, the persistence time is configurable, and depends on the storage type used.</p>
-<h4 id="types-of-generic-hooks">Types of generic hooks</h4>
-<ul>
-<li><code>useValue</code> - basic hook with a simple API for reading and storing values</li>
-<li><code>useList</code> - hook with specialized API dedicated to use with lists and sets</li>
-<li><code>useRecord</code> - hook with specialized API for managing record-like data structures</li>
-</ul>
-<h4 id="data-storages">Data storages</h4>
-<p>You can choose the storage engine in which data will be stored. <br/>Available storages:</p>
-<ul>
-<li><code>inMemory</code> - application's memory</li>
-<li><code>localStorage</code> - web browser's local storage</li>
-<li><code>sessionStorage</code> - web browser's session storage</li>
-<li><code>redux</code> - Redux library (<code>react-redux</code> needs to be installed to use Redux as a storage)</li>
-</ul>
+<h3 id="interface-definition">Interface definition</h3>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-0-1"><span class="kd">interface</span><span class="w"> </span><span class="nx">UseValue</span><span class="o">&lt;</span><span class="nx">Value</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><span class="w">  </span><span class="p">(</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="o">:</span><span class="w"> </span><span class="kt">Value</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">UseValueApi</span><span class="o">&lt;</span><span class="nx">Value</span><span class="o">&gt;</span>
+</span><span id="__span-0-3"><span class="p">}</span>
+</span><span id="__span-0-4">
+</span><span id="__span-0-5"><span class="kr">type</span><span class="w"> </span><span class="nx">UseValueApi</span><span class="o">&lt;</span><span class="nx">Value</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+</span><span id="__span-0-6"><span class="w">  </span><span class="p">[</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">Value</span><span class="p">,</span><span class="w"> </span><span class="nx">setValue</span><span class="o">:</span><span class="w"> </span><span class="kt">SetValueFn</span><span class="o">&lt;</span><span class="nx">Value</span><span class="o">&gt;</span><span class="p">]</span>
+</span><span id="__span-0-7">
+</span><span id="__span-0-8"><span class="kd">interface</span><span class="w"> </span><span class="nx">SetValueFn</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-9"><span class="w">  </span><span class="p">(</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
+</span><span id="__span-0-10"><span class="w">  </span><span class="p">(</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">oldValue</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">T</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
+</span><span id="__span-0-11"><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="update-data-directly">Update data directly</h3>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-1-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">setValue</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useValue</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+</span><span id="__span-1-2">
+</span><span id="__span-1-3"><span class="kd">const</span><span class="w"> </span><span class="nx">increment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useCallback</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setValue</span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">),</span><span class="w"> </span><span class="p">[</span><span class="nx">value</span><span class="p">]);</span>
+</span></code></pre></div>
+<h3 id="update-data-by-callback-function">Update data by callback function</h3>
+<p>In this approach we have no dependencies in <code>useCallback</code> hook.
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-2-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">setValue</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useValue</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+</span><span id="__span-2-2">
+</span><span id="__span-2-3"><span class="kd">const</span><span class="w"> </span><span class="nx">increment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useCallback</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setValue</span><span class="p">((</span><span class="nx">oldValue</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">oldValue</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">),</span><span class="w"> </span><span class="p">[]);</span>
+</span></code></pre></div></p>
 
 
 
@@ -631,22 +616,22 @@ Additionally, the persistence time is configurable, and depends on the storage t
       
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-        
           
-          <a href="installation/" class="md-footer__link md-footer__link--next" aria-label="Next: Installation">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Installation
-              </div>
-            </div>
+          <a href="../../usage-with-redux/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Usage with Redux">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Usage with Redux
+              </div>
             </div>
           </a>
+        
         
       </nav>
     
@@ -698,10 +683,10 @@ Additionally, the persistence time is configurable, and depends on the storage t
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.path", "navigation.footer", "navigation.instant", "content.action.edit", "content.code.select", "content.code.copy", "content.tabs.link"], "search": "assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "navigation.footer", "navigation.instant", "content.action.edit", "content.code.select", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.6c14ae12.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6c14ae12.min.js"></script>
       
     
   </body>
