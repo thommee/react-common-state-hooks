@@ -54,6 +54,8 @@ nav:
     - Installation: 'installation.md'
     - Basic Usage: 'basic-usage.md'
     - Usage with Redux: 'usage-with-redux.md'
+  - Hooks API:
+    - useValue: 'hooks-api/use-value.md'
 
 extra:
   generator: false
