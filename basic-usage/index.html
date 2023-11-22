@@ -468,14 +468,14 @@
   <h1>Basic Usage</h1>
 
 <h3 id="generating-hooks">Generating hooks</h3>
-<p>First, We need to create generic hooks that we can later use
-directly in the application, or as a base for custom hooks.</p>
+<p>First, we need to create generic hooks that we can later use
+directly in the application or as a base for custom hooks.</p>
 <p>Each storage type has its own hooks creation function:</p>
 <ul>
-<li><code>createInMemoryStateHooks</code> for storing data in application memory</li>
+<li><code>createInMemoryStateHooks</code> for storing data in the application memory</li>
 <li><code>createLocalStorageStateHooks</code> for storing data in local storage</li>
 <li><code>createSessionStorageStateHooks</code> for storing data in session storage</li>
-<li><code>createReduxStateHooks</code> for storing data in redux</li>
+<li><code>createReduxStateHooks</code> for storing data in Redux</li>
 </ul>
 <p>Examples:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">inMemory</label><label for="__tabbed_1_2">local storage</label><label for="__tabbed_1_3">session storage</label><label for="__tabbed_1_4">redux</label></div>
@@ -521,7 +521,7 @@ directly in the application, or as a base for custom hooks.</p>
 </div>
 </div>
 </div>
-<p>Now, you can use them in any place of your application:</p>
+<p>Now, you can use them anywhere in your application:</p>
 <div class="language-typescript highlight"><span class="filename">MyComponent.tsx</span><pre><span></span><code><span id="__span-4-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useValue</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./inMemoryStateHooks&#39;</span><span class="p">;</span>
 </span><span id="__span-4-2">
 </span><span id="__span-4-3"><span class="kd">const</span><span class="w"> </span><span class="nx">MyComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -536,13 +536,13 @@ directly in the application, or as a base for custom hooks.</p>
 </span></code></pre></div>
 <h3 id="creating-custom-hooks">Creating Custom Hooks</h3>
 <p>If you plan to use the same data in multiple places in the application,
-a better approach would be to create a dedicated hooks based on generic hooks:
+a better approach would be to create dedicated hooks based on generic hooks:
 <div class="language-typescript highlight"><span class="filename">useCounter.ts</span><pre><span></span><code><span id="__span-5-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useValue</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./inMemoryStateHooks&#39;</span><span class="p">;</span>
 </span><span id="__span-5-2">
 </span><span id="__span-5-3"><span class="kd">const</span><span class="w"> </span><span class="nx">initialValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
 </span><span id="__span-5-4"><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">useCounter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">useValue</span><span class="p">(</span><span class="s1">&#39;counter&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="p">);</span>
 </span></code></pre></div>
-Just like generic hooks, you can use them as well in any place of your application:
+Just like generic hooks, you can use them anywhere in your application:
 <div class="language-jsx highlight"><span class="filename">MyComponent.tsx</span><pre><span></span><code><span id="__span-6-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useCounter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./useCounter&#39;</span><span class="p">;</span>
 </span><span id="__span-6-2">
 </span><span id="__span-6-3"><span class="kd">const</span><span class="w"> </span><span class="nx">MyComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
