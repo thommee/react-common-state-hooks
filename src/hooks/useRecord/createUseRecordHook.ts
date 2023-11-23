@@ -3,7 +3,7 @@ import { SetValue, UseStorage } from '../../storages/UseStorage';
 
 type UseRecordApi<RecordItem> = [
   record: Record<string, RecordItem>,
-  addItem: (key: string, listItem: RecordItem) => void,
+  addItem: (key: string, recordItem: RecordItem) => void,
   removeItem: (key: string) => void,
   setRecord: SetValue<Record<string, RecordItem>>,
 ];

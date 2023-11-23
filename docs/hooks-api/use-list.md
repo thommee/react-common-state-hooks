@@ -58,16 +58,20 @@ With `prepend` option you can add new items at the beginning of the list.
 
 === "append items"
     ```typescript title="New items are added at the end of the list (default behavior)"
-    const [, addItem] = useList<string>('some-key');
+    const [list, addItem] = useList<string>('key', ['a', 'b', 'c']);
     
-    const addText = useCallback((item: string) => addItem(item), []);
+                    // list: ['a', 'b', 'c']
+    addItem('b');   // list: ['a', 'b', 'c', 'b']
+    addItem('x');   // list: ['a', 'b', 'c', 'b', 'x']
     ```
 === "prepend items"
     ```typescript title="New items are added at the beginning of the list"
     const listOptions: ListOptions<string> = { prepend: true };
-    const [, addItem] = useList<string>('some-key', [], listOptions);
+    const [list, addItem] = useList<string>('key', ['a', 'b', 'c'], listOptions);
     
-    const addText = useCallback((item: string) => addItem(item), []);
+                    // list: ['a', 'b', 'c']
+    addItem('b');   // list: ['a', 'b', 'c', 'b']
+    addItem('x');   // list: ['x', 'b', 'a', 'b', 'c']
     ```
 
 ---
@@ -81,22 +85,26 @@ It means that new items are **always** added to the list, and existing ones are 
 === "scalar items list"
     ```typescript
     const listOptions: ListOptions<string> = { unique: true };
-    const [, addItem] = useList<string>('some-key', [], listOptions);
+    const [list, addItem] = useList<string>('some-key', ['a', 'b', 'c'], listOptions);
     
-    const addText = useCallback((item: string) => addItem(item), []);
+                    // list: ['a', 'b', 'c']
+    addItem('b');   // list: ['a', 'c', 'b']
+    addItem('x');   // list: ['a', 'c', 'b', 'x']
     ```
 === "complex items list"
     ```typescript
-    type Item = { id: string; text: string; }
+    type Item = { id: string; }
 
     const listOptions: ListOptions<Item> = {
         unique: true,
         areEqual: (a: Item, b: Item) => a.id === b.id
     };
+    const initialValue = [{ id: 'a' }, { id: 'b' }, { id: 'c' }];
+    const [list, addItem] = useList<Item>('some-key', initialValue, listOptions);
 
-    const [, addItem] = useList<Item>('some-key', [], listOptions);
-
-    const addText = useCallback((item: Item) => addItem(item), []);
+                    // list: [{ id: 'a' }, { id: 'b' }, { id: 'c' }]
+    addItem('b');   // list: [{ id: 'a' }, { id: 'c' }, { id: 'b' }]
+    addItem('x');   // list: [{ id: 'a' }, { id: 'c' }, { id: 'b' }, { id: 'x' }]
     ```
 With `skipIfExist` option you can change this behavior.
 
@@ -107,9 +115,11 @@ element does not affect the list, and the operation is ignored.
 === "scalar items list" 
     ```typescript
     const listOptions: ListOptions<string> = { unique: true, skipIfExist: true };
-    const [, addItem] = useList<string>('some-key', [], listOptions);
+    const [, addItem] = useList<string>('some-key', ['a', 'b', 'c'], listOptions);
 
-    const addText = useCallback((item: string) => addItem(item), []);
+                    // list: ['a', 'b', 'c']
+    addItem('b');   // list: ['a', 'b', 'c']
+    addItem('x');   // list: ['a', 'b', 'c', 'x']    
     ```
 === "complex items list"
     ```typescript
@@ -120,10 +130,12 @@ element does not affect the list, and the operation is ignored.
         skipIfExist: true,
         areEqual: (a: Item, b: Item) => a.id === b.id
     };
+    const initialValue = [{ id: 'a' }, { id: 'b' }, { id: 'c' }];
+    const [list, addItem] = useList<Item>('some-key', initialValue, listOptions);
 
-    const [, addItem] = useList<Item>('some-key', [], listOptions);
-
-    const addText = useCallback((item: Item) => addItem(item), []);
+                    // list: [{ id: 'a' }, { id: 'b' }, { id: 'c' }]
+    addItem('b');   // list: [{ id: 'a' }, { id: 'b' }, { id: 'c' }]
+    addItem('x');   // list: [{ id: 'a' }, { id: 'b' }, { id: 'c' }, { id: 'x' }]
     ```
 
 ---
@@ -132,9 +144,11 @@ element does not affect the list, and the operation is ignored.
 
 === "scalar items list"
     ```typescript
-    const [,, removeItem] = useList<string>('some-key');
+    const [list,, removeItem] = useList<string>('some-key', ['a', 'b', 'c']);
     
-    const removeText = useCallback((item: string) => removeItem(item), []);
+                        // list: ['a', 'b', 'c']
+    removeItem('b');    // list: ['a', 'c']
+    removeItem('x');    // list: ['a', 'c']  
     ```
 === "complex items list"
     ```typescript
@@ -143,18 +157,23 @@ element does not affect the list, and the operation is ignored.
     const listOptions = {
         areEqual: (a: Item, b: Item) => a.id === b.id
     }
-    const [,, removeItem] = useList<Item>('some-key', [], listOptions);
+    const initialValue = [{ id: 'a' }, { id: 'b' }, { id: 'c' }];
+    const [list,, removeItem] = useList<Item>('key', initialValue, listOptions);
     
-    const removeElement = useCallback((item: Item) => removeItem(item), []);
+                                // list: [{ id: 'a' }, { id: 'b' }, { id: 'c' }]
+    removeItem({ id: 'b' });    // list: [{ id: 'a' }, { id: 'c' }]
+    removeItem({ id: 'x' });    // list: [{ id: 'a' }, { id: 'c' }]
     ```
 
 ### Setting new lists
 #### Set new list by new value
 You can set new list by calling `setList` with new list parameter.
 ```typescript
-const [,,, setList] = useList<string>('some-key');
+const [list,,, setList] = useList<string>('some-key', ['a', 'b', 'c']);
 
-const setNewList = useCallback((newList: string[]) => setList(newList), []);
+                      // list: ['a', 'b', 'c']
+setList(['x', 'y']);  // list: ['x', 'y']
+setList(['a']);       // list: ['a']
 ```
 #### Set new list by callback
 If value provided to `setList` is a function, it will be called with _oldValue_ parameter, 
@@ -162,11 +181,14 @@ and returned value from this function will be set as new list.
 
 With this mechanism you can resolve new value based on old value.
 ```typescript
-const [,,, setList] = useList<string>('some-key');
+const [,,, setList] = useList<string>('some-key', []);
 
-const setNewListIfEmpty = useCallback((newList: string[]) => 
+const setNewListIfEmpty = (newList: string[]) => 
     setList((oldList: string[]) => {
         return (oldList.length > 0) ? oldList : newList;
     }
-), []);
+);
+                                // list: []
+setNewListIfEmpty(['x', 'y']);  // list: ['x', 'y']
+setNewListIfEmpty(['a']);       // list: ['x', 'y']
 ```

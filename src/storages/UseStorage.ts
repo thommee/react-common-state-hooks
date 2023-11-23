@@ -1,6 +1,6 @@
 export interface SetValue<T> {
   (value: T): void;
-  (value: (oldValue: T) => T): void;
+  (valueFn: (oldValue: T) => T): void;
 }
 
 export type UseStorageApi<T> = [value: T, setValue: SetValue<T>];

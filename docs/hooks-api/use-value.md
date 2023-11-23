@@ -1,30 +1,38 @@
 
 ### Interface definition
-```typescript
+```typescript title="useValue parameters"
 interface UseValue<Value> {
   (key: string, initialValue: Value): UseValueApi<Value>
 }
-
+```
+```typescript title="useValue returned values"
 type UseValueApi<Value> = 
   [value: Value, setValue: SetValue<Value>]
 
-interface SetValue<T> {
-  (value: T): void;
-  (valueFn: (oldValue: T) => T): void;
+interface SetValue<Value> {
+  (value: Value): void;
+  (valueFn: (oldValue: Value) => Value): void;
 }
 ```
 
-### Update data directly
+### Update data by new value directly
 ```typescript
-const [value, setValue] = useValue('some-key', 0);
+const [value, setValue] = useValue<number>('some-key', 0);
 
-const increment = useCallback(() => setValue(value + 1), [value]);
+const increment = () => setValue(value + 1);
+
+increment();  // value: 1
+increment();  // value: 2
+increment();  // value: 3
 ```
 
-### Update data by callback function
-In this approach we have no dependencies in `useCallback` hook.
+### Update data by new value returned from callback function
 ```typescript
-const [value, setValue] = useValue('some-key', 0);
+const [value, setValue] = useValue<number>('some-key', 0);
 
-const increment = useCallback(() => setValue((oldValue) => oldValue + 1), []);
+const increment = () => setValue((oldValue: number) => oldValue + 1);
+
+increment();  // value: 1
+increment();  // value: 2
+increment();  // value: 3
 ```
