@@ -56,13 +56,13 @@ As default, new items are added at the end of the list.<br/>
 With `prepend` option you can add new items at the beginning of the list.
 
 
-=== "Append items"
+=== "append items"
     ```typescript title="New items are added at the end of the list (default behaviour)"
     const [, addItem] = useList<string>('some-key');
     
     const addText = useCallback((item: string) => addItem(item), []);
     ```
-=== "Prepend items"
+=== "prepend items"
     ```typescript title="New items are added at the beginning of the list"
     const listOptions: ListOptions<string> = { prepend: true };
     const [, addItem] = useList<string>('some-key', [], listOptions);
