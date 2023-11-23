@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../../usage-with-redux/">
+        <link rel="prev" href="../use-list/">
       
-      
-        <link rel="next" href="../use-list/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>useValue - React Generic State Hooks</title>
+        <title>useRecord - React Generic State Hooks</title>
       
     
     
@@ -75,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#interface-definition" class="md-skip">
+        <a href="#userecord-interfaces" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              useValue
+              useRecord
             
           </span>
         </div>
@@ -410,27 +408,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    useValue
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../use-value/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -439,51 +419,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#interface-definition" class="md-nav__link">
-    <span class="md-ellipsis">
-      Interface definition
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#update-data-by-new-value-directly" class="md-nav__link">
-    <span class="md-ellipsis">
-      Update data by new value directly
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#update-data-by-new-value-returned-from-callback-function" class="md-nav__link">
-    <span class="md-ellipsis">
-      Update data by new value returned from callback function
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -513,9 +448,27 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../use-record/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    useRecord
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -524,6 +477,108 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#userecord-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      useRecord Interfaces
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#userecord-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      useRecord API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding items
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#removing-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removing items
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Removing items">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remove-item" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remove item
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-new-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting new records
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting new records">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-new-record-by-new-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set new record by new value
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-new-record-by-callback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set new record by callback
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -561,29 +616,86 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#interface-definition" class="md-nav__link">
+  <a href="#userecord-interfaces" class="md-nav__link">
     <span class="md-ellipsis">
-      Interface definition
+      useRecord Interfaces
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#update-data-by-new-value-directly" class="md-nav__link">
+  <a href="#userecord-api" class="md-nav__link">
     <span class="md-ellipsis">
-      Update data by new value directly
+      useRecord API
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#update-data-by-new-value-returned-from-callback-function" class="md-nav__link">
+  <a href="#adding-items" class="md-nav__link">
     <span class="md-ellipsis">
-      Update data by new value returned from callback function
+      Adding items
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#removing-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removing items
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Removing items">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remove-item" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remove item
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-new-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting new records
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting new records">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-new-record-by-new-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set new record by new value
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-new-record-by-callback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set new record by callback
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -602,7 +714,7 @@
                   
 
   
-    <a href="https://github.com/thommee/react-generic-state-hooks/edit/main/docs/hooks-api/use-value.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/thommee/react-generic-state-hooks/edit/main/docs/hooks-api/use-record.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -610,39 +722,71 @@
   
 
 
-  <h1>useValue</h1>
+  <h1>useRecord</h1>
 
-<h3 id="interface-definition">Interface definition</h3>
-<p><div class="language-typescript highlight"><span class="filename">useValue parameters</span><pre><span></span><code><span id="__span-0-1"><span class="kd">interface</span><span class="w"> </span><span class="nx">UseValue</span><span class="o">&lt;</span><span class="nx">Value</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-2"><span class="w">  </span><span class="p">(</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="o">:</span><span class="w"> </span><span class="kt">Value</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">UseValueApi</span><span class="o">&lt;</span><span class="nx">Value</span><span class="o">&gt;</span>
-</span><span id="__span-0-3"><span class="p">}</span>
+<h3 id="userecord-interfaces">useRecord Interfaces</h3>
+<div class="language-typescript highlight"><span class="filename">useRecord parameters</span><pre><span></span><code><span id="__span-0-1"><span class="kd">interface</span><span class="w"> </span><span class="nx">useRecord</span><span class="o">&lt;</span><span class="nx">RecordItem</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><span class="w">  </span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue?</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">RecordItem</span><span class="o">&gt;</span>
+</span><span id="__span-0-3"><span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">UseRecordApi</span><span class="o">&lt;</span><span class="nx">RecordItem</span><span class="o">&gt;</span>
+</span><span id="__span-0-4"><span class="p">}</span>
 </span></code></pre></div>
-<div class="language-typescript highlight"><span class="filename">useValue returned values</span><pre><span></span><code><span id="__span-1-1"><span class="kr">type</span><span class="w"> </span><span class="nx">UseValueApi</span><span class="o">&lt;</span><span class="nx">Value</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-</span><span id="__span-1-2"><span class="w">  </span><span class="p">[</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">Value</span><span class="p">,</span><span class="w"> </span><span class="nx">setValue</span><span class="o">:</span><span class="w"> </span><span class="kt">SetValue</span><span class="o">&lt;</span><span class="nx">Value</span><span class="o">&gt;</span><span class="p">]</span>
-</span><span id="__span-1-3">
-</span><span id="__span-1-4"><span class="kd">interface</span><span class="w"> </span><span class="nx">SetValue</span><span class="o">&lt;</span><span class="nx">Value</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-5"><span class="w">  </span><span class="p">(</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">Value</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
-</span><span id="__span-1-6"><span class="w">  </span><span class="p">(</span><span class="nx">valueFn</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">oldValue</span><span class="o">:</span><span class="w"> </span><span class="kt">Value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">Value</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
-</span><span id="__span-1-7"><span class="p">}</span>
-</span></code></pre></div></p>
-<h3 id="update-data-by-new-value-directly">Update data by new value directly</h3>
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-2-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">setValue</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useValue</span><span class="o">&lt;</span><span class="kt">number</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
-</span><span id="__span-2-2">
-</span><span id="__span-2-3"><span class="kd">const</span><span class="w"> </span><span class="nx">increment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setValue</span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
-</span><span id="__span-2-4">
-</span><span id="__span-2-5"><span class="nx">increment</span><span class="p">();</span><span class="w">  </span><span class="c1">// value: 1</span>
-</span><span id="__span-2-6"><span class="nx">increment</span><span class="p">();</span><span class="w">  </span><span class="c1">// value: 2</span>
-</span><span id="__span-2-7"><span class="nx">increment</span><span class="p">();</span><span class="w">  </span><span class="c1">// value: 3</span>
+<div class="language-typescript highlight"><span class="filename">useRecord returned values</span><pre><span></span><code><span id="__span-1-1"><span class="kr">type</span><span class="w"> </span><span class="nx">UseRecordApi</span><span class="o">&lt;</span><span class="nx">RecordItem</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-1-2"><span class="w">  </span><span class="nx">record</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">RecordItem</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span id="__span-1-3"><span class="w">  </span><span class="nx">addItem</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">recordItem</span><span class="o">:</span><span class="w"> </span><span class="kt">RecordItem</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">void</span><span class="p">,</span>
+</span><span id="__span-1-4"><span class="w">  </span><span class="nx">removeItem</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">void</span><span class="p">,</span>
+</span><span id="__span-1-5"><span class="w">  </span><span class="nx">setRecord</span><span class="o">:</span><span class="w"> </span><span class="kt">SetValue</span><span class="o">&lt;</span><span class="nx">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">RecordItem</span><span class="o">&gt;&gt;</span><span class="p">,</span>
+</span><span id="__span-1-6"><span class="p">];</span>
+</span><span id="__span-1-7">
+</span><span id="__span-1-8"><span class="kd">interface</span><span class="w"> </span><span class="nx">SetValue</span><span class="o">&lt;</span><span class="nx">Record</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-9"><span class="w">  </span><span class="p">(</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
+</span><span id="__span-1-10"><span class="w">  </span><span class="p">(</span><span class="nx">valueFn</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">oldValue</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">Record</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
+</span><span id="__span-1-11"><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="update-data-by-new-value-returned-from-callback-function">Update data by new value returned from callback function</h3>
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-3-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">setValue</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useValue</span><span class="o">&lt;</span><span class="kt">number</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<h3 id="userecord-api">useRecord API</h3>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-2-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">record</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">,</span><span class="w"> </span><span class="nx">removeItem</span><span class="p">,</span><span class="w"> </span><span class="nx">setRecord</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRecord</span><span class="p">(</span><span class="s1">&#39;my-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{});</span>
+</span></code></pre></div>
+<h3 id="adding-items">Adding items</h3>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-3-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">record</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRecord</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">);</span>
 </span><span id="__span-3-2">
-</span><span id="__span-3-3"><span class="kd">const</span><span class="w"> </span><span class="nx">increment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setValue</span><span class="p">((</span><span class="nx">oldValue</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">oldValue</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
-</span><span id="__span-3-4">
-</span><span id="__span-3-5"><span class="nx">increment</span><span class="p">();</span><span class="w">  </span><span class="c1">// value: 1</span>
-</span><span id="__span-3-6"><span class="nx">increment</span><span class="p">();</span><span class="w">  </span><span class="c1">// value: 2</span>
-</span><span id="__span-3-7"><span class="nx">increment</span><span class="p">();</span><span class="w">  </span><span class="c1">// value: 3</span>
+</span><span id="__span-3-3"><span class="w">                    </span><span class="c1">// record: {}</span>
+</span><span id="__span-3-4"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { a: &#39;A&#39; }</span>
+</span><span id="__span-3-5"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { a: &#39;A&#39;, b: &#39;B&#39; }</span>
+</span><span id="__span-3-6"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;C&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { a: &#39;C&#39;, b: &#39;B&#39; }</span>
 </span></code></pre></div>
+<hr />
+<h3 id="removing-items">Removing items</h3>
+<h4 id="remove-item">Remove item</h4>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-4-1"><span class="kd">const</span><span class="w"> </span><span class="nx">initialValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;C&#39;</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-4-2"><span class="kd">const</span><span class="w"> </span><span class="p">[,,</span><span class="w"> </span><span class="nx">removeItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRecord</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="p">);</span>
+</span><span id="__span-4-3">
+</span><span id="__span-4-4"><span class="w">                  </span><span class="c1">// record: { a: &#39;A&#39;, b: &#39;B&#39;, c: &#39;C&#39; }</span>
+</span><span id="__span-4-5"><span class="nx">removeItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { a: &#39;A&#39;, c: &#39;C&#39; }</span>
+</span><span id="__span-4-6"><span class="nx">removeItem</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { c: &#39;C&#39; }</span>
+</span><span id="__span-4-7"><span class="nx">removeItem</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { c: &#39;C&#39; }</span>
+</span></code></pre></div>
+<h3 id="setting-new-records">Setting new records</h3>
+<h4 id="set-new-record-by-new-value">Set new record by new value</h4>
+<p>You can set new record by calling <code>setRecord</code> with <em>newRecord</em> parameter.
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-5-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">record</span><span class="p">,,,</span><span class="w"> </span><span class="nx">setRecord</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRecord</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-5-2">
+</span><span id="__span-5-3"><span class="w">                        </span><span class="c1">// record: { a: &#39;A&#39; }</span>
+</span><span id="__span-5-4"><span class="nx">setRecord</span><span class="p">({</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="w"> </span><span class="p">});</span><span class="w">  </span><span class="c1">// record: { b: &#39;B&#39; }</span>
+</span></code></pre></div></p>
+<h4 id="set-new-record-by-callback">Set new record by callback</h4>
+<p>If value provided to <code>setRecord</code> is a function, it will be called with <em>oldValue</em> parameter,
+and returned value from this function will be set as new record.</p>
+<p>With this mechanism you can resolve new value based on old value.
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-6-1"><span class="kd">const</span><span class="w"> </span><span class="p">[,,,</span><span class="w"> </span><span class="nx">setRecord</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRecord</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">);</span>
+</span><span id="__span-6-2">
+</span><span id="__span-6-3"><span class="kd">const</span><span class="w"> </span><span class="nx">setNewRecordIfEmpty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">newRecord</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span>
+</span><span id="__span-6-4"><span class="w">    </span><span class="nx">setRecord</span><span class="p">((</span><span class="nx">oldRecord</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-5"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">oldRecord</span><span class="p">).</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">oldRecord</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">newRecord</span><span class="p">;</span>
+</span><span id="__span-6-6"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-7"><span class="p">);</span>
+</span><span id="__span-6-8"><span class="w">                                  </span><span class="c1">// record: {}</span>
+</span><span id="__span-6-9"><span class="nx">setNewRecordIfEmpty</span><span class="p">({</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="w"> </span><span class="p">});</span><span class="w">  </span><span class="c1">// record: { b: &#39;B&#39; }</span>
+</span><span id="__span-6-10"><span class="nx">setNewRecordIfEmpty</span><span class="p">({</span><span class="w"> </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;C&#39;</span><span class="w"> </span><span class="p">});</span><span class="w">  </span><span class="c1">// record: { b: &#39;B&#39; }</span>
+</span></code></pre></div></p>
 
 
 
@@ -666,7 +810,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../usage-with-redux/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Usage with Redux">
+          <a href="../use-list/" class="md-footer__link md-footer__link--prev" aria-label="Previous: useList">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -676,27 +820,11 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Usage with Redux
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../use-list/" class="md-footer__link md-footer__link--next" aria-label="Next: useList">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
                 useList
               </div>
             </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
           </a>
+        
         
       </nav>
     
