@@ -4,16 +4,16 @@
 interface useList<ListItem> {
   (
       key: string,
-      initialValue: ListItem[] = [],
+      initialValue: ListItem[],
       defaultOptions?: ListOptions<ListItem>
   ): UseListApi<ListItem>
 }
 
 type ListOptions<ListItem> = {
     prepend?: boolean;
-    distinct?: boolean;
+    unique?: boolean;
     skipIfExist?: boolean;
-    areEqual?: EqualityFn<ListItem> = (a: ListItem, b: ListItem) => a === b;
+    areEqual?: EqualityFn<ListItem>;
 };
 
 interface EqualityFn<ListItem> {
@@ -26,10 +26,10 @@ type UseListApi<ListItem> = [
     list: ListItem[],
     addItem: (listItem: ListItem) => void,
     removeItem: (listItem: ListItem) => void,
-    setList: SetValueFn<ListItem[]>,
+    setList: SetValue<ListItem[]>,
 ];
 
-interface SetValueFn<List> {
+interface SetValue<List> {
   (value: List): void;
   (valueFn: (oldValue: List) => List): void;
 }
@@ -40,7 +40,7 @@ interface SetValueFn<List> {
 type Item = { id: string; text: string };
 
 const listOptions: ListOptions<Item> = {
-    distinct: true,
+    unique: true,
     skipIfExist: true,
     prepend: true,
     areEqual: (a, b) => a.id === b.id
@@ -51,13 +51,13 @@ const [list, addItem, removeItem, setList] = useList('my-key', [], listOptions);
 
 ### Adding items
 
-#### You can add item at the beginning or at th end of the list. 
+#### Append or prepend? 
 As default, new items are added at the end of the list.<br/>
 With `prepend` option you can add new items at the beginning of the list.
 
 
 === "append items"
-    ```typescript title="New items are added at the end of the list (default behaviour)"
+    ```typescript title="New items are added at the end of the list (default behavior)"
     const [, addItem] = useList<string>('some-key');
     
     const addText = useCallback((item: string) => addItem(item), []);
@@ -71,14 +71,16 @@ With `prepend` option you can add new items at the beginning of the list.
     ```
 
 ---
-#### Add item with distinction check
-With `distinct` option you can enable distinction check.
+#### Uniqueness check
+The `unique` option enables a mechanism ensuring the uniqueness of elements in a list. 
 
-As default this will **replace** existing items with the new one. It means that new items are **always** added 
-at the beginning or at the end of the list, and existing items are removed.
+When activated, attempting to add an element that already exists on the list results 
+in the removal of the existing element and the addition of the new one at the beginning/end of the list.
+
+It means that new items are **always** added to the list, and existing ones are **always** removed.
 === "scalar items list"
     ```typescript
-    const listOptions: ListOptions<string> = { distinct: true };
+    const listOptions: ListOptions<string> = { unique: true };
     const [, addItem] = useList<string>('some-key', [], listOptions);
     
     const addText = useCallback((item: string) => addItem(item), []);
@@ -88,7 +90,7 @@ at the beginning or at the end of the list, and existing items are removed.
     type Item = { id: string; text: string; }
 
     const listOptions: ListOptions<Item> = {
-        distinct: true,
+        unique: true,
         areEqual: (a: Item, b: Item) => a.id === b.id
     };
 
@@ -96,14 +98,15 @@ at the beginning or at the end of the list, and existing items are removed.
 
     const addText = useCallback((item: Item) => addItem(item), []);
     ```
-With `skipIfExist` option you can change this behaviour.
+With `skipIfExist` option you can change this behavior.
 
-If provided, update will happen **only** if item **does not exist** in the list.<br/>
-Otherwise it will do nothing.
+By default, `unique` option is set to the "replace" mode. However, it can be customized with the
+additional `skipIfExist` option. When this option is enabled, attempting to add an existing
+element does not affect the list, and the operation is ignored.
 
 === "scalar items list" 
     ```typescript
-    const listOptions: ListOptions<string> = { distinct: true, skipIfExist: true };
+    const listOptions: ListOptions<string> = { unique: true, skipIfExist: true };
     const [, addItem] = useList<string>('some-key', [], listOptions);
 
     const addText = useCallback((item: string) => addItem(item), []);
@@ -113,7 +116,7 @@ Otherwise it will do nothing.
     type Item = { id: string; text: string; }
 
     const listOptions: ListOptions<Item> = {
-        distinct: true,
+        unique: true,
         skipIfExist: true,
         areEqual: (a: Item, b: Item) => a.id === b.id
     };
@@ -154,7 +157,7 @@ const [,,, setList] = useList<string>('some-key');
 const setNewList = useCallback((newList: string[]) => setList(newList), []);
 ```
 #### Set new list by callback
-If value provided to `setList` is a function, it will be called with one parameter _oldValue_, 
+If value provided to `setList` is a function, it will be called with _oldValue_ parameter, 
 and returned value from this function will be set as new list. 
 
 With this mechanism you can resolve new value based on old value.

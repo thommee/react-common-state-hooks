@@ -89,7 +89,7 @@ describe.each`
       });
 
       it.each`
-        initialList   | itemToAdd | distinct | expectedResult
+        initialList   | itemToAdd | unique   | expectedResult
         ${[]}         | ${'1'}    | ${true}  | ${['1']}
         ${[]}         | ${'1'}    | ${false} | ${['1']}
         ${['0']}      | ${'0'}    | ${true}  | ${['0']}
@@ -97,10 +97,10 @@ describe.each`
         ${['0', '1']} | ${'1'}    | ${true}  | ${['0', '1']}
         ${['0', '1']} | ${'1'}    | ${false} | ${['0', '1', '1']}
       `(
-        'should add "$itemToAdd" when distinct="$distinct" and initialList=$initialList',
-        ({ initialList, itemToAdd, distinct, expectedResult }) => {
+        'should add "$itemToAdd" when unique="$unique" and initialList=$initialList',
+        ({ initialList, itemToAdd, unique, expectedResult }) => {
           // given:
-          const { result } = renderListHook(getListKey(), initialList, { distinct });
+          const { result } = renderListHook(getListKey(), initialList, { unique });
           // when:
           act(() => result.current[1](itemToAdd));
           // then:
@@ -197,39 +197,39 @@ describe.each`
       );
 
       it.each`
-        initialList                 | itemToAdd     | prepend  | distinct | expectedResult
+        initialList                 | itemToAdd     | prepend  | unique   | expectedResult
         ${[{ a: '0' }, { a: '1' }]} | ${{ a: '1' }} | ${true}  | ${true}  | ${[{ a: '1' }, { a: '0' }]}
         ${[{ a: '0' }, { a: '1' }]} | ${{ a: '1' }} | ${true}  | ${false} | ${[{ a: '1' }, { a: '0' }, { a: '1' }]}
         ${[{ a: '0' }, { a: '1' }]} | ${{ a: '1' }} | ${false} | ${true}  | ${[{ a: '0' }, { a: '1' }]}
         ${[{ a: '0' }, { a: '1' }]} | ${{ a: '1' }} | ${false} | ${false} | ${[{ a: '0' }, { a: '1' }, { a: '1' }]}
       `(
-        '$#: should add "$itemToAdd" when prepend="$prepend", distinct="$distinct" for objects',
-        ({ initialList, itemToAdd, prepend, distinct, expectedResult }) => {
+        '$#: should add "$itemToAdd" when prepend="$prepend", unique="$unique" for objects',
+        ({ initialList, itemToAdd, prepend, unique, expectedResult }) => {
           // given:
           const areEqual = (item1: typeof itemToAdd, item2: typeof itemToAdd) => item1.a === item2.a;
-          const { result } = renderListHook(getListKey(), initialList, { areEqual, prepend, distinct });
+          const { result } = renderListHook(getListKey(), initialList, { areEqual, prepend, unique });
           // when:
           act(() => result.current[1](itemToAdd));
           // then:
-          expect(result.current[0][prepend ? 0 : expectedResult.length - 1])[distinct ? 'toBe' : 'toEqual'](itemToAdd);
+          expect(result.current[0][prepend ? 0 : expectedResult.length - 1])[unique ? 'toBe' : 'toEqual'](itemToAdd);
           expect(result.current[0]).toStrictEqual(expectedResult);
         },
       );
 
       it.each`
-        initialList                 | itemToAdd     | distinct | skipIfExist | expectedResult
+        initialList                 | itemToAdd     | unique   | skipIfExist | expectedResult
         ${[{ a: '0' }, { a: '1' }]} | ${{ a: '1' }} | ${true}  | ${true}     | ${[{ a: '0' }, { a: '1' }]}
         ${[{ a: '0' }, { a: '1' }]} | ${{ a: '1' }} | ${true}  | ${false}    | ${[{ a: '0' }, { a: '1' }]}
         ${[{ a: '0' }, { a: '1' }]} | ${{ a: '1' }} | ${false} | ${true}     | ${[{ a: '0' }, { a: '1' }]}
         ${[{ a: '0' }, { a: '1' }]} | ${{ a: '1' }} | ${false} | ${false}    | ${[{ a: '0' }, { a: '1' }, { a: '1' }]}
       `(
-        '$#: should add "$itemToAdd" when distinct="$distinct", skipIfExist="$skipIfExist" for objects',
-        ({ initialList, itemToAdd, distinct, skipIfExist, expectedResult }) => {
+        '$#: should add "$itemToAdd" when unique="$unique", skipIfExist="$skipIfExist" for objects',
+        ({ initialList, itemToAdd, unique, skipIfExist, expectedResult }) => {
           // given:
           const areEqual = (item1: typeof itemToAdd, item2: typeof itemToAdd) => item1.a === item2.a;
           const { result } = renderListHook(getListKey(), initialList, {
             areEqual,
-            distinct,
+            unique,
             skipIfExist,
           });
           // when:
