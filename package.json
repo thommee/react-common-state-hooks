@@ -50,7 +50,8 @@
     "dist": "npm run lint && npm run test && npm run build && npm publish",
     "docs:build": "mkdocs build",
     "docs:serve": "mkdocs serve",
-    "docs:publish": "mkdocs gh-deploy"
+    "docs:publish": "mkdocs gh-deploy",
+    "docsd": "docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material"
   },
   "jest": {
     "testEnvironment": "jsdom"
