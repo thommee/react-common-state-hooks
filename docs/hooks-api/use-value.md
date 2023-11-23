@@ -10,7 +10,7 @@ type UseValueApi<Value> =
 
 interface SetValueFn<T> {
   (value: T): void;
-  (value: (oldValue: T) => T): void;
+  (valueFn: (oldValue: T) => T): void;
 }
 ```
 
