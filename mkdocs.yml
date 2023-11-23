@@ -56,6 +56,7 @@ nav:
     - Usage with Redux: 'usage-with-redux.md'
   - Hooks API:
     - useValue: 'hooks-api/use-value.md'
+    - useList: 'hooks-api/use-list.md'
 
 extra:
   generator: false
