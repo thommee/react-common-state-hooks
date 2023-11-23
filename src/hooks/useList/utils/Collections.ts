@@ -3,7 +3,7 @@ function findIndex<T>(collection: T[], element: T, areEqual: EqualityFn<T>) {
 }
 
 export type ListOptions<T> = {
-  distinct?: boolean;
+  unique?: boolean;
   skipIfExist?: boolean; // do not update e.g. move to the top
   prepend?: boolean;
   areEqual?: EqualityFn<T>;
@@ -28,7 +28,7 @@ export function add<T>(collection: T[], element: T, options: ListOptions<T> = {}
     return collection;
   }
 
-  if (options.distinct) {
+  if (options.unique) {
     c.splice(index, 1);
   }
 

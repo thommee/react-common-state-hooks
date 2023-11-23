@@ -6,9 +6,9 @@ interface UseValue<Value> {
 }
 
 type UseValueApi<Value> = 
-  [value: Value, setValue: SetValueFn<Value>]
+  [value: Value, setValue: SetValue<Value>]
 
-interface SetValueFn<T> {
+interface SetValue<T> {
   (value: T): void;
   (valueFn: (oldValue: T) => T): void;
 }
