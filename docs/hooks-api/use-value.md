@@ -26,7 +26,7 @@ increment();  // value: 2
 increment();  // value: 3
 ```
 
-### Update data by new value returned from callback function
+### Update data by callback
 ```typescript
 const [value, setValue] = useValue<number>('some-key', 0);
 
