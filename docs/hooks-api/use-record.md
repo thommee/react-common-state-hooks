@@ -2,7 +2,7 @@
 ### useRecord Interfaces
 ```typescript title="useRecord parameters"
 interface useRecord<RecordItem> {
-  (name: string, initialValue?: Record<string, RecordItem>
+  (key: string, initialValue?: Record<string, RecordItem>
   ): UseRecordApi<RecordItem>
 }
 ```
