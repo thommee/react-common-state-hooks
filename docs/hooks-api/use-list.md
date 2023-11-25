@@ -1,19 +1,20 @@
 
-### useList Interfaces
+### useList Interface
+
 ```typescript title="useList parameters"
 interface useList<ListItem> {
   (
-      key: string,
-      initialValue: ListItem[],
-      defaultOptions?: ListOptions<ListItem>
+      key: string,                          // unique key for list
+      initialValue?: ListItem[],            // initial list
+      listOptions?: ListOptions<ListItem>   // additional list configuration
   ): UseListApi<ListItem>
 }
 
 type ListOptions<ListItem> = {
-    prepend?: boolean;
-    unique?: boolean;
-    skipIfExist?: boolean;
-    areEqual?: EqualityFn<ListItem>;
+    prepend?: boolean;                // add new elements at the beginning of the list
+    unique?: boolean;                 // ensure the uniqueness of elements in the list
+    skipIfExist?: boolean;            // skip list update if element exists on the list (see "areEqual")
+    areEqual?: EqualityFn<ListItem>;  // comparison function between two elements of the list
 };
 
 interface EqualityFn<ListItem> {
@@ -37,16 +38,21 @@ interface SetValue<List> {
 
 ### useList API
 ```typescript
-type Item = { id: string; text: string };
+type ListItem = { id: string; text: string };
 
-const listOptions: ListOptions<Item> = {
+const key = 'myKey';
+const initialValue: Item[] = [];
+
+const listOptions: ListOptions<ListItem> = {
     unique: true,
     skipIfExist: true,
     prepend: true,
-    areEqual: (a, b) => a.id === b.id
+    areEqual: (a: ListItem, b: ListItem) => a.id === b.id
 }
 
-const [list, addItem, removeItem, setList] = useList('my-key', [], listOptions);
+
+const [list, addItem, removeItem, setList] 
+  = useList<ListItem>(key, initialValue, listOptions);
 ```
 
 ### Adding items
@@ -56,7 +62,7 @@ As default, new items are added at the end of the list.<br/>
 With `prepend` option you can add new items at the beginning of the list.
 
 
-=== "append items"
+=== "appending items"
     ```typescript title="New items are added at the end of the list (default behavior)"
     const [list, addItem] = useList<string>('key', ['a', 'b', 'c']);
     
@@ -64,47 +70,68 @@ With `prepend` option you can add new items at the beginning of the list.
     addItem('b');   // list: ['a', 'b', 'c', 'b']
     addItem('x');   // list: ['a', 'b', 'c', 'b', 'x']
     ```
-=== "prepend items"
+=== "prepending items"
     ```typescript title="New items are added at the beginning of the list"
     const listOptions: ListOptions<string> = { prepend: true };
     const [list, addItem] = useList<string>('key', ['a', 'b', 'c'], listOptions);
     
                     // list: ['a', 'b', 'c']
-    addItem('b');   // list: ['a', 'b', 'c', 'b']
+    addItem('b');   // list: ['b', 'a', 'b', 'c']
     addItem('x');   // list: ['x', 'b', 'a', 'b', 'c']
     ```
 
 ---
 #### Uniqueness check
-The `unique` option enables a mechanism ensuring the uniqueness of elements in a list. 
+The `unique` option enables a mechanism ensuring the uniqueness of elements in a list.
 
 When activated, attempting to add an element that already exists on the list results 
 in the removal of the existing element and the addition of the new one at the beginning/end of the list.
 
 It means that new items are **always** added to the list, and existing ones are **always** removed.
-=== "scalar items list"
+
+!!! info ""areEqual" function"
+    Uniqueness check is done using the "areEqual" function. 
+    By default, function performs shallow comparison between two list items`(a: ListItem, b: ListItem) => a === b;`.
+    You can modify this behavior by defining your own comparison function in the "ListOptions.areEqual" parameter.
+
+=== "simple list items"
     ```typescript
     const listOptions: ListOptions<string> = { unique: true };
     const [list, addItem] = useList<string>('some-key', ['a', 'b', 'c'], listOptions);
     
-                    // list: ['a', 'b', 'c']
-    addItem('b');   // list: ['a', 'c', 'b']
-    addItem('x');   // list: ['a', 'c', 'b', 'x']
+                        // list: ['a', 'b', 'c']
+    addItem('a');       // list: ['b', 'c', 'a']
+    addItem('x');       // list: ['b', 'c', 'a', 'x']
+    addItem(list[0]);   // list: ['c', 'a', 'x', 'b']
     ```
-=== "complex items list"
-    ```typescript
+=== "complex list items"
+    ```typescript title="Default comparison function"
+    type Item = { id: string; }
+
+    const listOptions: ListOptions<Item> = { unique: true };
+    const initialValue = [{ id: 'a', v: 1 }, { id: 'b', v: 2 }];
+    const [list, addItem] = useList<Item>('some-key', initialValue, listOptions);
+
+                                    // list: [{ id: 'a', v: 1 }, { id: 'b', v: 2 }}]
+    addItem({ id: 'a', v: 11 });    // list: [{ id: 'a', v: 1 }, { id: 'b', v: 2 }, { id: 'a', v: 11 }]
+    addItem({ id: 'x', v: 22 });    // list: [{ id: 'a', v: 1 }, { id: 'b', v: 2 }, { id: 'a', v: 11 }, { id: 'x', v: 22 }]
+    addItem(list[0]);               // list: [{ id: 'b', v: 2 }, { id: 'a', v: 11 }, { id: 'x', v: 22 }, { id: 'a', v: 1 }]
+    ```
+
+    ```typescript title="Custom &quot;areEqual&quot; function"
     type Item = { id: string; }
 
     const listOptions: ListOptions<Item> = {
         unique: true,
         areEqual: (a: Item, b: Item) => a.id === b.id
     };
-    const initialValue = [{ id: 'a' }, { id: 'b' }, { id: 'c' }];
+    const initialValue = [{ id: 'a', v: 1 }, { id: 'b', v: 2 }];
     const [list, addItem] = useList<Item>('some-key', initialValue, listOptions);
 
-                    // list: [{ id: 'a' }, { id: 'b' }, { id: 'c' }]
-    addItem('b');   // list: [{ id: 'a' }, { id: 'c' }, { id: 'b' }]
-    addItem('x');   // list: [{ id: 'a' }, { id: 'c' }, { id: 'b' }, { id: 'x' }]
+                                    // list: [{ id: 'a', v: 1 }, { id: 'b', v: 2 }]
+    addItem({ id: 'a', v: 11 });    // list: [{ id: 'b', v: 2 }, { id: 'a', v: 11 }]
+    addItem({ id: 'x', v: 22 });    // list: [{ id: 'b', v: 2 }, { id: 'a', v: 11 }, { id: 'x', v: 22 }]
+    addItem(list[0]);               // list: [{ id: 'a', v: 11 }, { id: 'x', v: 22 }, { id: 'b', v: 2 }]
     ```
 With `skipIfExist` option you can change this behavior.
 
@@ -112,7 +139,7 @@ By default, `unique` option is set to the "replace" mode. However, it can be cus
 additional `skipIfExist` option. When this option is enabled, attempting to add an existing
 element does not affect the list, and the operation is ignored.
 
-=== "scalar items list" 
+=== "simple list items" 
     ```typescript
     const listOptions: ListOptions<string> = { unique: true, skipIfExist: true };
     const [, addItem] = useList<string>('some-key', ['a', 'b', 'c'], listOptions);
@@ -121,7 +148,7 @@ element does not affect the list, and the operation is ignored.
     addItem('b');   // list: ['a', 'b', 'c']
     addItem('x');   // list: ['a', 'b', 'c', 'x']    
     ```
-=== "complex items list"
+=== "complex list items"
     ```typescript
     type Item = { id: string; text: string; }
 
@@ -142,7 +169,7 @@ element does not affect the list, and the operation is ignored.
 ### Removing items
 #### Remove item
 
-=== "scalar items list"
+=== "simple list items"
     ```typescript
     const [list,, removeItem] = useList<string>('some-key', ['a', 'b', 'c']);
     
@@ -150,7 +177,7 @@ element does not affect the list, and the operation is ignored.
     removeItem('b');    // list: ['a', 'c']
     removeItem('x');    // list: ['a', 'c']  
     ```
-=== "complex items list"
+=== "complex list items"
     ```typescript
     type Item = { id: string, text: string };
     
