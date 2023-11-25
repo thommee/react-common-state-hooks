@@ -260,6 +260,22 @@ describe.each`
       );
 
       it.each`
+        initialList                 | itemIndexToRemove | expectedList
+        ${[{ a: '3' }, { a: '4' }]} | ${0}              | ${[{ a: '4' }]}
+        ${[{ a: '3' }, { a: '4' }]} | ${1}              | ${[{ a: '3' }]}
+      `(
+        'should remove item $itemIndexToRemove from $initialList for objects with shallow equality check',
+        ({ initialList, itemIndexToRemove, expectedList }) => {
+          // given:
+          const { result } = renderListHook(getListKey(), initialList);
+          // when:
+          act(() => result.current[2](result.current[0][itemIndexToRemove]));
+          // then:
+          expect(result.current[0]).toStrictEqual(expectedList);
+        },
+      );
+
+      it.each`
         initialList                 | itemToRemove  | expectedList
         ${[{ a: '3' }, { a: '4' }]} | ${{ a: '3' }} | ${[{ a: '4' }]}
         ${[{ a: '3' }, { a: '4' }]} | ${{ a: '3' }} | ${[{ a: '4' }]}
