@@ -811,7 +811,7 @@
 </span><span id="__span-2-4"><span class="w">    </span><span class="nx">unique</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
 </span><span id="__span-2-5"><span class="w">    </span><span class="nx">skipIfExist</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
 </span><span id="__span-2-6"><span class="w">    </span><span class="nx">prepend</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
-</span><span id="__span-2-7"><span class="w">    </span><span class="nx">areEqual</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">id</span>
+</span><span id="__span-2-7"><span class="w">    </span><span class="nx">areEqual</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">id</span>
 </span><span id="__span-2-8"><span class="p">}</span>
 </span><span id="__span-2-9">
 </span><span id="__span-2-10"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">,</span><span class="w"> </span><span class="nx">removeItem</span><span class="p">,</span><span class="w"> </span><span class="nx">setList</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="p">(</span><span class="s1">&#39;my-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
@@ -820,7 +820,7 @@
 <h4 id="append-or-prepend">Append or prepend?</h4>
 <p>As default, new items are added at the end of the list.<br/>
 With <code>prepend</code> option you can add new items at the beginning of the list.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">append items</label><label for="__tabbed_1_2">prepend items</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">appending items</label><label for="__tabbed_1_2">prepending items</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="language-typescript highlight"><span class="filename">New items are added at the end of the list (default behavior)</span><pre><span></span><code><span id="__span-3-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">]);</span>
@@ -835,7 +835,7 @@ With <code>prepend</code> option you can add new items at the beginning of the l
 </span><span id="__span-4-2"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
 </span><span id="__span-4-3">
 </span><span id="__span-4-4"><span class="w">                </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
-</span><span id="__span-4-5"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;b&#39;]</span>
+</span><span id="__span-4-5"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [&#39;b&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
 </span><span id="__span-4-6"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [&#39;x&#39;, &#39;b&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
 </span></code></pre></div>
 </div>
@@ -843,11 +843,17 @@ With <code>prepend</code> option you can add new items at the beginning of the l
 </div>
 <hr />
 <h4 id="uniqueness-check">Uniqueness check</h4>
-<p>The <code>unique</code> option enables a mechanism ensuring the uniqueness of elements in a list. </p>
+<p>The <code>unique</code> option enables a mechanism ensuring the uniqueness of elements in a list.</p>
 <p>When activated, attempting to add an element that already exists on the list results 
 in the removal of the existing element and the addition of the new one at the beginning/end of the list.</p>
 <p>It means that new items are <strong>always</strong> added to the list, and existing ones are <strong>always</strong> removed.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">scalar items list</label><label for="__tabbed_2_2">complex items list</label></div>
+<div class="admonition info">
+<p class="admonition-title">"areEqual" function</p>
+<p>Uniqueness check is done using the "areEqual" function. 
+By default, function performs shallow comparison between two list items<code>(a: ListItem, b: ListItem) =&gt; a === b;</code>.
+You can modify this behavior by defining your own comparison function in the "ListOptions.areEqual" parameter.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">simple list items</label><label for="__tabbed_2_2">complex list items</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="language-typescript highlight"><pre><span></span><code><span id="__span-5-1"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">ListOptions</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">unique</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">};</span>
@@ -879,7 +885,7 @@ in the removal of the existing element and the addition of the new one at the be
 <p>By default, <code>unique</code> option is set to the "replace" mode. However, it can be customized with the
 additional <code>skipIfExist</code> option. When this option is enabled, attempting to add an existing
 element does not affect the list, and the operation is ignored.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">scalar items list</label><label for="__tabbed_3_2">complex items list</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">simple list items</label><label for="__tabbed_3_2">complex list items</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="language-typescript highlight"><pre><span></span><code><span id="__span-7-1"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">ListOptions</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">unique</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"> </span><span class="nx">skipIfExist</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">};</span>
@@ -911,7 +917,7 @@ element does not affect the list, and the operation is ignored.</p>
 <hr />
 <h3 id="removing-items">Removing items</h3>
 <h4 id="remove-item">Remove item</h4>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">scalar items list</label><label for="__tabbed_4_2">complex items list</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">simple list items</label><label for="__tabbed_4_2">complex list items</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="language-typescript highlight"><pre><span></span><code><span id="__span-9-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,,</span><span class="w"> </span><span class="nx">removeItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">]);</span>
@@ -971,8 +977,6 @@ and returned value from this function will be set as new list. </p>
             </div>
           
           
-  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
-
         </div>
         
       </main>
@@ -1050,7 +1054,7 @@ and returned value from this function will be set as new list. </p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "navigation.footer", "navigation.instant", "content.action.edit", "content.code.select", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "navigation.footer", "navigation.instant", "content.action.edit", "content.code.select", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.6c14ae12.min.js"></script>
