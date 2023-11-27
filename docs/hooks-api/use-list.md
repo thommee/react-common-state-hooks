@@ -1,7 +1,7 @@
 
-### useList Interface
+### Interface
 
-```typescript title="useList parameters"
+```typescript title="Parameters"
 interface useList<ListItem> {
   (
       key: string,                          // unique key for list
@@ -22,7 +22,7 @@ interface EqualityFn<ListItem> {
 }
 ```
 
-```typescript title="useList returned values"
+```typescript title="Returned value"
 type UseListApi<ListItem> = [
     list: ListItem[],
     addItem: (listItem: ListItem) => void,
@@ -34,25 +34,6 @@ interface SetValue<List> {
   (value: List): void;
   (valueFn: (oldValue: List) => List): void;
 }
-```
-
-### useList API
-```typescript
-type ListItem = { id: string; text: string };
-
-const key = 'myKey';
-const initialValue: Item[] = [];
-
-const listOptions: ListOptions<ListItem> = {
-    unique: true,
-    skipIfExist: true,
-    prepend: true,
-    areEqual: (a: ListItem, b: ListItem) => a.id === b.id
-}
-
-
-const [list, addItem, removeItem, setList] 
-  = useList<ListItem>(key, initialValue, listOptions);
 ```
 
 ### Adding items
@@ -192,8 +173,8 @@ element does not affect the list, and the operation is ignored.
     removeItem({ id: 'x' });    // list: [{ id: 'a' }, { id: 'c' }]
     ```
 
-### Setting new lists
-#### Set new list by new value
+### Setting new list
+#### Directly
 You can set new list by calling `setList` with new list parameter.
 ```typescript
 const [list,,, setList] = useList<string>('some-key', ['a', 'b', 'c']);
@@ -202,7 +183,7 @@ const [list,,, setList] = useList<string>('some-key', ['a', 'b', 'c']);
 setList(['x', 'y']);  // list: ['x', 'y']
 setList(['a']);       // list: ['a']
 ```
-#### Set new list by callback
+#### By callback
 If value provided to `setList` is a function, it will be called with _oldValue_ parameter, 
 and returned value from this function will be set as new list. 
 
