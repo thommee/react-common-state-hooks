@@ -17,6 +17,7 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - admonition
 theme:
   name: material
   features:
@@ -29,7 +30,6 @@ theme:
     - content.action.edit
     - content.code.select
     - content.code.copy
-    - content.tabs.link
 #    - toc.follow
   palette:
       # Palette toggle for light mode
@@ -56,6 +56,7 @@ nav:
     - Usage with Redux: 'usage-with-redux.md'
   - Hooks API:
     - useValue: 'hooks-api/use-value.md'
+    - useRecord: 'hooks-api/use-record.md'
     - useList: 'hooks-api/use-list.md'
 
 extra:
