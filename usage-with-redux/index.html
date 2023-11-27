@@ -663,7 +663,7 @@
 <h3 id="creating-generic-hooks">Creating Generic Hooks</h3>
 <p><code>createReduxStateHooks()</code> returns generic hooks, <code>slice</code> (reducer and its name), 
 <code>createSelector</code> and <code>createAction</code> helpers to work with Redux.</p>
-<div class="language-typescript highlight"><span class="filename">myNamespaceReduxGenericHooks.ts</span><pre><span></span><code><span id="__span-0-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createReduxStateHooks</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-generic-state-hooks&#39;</span><span class="p">;</span>
+<div class="language-typescript highlight"><span class="filename">reduxStateHooks.ts</span><pre><span></span><code><span id="__span-0-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createReduxStateHooks</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-generic-state-hooks&#39;</span><span class="p">;</span>
 </span><span id="__span-0-2">
 </span><span id="__span-0-3"><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-4"><span class="w">  </span><span class="nx">useValue</span><span class="p">,</span><span class="w"> </span><span class="nx">useList</span><span class="p">,</span><span class="w"> </span><span class="nx">useRecord</span><span class="p">,</span><span class="w"> </span>
@@ -673,7 +673,7 @@
 <h3 id="connecting-to-redux">Connecting to redux</h3>
 <p>Generated <code>slice</code> object contains two properties: <code>name</code> - the key for connecting reducer to rootReducer, 
 and <code>reducer</code> - reducer itself.
-<div class="language-typescript highlight"><span class="filename">rootReducer.ts</span><pre><span></span><code><span id="__span-1-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">slice</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./myNamespaceReduxGenericHooks.ts&#39;</span><span class="p">;</span>
+<div class="language-typescript highlight"><span class="filename">rootReducer.ts</span><pre><span></span><code><span id="__span-1-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">slice</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./reduxStateHooks.ts&#39;</span><span class="p">;</span>
 </span><span id="__span-1-2">
 </span><span id="__span-1-3"><span class="kd">const</span><span class="w"> </span><span class="nx">rootReducer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">combineReducers</span><span class="p">({</span>
 </span><span id="__span-1-4"><span class="w">  </span><span class="p">[</span><span class="nx">slice</span><span class="p">.</span><span class="nx">name</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">slice</span><span class="p">.</span><span class="nx">reducer</span><span class="p">,</span>
@@ -687,7 +687,7 @@ and <code>reducer</code> - reducer itself.
 Only if you want to manually dispatch changes or manually select value from Redux,
 you will need to generate dedicated selectors and actions.</p>
 <div class="language-typescript highlight"><span class="filename">useCounter.ts</span><pre><span></span><code><span id="__span-2-1"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useValue</span><span class="p">,</span><span class="w"> </span><span class="nx">createSelector</span><span class="p">,</span><span class="w"> </span><span class="nx">createAction</span>
-</span><span id="__span-2-2"><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./myNamespaceReduxGenericHooks.ts&#39;</span><span class="p">;</span>
+</span><span id="__span-2-2"><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./reduxStateHooks.ts&#39;</span><span class="p">;</span>
 </span><span id="__span-2-3">
 </span><span id="__span-2-4"><span class="kd">const</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;counter&#39;</span><span class="p">;</span>
 </span><span id="__span-2-5"><span class="kd">const</span><span class="w"> </span><span class="nx">initialValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>

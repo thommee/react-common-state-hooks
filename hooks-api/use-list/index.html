@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#uselist-interface" class="md-skip">
+        <a href="#interface" class="md-skip">
           Skip to content
         </a>
       
@@ -492,18 +492,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#uselist-interface" class="md-nav__link">
+  <a href="#interface" class="md-nav__link">
     <span class="md-ellipsis">
-      useList Interface
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#uselist-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      useList API
+      Interface
     </span>
   </a>
   
@@ -567,28 +558,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setting-new-lists" class="md-nav__link">
+  <a href="#setting-new-list" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting new lists
+      Setting new list
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Setting new lists">
+    <nav class="md-nav" aria-label="Setting new list">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#set-new-list-by-new-value" class="md-nav__link">
+  <a href="#directly" class="md-nav__link">
     <span class="md-ellipsis">
-      Set new list by new value
+      Directly
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#set-new-list-by-callback" class="md-nav__link">
+  <a href="#by-callback" class="md-nav__link">
     <span class="md-ellipsis">
-      Set new list by callback
+      By callback
     </span>
   </a>
   
@@ -640,18 +631,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#uselist-interface" class="md-nav__link">
+  <a href="#interface" class="md-nav__link">
     <span class="md-ellipsis">
-      useList Interface
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#uselist-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      useList API
+      Interface
     </span>
   </a>
   
@@ -715,28 +697,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setting-new-lists" class="md-nav__link">
+  <a href="#setting-new-list" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting new lists
+      Setting new list
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Setting new lists">
+    <nav class="md-nav" aria-label="Setting new list">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#set-new-list-by-new-value" class="md-nav__link">
+  <a href="#directly" class="md-nav__link">
     <span class="md-ellipsis">
-      Set new list by new value
+      Directly
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#set-new-list-by-callback" class="md-nav__link">
+  <a href="#by-callback" class="md-nav__link">
     <span class="md-ellipsis">
-      Set new list by callback
+      By callback
     </span>
   </a>
   
@@ -772,8 +754,8 @@
 
   <h1>useList</h1>
 
-<h3 id="uselist-interface">useList Interface</h3>
-<div class="language-typescript highlight"><span class="filename">useList parameters</span><pre><span></span><code><span id="__span-0-1"><span class="kd">interface</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="nx">ListItem</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<h3 id="interface">Interface</h3>
+<div class="language-typescript highlight"><span class="filename">Parameters</span><pre><span></span><code><span id="__span-0-1"><span class="kd">interface</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="nx">ListItem</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><span class="w">  </span><span class="p">(</span>
 </span><span id="__span-0-3"><span class="w">      </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w">                          </span><span class="c1">// unique key for list</span>
 </span><span id="__span-0-4"><span class="w">      </span><span class="nx">initialValue?</span><span class="o">:</span><span class="w"> </span><span class="kt">ListItem</span><span class="p">[],</span><span class="w">            </span><span class="c1">// initial list</span>
@@ -792,7 +774,7 @@
 </span><span id="__span-0-17"><span class="w">    </span><span class="p">(</span><span class="nx">t1</span><span class="o">:</span><span class="w"> </span><span class="kt">ListItem</span><span class="p">,</span><span class="w"> </span><span class="nx">t2</span><span class="o">:</span><span class="w"> </span><span class="kt">ListItem</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 </span><span id="__span-0-18"><span class="p">}</span>
 </span></code></pre></div>
-<div class="language-typescript highlight"><span class="filename">useList returned values</span><pre><span></span><code><span id="__span-1-1"><span class="kr">type</span><span class="w"> </span><span class="nx">UseListApi</span><span class="o">&lt;</span><span class="nx">ListItem</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<div class="language-typescript highlight"><span class="filename">Returned value</span><pre><span></span><code><span id="__span-1-1"><span class="kr">type</span><span class="w"> </span><span class="nx">UseListApi</span><span class="o">&lt;</span><span class="nx">ListItem</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 </span><span id="__span-1-2"><span class="w">    </span><span class="nx">list</span><span class="o">:</span><span class="w"> </span><span class="kt">ListItem</span><span class="p">[],</span>
 </span><span id="__span-1-3"><span class="w">    </span><span class="nx">addItem</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">listItem</span><span class="o">:</span><span class="w"> </span><span class="kt">ListItem</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">void</span><span class="p">,</span>
 </span><span id="__span-1-4"><span class="w">    </span><span class="nx">removeItem</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">listItem</span><span class="o">:</span><span class="w"> </span><span class="kt">ListItem</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">void</span><span class="p">,</span>
@@ -804,23 +786,6 @@
 </span><span id="__span-1-10"><span class="w">  </span><span class="p">(</span><span class="nx">valueFn</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">oldValue</span><span class="o">:</span><span class="w"> </span><span class="kt">List</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">List</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
 </span><span id="__span-1-11"><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="uselist-api">useList API</h3>
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-2-1"><span class="kr">type</span><span class="w"> </span><span class="nx">ListItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">};</span>
-</span><span id="__span-2-2">
-</span><span id="__span-2-3"><span class="kd">const</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;myKey&#39;</span><span class="p">;</span>
-</span><span id="__span-2-4"><span class="kd">const</span><span class="w"> </span><span class="nx">initialValue</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-</span><span id="__span-2-5">
-</span><span id="__span-2-6"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">ListOptions</span><span class="o">&lt;</span><span class="nx">ListItem</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-7"><span class="w">    </span><span class="nx">unique</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
-</span><span id="__span-2-8"><span class="w">    </span><span class="nx">skipIfExist</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
-</span><span id="__span-2-9"><span class="w">    </span><span class="nx">prepend</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
-</span><span id="__span-2-10"><span class="w">    </span><span class="nx">areEqual</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">ListItem</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">ListItem</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">id</span>
-</span><span id="__span-2-11"><span class="p">}</span>
-</span><span id="__span-2-12">
-</span><span id="__span-2-13">
-</span><span id="__span-2-14"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">,</span><span class="w"> </span><span class="nx">removeItem</span><span class="p">,</span><span class="w"> </span><span class="nx">setList</span><span class="p">]</span><span class="w"> </span>
-</span><span id="__span-2-15"><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="nx">ListItem</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="p">,</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
-</span></code></pre></div>
 <h3 id="adding-items">Adding items</h3>
 <h4 id="append-or-prepend">Append or prepend?</h4>
 <p>As default, new items are added at the end of the list.<br/>
@@ -828,20 +793,20 @@ With <code>prepend</code> option you can add new items at the beginning of the l
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">appending items</label><label for="__tabbed_1_2">prepending items</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-typescript highlight"><span class="filename">New items are added at the end of the list (default behavior)</span><pre><span></span><code><span id="__span-3-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">]);</span>
-</span><span id="__span-3-2">
-</span><span id="__span-3-3"><span class="w">                </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
-</span><span id="__span-3-4"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;b&#39;]</span>
-</span><span id="__span-3-5"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;b&#39;, &#39;x&#39;]</span>
+<div class="language-typescript highlight"><span class="filename">New items are added at the end of the list (default behavior)</span><pre><span></span><code><span id="__span-2-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">]);</span>
+</span><span id="__span-2-2">
+</span><span id="__span-2-3"><span class="w">                </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+</span><span id="__span-2-4"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;b&#39;]</span>
+</span><span id="__span-2-5"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;b&#39;, &#39;x&#39;]</span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-typescript highlight"><span class="filename">New items are added at the beginning of the list</span><pre><span></span><code><span id="__span-4-1"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">ListOptions</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">prepend</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">};</span>
-</span><span id="__span-4-2"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
-</span><span id="__span-4-3">
-</span><span id="__span-4-4"><span class="w">                </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
-</span><span id="__span-4-5"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [&#39;b&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
-</span><span id="__span-4-6"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [&#39;x&#39;, &#39;b&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+<div class="language-typescript highlight"><span class="filename">New items are added at the beginning of the list</span><pre><span></span><code><span id="__span-3-1"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">ListOptions</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">prepend</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-3-2"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
+</span><span id="__span-3-3">
+</span><span id="__span-3-4"><span class="w">                </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+</span><span id="__span-3-5"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [&#39;b&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+</span><span id="__span-3-6"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [&#39;x&#39;, &#39;b&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
 </span></code></pre></div>
 </div>
 </div>
@@ -861,40 +826,40 @@ You can modify this behavior by defining your own comparison function in the "Li
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">simple list items</label><label for="__tabbed_2_2">complex list items</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-5-1"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">ListOptions</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">unique</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">};</span>
-</span><span id="__span-5-2"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
-</span><span id="__span-5-3">
-</span><span id="__span-5-4"><span class="w">                    </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
-</span><span id="__span-5-5"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">);</span><span class="w">       </span><span class="c1">// list: [&#39;b&#39;, &#39;c&#39;, &#39;a&#39;]</span>
-</span><span id="__span-5-6"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w">       </span><span class="c1">// list: [&#39;b&#39;, &#39;c&#39;, &#39;a&#39;, &#39;x&#39;]</span>
-</span><span id="__span-5-7"><span class="nx">addItem</span><span class="p">(</span><span class="nx">list</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span><span class="w">   </span><span class="c1">// list: [&#39;c&#39;, &#39;a&#39;, &#39;x&#39;, &#39;b&#39;]</span>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-4-1"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">ListOptions</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">unique</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-4-2"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
+</span><span id="__span-4-3">
+</span><span id="__span-4-4"><span class="w">                    </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+</span><span id="__span-4-5"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">);</span><span class="w">       </span><span class="c1">// list: [&#39;b&#39;, &#39;c&#39;, &#39;a&#39;]</span>
+</span><span id="__span-4-6"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w">       </span><span class="c1">// list: [&#39;b&#39;, &#39;c&#39;, &#39;a&#39;, &#39;x&#39;]</span>
+</span><span id="__span-4-7"><span class="nx">addItem</span><span class="p">(</span><span class="nx">list</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span><span class="w">   </span><span class="c1">// list: [&#39;c&#39;, &#39;a&#39;, &#39;x&#39;, &#39;b&#39;]</span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-typescript highlight"><span class="filename">Default comparison function</span><pre><span></span><code><span id="__span-6-1"><span class="kr">type</span><span class="w"> </span><span class="nx">Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-6-2">
-</span><span id="__span-6-3"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">ListOptions</span><span class="o">&lt;</span><span class="nx">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">unique</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">};</span>
-</span><span id="__span-6-4"><span class="kd">const</span><span class="w"> </span><span class="nx">initialValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">2</span><span class="w"> </span><span class="p">}];</span>
-</span><span id="__span-6-5"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="nx">Item</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="p">,</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
-</span><span id="__span-6-6">
-</span><span id="__span-6-7"><span class="w">                                </span><span class="c1">// list: [{ id: &#39;a&#39;, v: 1 }, { id: &#39;b&#39;, v: 2 }}]</span>
-</span><span id="__span-6-8"><span class="nx">addItem</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">11</span><span class="w"> </span><span class="p">});</span><span class="w">    </span><span class="c1">// list: [{ id: &#39;a&#39;, v: 1 }, { id: &#39;b&#39;, v: 2 }, { id: &#39;a&#39;, v: 11 }]</span>
-</span><span id="__span-6-9"><span class="nx">addItem</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">22</span><span class="w"> </span><span class="p">});</span><span class="w">    </span><span class="c1">// list: [{ id: &#39;a&#39;, v: 1 }, { id: &#39;b&#39;, v: 2 }, { id: &#39;a&#39;, v: 11 }, { id: &#39;x&#39;, v: 22 }]</span>
-</span><span id="__span-6-10"><span class="nx">addItem</span><span class="p">(</span><span class="nx">list</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span><span class="w">               </span><span class="c1">// list: [{ id: &#39;b&#39;, v: 2 }, { id: &#39;a&#39;, v: 11 }, { id: &#39;x&#39;, v: 22 }, { id: &#39;a&#39;, v: 1 }]</span>
+<div class="language-typescript highlight"><span class="filename">Default comparison function</span><pre><span></span><code><span id="__span-5-1"><span class="kr">type</span><span class="w"> </span><span class="nx">Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-5-2">
+</span><span id="__span-5-3"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">ListOptions</span><span class="o">&lt;</span><span class="nx">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">unique</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-5-4"><span class="kd">const</span><span class="w"> </span><span class="nx">initialValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">2</span><span class="w"> </span><span class="p">}];</span>
+</span><span id="__span-5-5"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="nx">Item</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="p">,</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
+</span><span id="__span-5-6">
+</span><span id="__span-5-7"><span class="w">                                </span><span class="c1">// list: [{ id: &#39;a&#39;, v: 1 }, { id: &#39;b&#39;, v: 2 }}]</span>
+</span><span id="__span-5-8"><span class="nx">addItem</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">11</span><span class="w"> </span><span class="p">});</span><span class="w">    </span><span class="c1">// list: [{ id: &#39;a&#39;, v: 1 }, { id: &#39;b&#39;, v: 2 }, { id: &#39;a&#39;, v: 11 }]</span>
+</span><span id="__span-5-9"><span class="nx">addItem</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">22</span><span class="w"> </span><span class="p">});</span><span class="w">    </span><span class="c1">// list: [{ id: &#39;a&#39;, v: 1 }, { id: &#39;b&#39;, v: 2 }, { id: &#39;a&#39;, v: 11 }, { id: &#39;x&#39;, v: 22 }]</span>
+</span><span id="__span-5-10"><span class="nx">addItem</span><span class="p">(</span><span class="nx">list</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span><span class="w">               </span><span class="c1">// list: [{ id: &#39;b&#39;, v: 2 }, { id: &#39;a&#39;, v: 11 }, { id: &#39;x&#39;, v: 22 }, { id: &#39;a&#39;, v: 1 }]</span>
 </span></code></pre></div>
-<div class="language-typescript highlight"><span class="filename">Custom &quot;areEqual&quot; function</span><pre><span></span><code><span id="__span-7-1"><span class="kr">type</span><span class="w"> </span><span class="nx">Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-7-2">
-</span><span id="__span-7-3"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">ListOptions</span><span class="o">&lt;</span><span class="nx">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-7-4"><span class="w">    </span><span class="nx">unique</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
-</span><span id="__span-7-5"><span class="w">    </span><span class="nx">areEqual</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">id</span>
-</span><span id="__span-7-6"><span class="p">};</span>
-</span><span id="__span-7-7"><span class="kd">const</span><span class="w"> </span><span class="nx">initialValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">2</span><span class="w"> </span><span class="p">}];</span>
-</span><span id="__span-7-8"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="nx">Item</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="p">,</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
-</span><span id="__span-7-9">
-</span><span id="__span-7-10"><span class="w">                                </span><span class="c1">// list: [{ id: &#39;a&#39;, v: 1 }, { id: &#39;b&#39;, v: 2 }]</span>
-</span><span id="__span-7-11"><span class="nx">addItem</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">11</span><span class="w"> </span><span class="p">});</span><span class="w">    </span><span class="c1">// list: [{ id: &#39;b&#39;, v: 2 }, { id: &#39;a&#39;, v: 11 }]</span>
-</span><span id="__span-7-12"><span class="nx">addItem</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">22</span><span class="w"> </span><span class="p">});</span><span class="w">    </span><span class="c1">// list: [{ id: &#39;b&#39;, v: 2 }, { id: &#39;a&#39;, v: 11 }, { id: &#39;x&#39;, v: 22 }]</span>
-</span><span id="__span-7-13"><span class="nx">addItem</span><span class="p">(</span><span class="nx">list</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span><span class="w">               </span><span class="c1">// list: [{ id: &#39;a&#39;, v: 11 }, { id: &#39;x&#39;, v: 22 }, { id: &#39;b&#39;, v: 2 }]</span>
+<div class="language-typescript highlight"><span class="filename">Custom &quot;areEqual&quot; function</span><pre><span></span><code><span id="__span-6-1"><span class="kr">type</span><span class="w"> </span><span class="nx">Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-6-2">
+</span><span id="__span-6-3"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">ListOptions</span><span class="o">&lt;</span><span class="nx">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-4"><span class="w">    </span><span class="nx">unique</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+</span><span id="__span-6-5"><span class="w">    </span><span class="nx">areEqual</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">id</span>
+</span><span id="__span-6-6"><span class="p">};</span>
+</span><span id="__span-6-7"><span class="kd">const</span><span class="w"> </span><span class="nx">initialValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">2</span><span class="w"> </span><span class="p">}];</span>
+</span><span id="__span-6-8"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="nx">Item</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="p">,</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
+</span><span id="__span-6-9">
+</span><span id="__span-6-10"><span class="w">                                </span><span class="c1">// list: [{ id: &#39;a&#39;, v: 1 }, { id: &#39;b&#39;, v: 2 }]</span>
+</span><span id="__span-6-11"><span class="nx">addItem</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">11</span><span class="w"> </span><span class="p">});</span><span class="w">    </span><span class="c1">// list: [{ id: &#39;b&#39;, v: 2 }, { id: &#39;a&#39;, v: 11 }]</span>
+</span><span id="__span-6-12"><span class="nx">addItem</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">22</span><span class="w"> </span><span class="p">});</span><span class="w">    </span><span class="c1">// list: [{ id: &#39;b&#39;, v: 2 }, { id: &#39;a&#39;, v: 11 }, { id: &#39;x&#39;, v: 22 }]</span>
+</span><span id="__span-6-13"><span class="nx">addItem</span><span class="p">(</span><span class="nx">list</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span><span class="w">               </span><span class="c1">// list: [{ id: &#39;a&#39;, v: 11 }, { id: &#39;x&#39;, v: 22 }, { id: &#39;b&#39;, v: 2 }]</span>
 </span></code></pre></div>
 </div>
 </div>
@@ -906,28 +871,28 @@ element does not affect the list, and the operation is ignored.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">simple list items</label><label for="__tabbed_3_2">complex list items</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-8-1"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">ListOptions</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">unique</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"> </span><span class="nx">skipIfExist</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">};</span>
-</span><span id="__span-8-2"><span class="kd">const</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
-</span><span id="__span-8-3">
-</span><span id="__span-8-4"><span class="w">                </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
-</span><span id="__span-8-5"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
-</span><span id="__span-8-6"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;x&#39;]    </span>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-7-1"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">ListOptions</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">unique</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"> </span><span class="nx">skipIfExist</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-7-2"><span class="kd">const</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
+</span><span id="__span-7-3">
+</span><span id="__span-7-4"><span class="w">                </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+</span><span id="__span-7-5"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+</span><span id="__span-7-6"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;x&#39;]    </span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-9-1"><span class="kr">type</span><span class="w"> </span><span class="nx">Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-9-2">
-</span><span id="__span-9-3"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">ListOptions</span><span class="o">&lt;</span><span class="nx">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-4"><span class="w">    </span><span class="nx">unique</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
-</span><span id="__span-9-5"><span class="w">    </span><span class="nx">skipIfExist</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
-</span><span id="__span-9-6"><span class="w">    </span><span class="nx">areEqual</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">id</span>
-</span><span id="__span-9-7"><span class="p">};</span>
-</span><span id="__span-9-8"><span class="kd">const</span><span class="w"> </span><span class="nx">initialValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="w"> </span><span class="p">}];</span>
-</span><span id="__span-9-9"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="nx">Item</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="p">,</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
-</span><span id="__span-9-10">
-</span><span id="__span-9-11"><span class="w">                </span><span class="c1">// list: [{ id: &#39;a&#39; }, { id: &#39;b&#39; }, { id: &#39;c&#39; }]</span>
-</span><span id="__span-9-12"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [{ id: &#39;a&#39; }, { id: &#39;b&#39; }, { id: &#39;c&#39; }]</span>
-</span><span id="__span-9-13"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [{ id: &#39;a&#39; }, { id: &#39;b&#39; }, { id: &#39;c&#39; }, { id: &#39;x&#39; }]</span>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-8-1"><span class="kr">type</span><span class="w"> </span><span class="nx">Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-8-2">
+</span><span id="__span-8-3"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">ListOptions</span><span class="o">&lt;</span><span class="nx">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-4"><span class="w">    </span><span class="nx">unique</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+</span><span id="__span-8-5"><span class="w">    </span><span class="nx">skipIfExist</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+</span><span id="__span-8-6"><span class="w">    </span><span class="nx">areEqual</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">id</span>
+</span><span id="__span-8-7"><span class="p">};</span>
+</span><span id="__span-8-8"><span class="kd">const</span><span class="w"> </span><span class="nx">initialValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="w"> </span><span class="p">}];</span>
+</span><span id="__span-8-9"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="nx">Item</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="p">,</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
+</span><span id="__span-8-10">
+</span><span id="__span-8-11"><span class="w">                </span><span class="c1">// list: [{ id: &#39;a&#39; }, { id: &#39;b&#39; }, { id: &#39;c&#39; }]</span>
+</span><span id="__span-8-12"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [{ id: &#39;a&#39; }, { id: &#39;b&#39; }, { id: &#39;c&#39; }]</span>
+</span><span id="__span-8-13"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// list: [{ id: &#39;a&#39; }, { id: &#39;b&#39; }, { id: &#39;c&#39; }, { id: &#39;x&#39; }]</span>
 </span></code></pre></div>
 </div>
 </div>
@@ -938,52 +903,52 @@ element does not affect the list, and the operation is ignored.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">simple list items</label><label for="__tabbed_4_2">complex list items</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-10-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,,</span><span class="w"> </span><span class="nx">removeItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">]);</span>
-</span><span id="__span-10-2">
-</span><span id="__span-10-3"><span class="w">                    </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
-</span><span id="__span-10-4"><span class="nx">removeItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w">    </span><span class="c1">// list: [&#39;a&#39;, &#39;c&#39;]</span>
-</span><span id="__span-10-5"><span class="nx">removeItem</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w">    </span><span class="c1">// list: [&#39;a&#39;, &#39;c&#39;]  </span>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-9-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,,</span><span class="w"> </span><span class="nx">removeItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">]);</span>
+</span><span id="__span-9-2">
+</span><span id="__span-9-3"><span class="w">                    </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+</span><span id="__span-9-4"><span class="nx">removeItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w">    </span><span class="c1">// list: [&#39;a&#39;, &#39;c&#39;]</span>
+</span><span id="__span-9-5"><span class="nx">removeItem</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w">    </span><span class="c1">// list: [&#39;a&#39;, &#39;c&#39;]  </span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-11-1"><span class="kr">type</span><span class="w"> </span><span class="nx">Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">};</span>
-</span><span id="__span-11-2">
-</span><span id="__span-11-3"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-11-4"><span class="w">    </span><span class="nx">areEqual</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">id</span>
-</span><span id="__span-11-5"><span class="p">}</span>
-</span><span id="__span-11-6"><span class="kd">const</span><span class="w"> </span><span class="nx">initialValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="w"> </span><span class="p">}];</span>
-</span><span id="__span-11-7"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,,</span><span class="w"> </span><span class="nx">removeItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="nx">Item</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="p">,</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
-</span><span id="__span-11-8">
-</span><span id="__span-11-9"><span class="w">                            </span><span class="c1">// list: [{ id: &#39;a&#39; }, { id: &#39;b&#39; }, { id: &#39;c&#39; }]</span>
-</span><span id="__span-11-10"><span class="nx">removeItem</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="w"> </span><span class="p">});</span><span class="w">    </span><span class="c1">// list: [{ id: &#39;a&#39; }, { id: &#39;c&#39; }]</span>
-</span><span id="__span-11-11"><span class="nx">removeItem</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;x&#39;</span><span class="w"> </span><span class="p">});</span><span class="w">    </span><span class="c1">// list: [{ id: &#39;a&#39; }, { id: &#39;c&#39; }]</span>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-10-1"><span class="kr">type</span><span class="w"> </span><span class="nx">Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-10-2">
+</span><span id="__span-10-3"><span class="kd">const</span><span class="w"> </span><span class="nx">listOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-4"><span class="w">    </span><span class="nx">areEqual</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">id</span>
+</span><span id="__span-10-5"><span class="p">}</span>
+</span><span id="__span-10-6"><span class="kd">const</span><span class="w"> </span><span class="nx">initialValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="w"> </span><span class="p">}];</span>
+</span><span id="__span-10-7"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,,</span><span class="w"> </span><span class="nx">removeItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="nx">Item</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="p">,</span><span class="w"> </span><span class="nx">listOptions</span><span class="p">);</span>
+</span><span id="__span-10-8">
+</span><span id="__span-10-9"><span class="w">                            </span><span class="c1">// list: [{ id: &#39;a&#39; }, { id: &#39;b&#39; }, { id: &#39;c&#39; }]</span>
+</span><span id="__span-10-10"><span class="nx">removeItem</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="w"> </span><span class="p">});</span><span class="w">    </span><span class="c1">// list: [{ id: &#39;a&#39; }, { id: &#39;c&#39; }]</span>
+</span><span id="__span-10-11"><span class="nx">removeItem</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;x&#39;</span><span class="w"> </span><span class="p">});</span><span class="w">    </span><span class="c1">// list: [{ id: &#39;a&#39; }, { id: &#39;c&#39; }]</span>
 </span></code></pre></div>
 </div>
 </div>
 </div>
-<h3 id="setting-new-lists">Setting new lists</h3>
-<h4 id="set-new-list-by-new-value">Set new list by new value</h4>
+<h3 id="setting-new-list">Setting new list</h3>
+<h4 id="directly">Directly</h4>
 <p>You can set new list by calling <code>setList</code> with new list parameter.
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-12-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,,,</span><span class="w"> </span><span class="nx">setList</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">]);</span>
-</span><span id="__span-12-2">
-</span><span id="__span-12-3"><span class="w">                      </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
-</span><span id="__span-12-4"><span class="nx">setList</span><span class="p">([</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;y&#39;</span><span class="p">]);</span><span class="w">  </span><span class="c1">// list: [&#39;x&#39;, &#39;y&#39;]</span>
-</span><span id="__span-12-5"><span class="nx">setList</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">]);</span><span class="w">       </span><span class="c1">// list: [&#39;a&#39;]</span>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-11-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">list</span><span class="p">,,,</span><span class="w"> </span><span class="nx">setList</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">]);</span>
+</span><span id="__span-11-2">
+</span><span id="__span-11-3"><span class="w">                      </span><span class="c1">// list: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+</span><span id="__span-11-4"><span class="nx">setList</span><span class="p">([</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;y&#39;</span><span class="p">]);</span><span class="w">  </span><span class="c1">// list: [&#39;x&#39;, &#39;y&#39;]</span>
+</span><span id="__span-11-5"><span class="nx">setList</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">]);</span><span class="w">       </span><span class="c1">// list: [&#39;a&#39;]</span>
 </span></code></pre></div></p>
-<h4 id="set-new-list-by-callback">Set new list by callback</h4>
+<h4 id="by-callback">By callback</h4>
 <p>If value provided to <code>setList</code> is a function, it will be called with <em>oldValue</em> parameter, 
 and returned value from this function will be set as new list. </p>
 <p>With this mechanism you can resolve new value based on old value.
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-13-1"><span class="kd">const</span><span class="w"> </span><span class="p">[,,,</span><span class="w"> </span><span class="nx">setList</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[]);</span>
-</span><span id="__span-13-2">
-</span><span id="__span-13-3"><span class="kd">const</span><span class="w"> </span><span class="nx">setNewListIfEmpty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">newList</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span>
-</span><span id="__span-13-4"><span class="w">    </span><span class="nx">setList</span><span class="p">((</span><span class="nx">oldList</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-13-5"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="nx">oldList</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">oldList</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">newList</span><span class="p">;</span>
-</span><span id="__span-13-6"><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-13-7"><span class="p">);</span>
-</span><span id="__span-13-8"><span class="w">                                </span><span class="c1">// list: []</span>
-</span><span id="__span-13-9"><span class="nx">setNewListIfEmpty</span><span class="p">([</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;y&#39;</span><span class="p">]);</span><span class="w">  </span><span class="c1">// list: [&#39;x&#39;, &#39;y&#39;]</span>
-</span><span id="__span-13-10"><span class="nx">setNewListIfEmpty</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">]);</span><span class="w">       </span><span class="c1">// list: [&#39;x&#39;, &#39;y&#39;]</span>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-12-1"><span class="kd">const</span><span class="w"> </span><span class="p">[,,,</span><span class="w"> </span><span class="nx">setList</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[]);</span>
+</span><span id="__span-12-2">
+</span><span id="__span-12-3"><span class="kd">const</span><span class="w"> </span><span class="nx">setNewListIfEmpty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">newList</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span>
+</span><span id="__span-12-4"><span class="w">    </span><span class="nx">setList</span><span class="p">((</span><span class="nx">oldList</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-5"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="nx">oldList</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">oldList</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">newList</span><span class="p">;</span>
+</span><span id="__span-12-6"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-12-7"><span class="p">);</span>
+</span><span id="__span-12-8"><span class="w">                                </span><span class="c1">// list: []</span>
+</span><span id="__span-12-9"><span class="nx">setNewListIfEmpty</span><span class="p">([</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;y&#39;</span><span class="p">]);</span><span class="w">  </span><span class="c1">// list: [&#39;x&#39;, &#39;y&#39;]</span>
+</span><span id="__span-12-10"><span class="nx">setNewListIfEmpty</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">]);</span><span class="w">       </span><span class="c1">// list: [&#39;x&#39;, &#39;y&#39;]</span>
 </span></code></pre></div></p>
 
 

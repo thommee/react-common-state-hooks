@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#userecord-interfaces" class="md-skip">
+        <a href="#interface" class="md-skip">
           Skip to content
         </a>
       
@@ -474,18 +474,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#userecord-interfaces" class="md-nav__link">
+  <a href="#interface" class="md-nav__link">
     <span class="md-ellipsis">
-      useRecord Interfaces
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#userecord-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      useRecord API
+      Interface
     </span>
   </a>
   
@@ -525,28 +516,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setting-new-records" class="md-nav__link">
+  <a href="#setting-new-record" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting new records
+      Setting new record
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Setting new records">
+    <nav class="md-nav" aria-label="Setting new record">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#set-new-record-by-new-value" class="md-nav__link">
+  <a href="#directly" class="md-nav__link">
     <span class="md-ellipsis">
-      Set new record by new value
+      Directly
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#set-new-record-by-callback" class="md-nav__link">
+  <a href="#by-callback" class="md-nav__link">
     <span class="md-ellipsis">
-      Set new record by callback
+      By callback
     </span>
   </a>
   
@@ -618,18 +609,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#userecord-interfaces" class="md-nav__link">
+  <a href="#interface" class="md-nav__link">
     <span class="md-ellipsis">
-      useRecord Interfaces
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#userecord-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      useRecord API
+      Interface
     </span>
   </a>
   
@@ -669,28 +651,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setting-new-records" class="md-nav__link">
+  <a href="#setting-new-record" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting new records
+      Setting new record
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Setting new records">
+    <nav class="md-nav" aria-label="Setting new record">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#set-new-record-by-new-value" class="md-nav__link">
+  <a href="#directly" class="md-nav__link">
     <span class="md-ellipsis">
-      Set new record by new value
+      Directly
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#set-new-record-by-callback" class="md-nav__link">
+  <a href="#by-callback" class="md-nav__link">
     <span class="md-ellipsis">
-      Set new record by callback
+      By callback
     </span>
   </a>
   
@@ -726,13 +708,13 @@
 
   <h1>useRecord</h1>
 
-<h3 id="userecord-interfaces">useRecord Interfaces</h3>
-<div class="language-typescript highlight"><span class="filename">useRecord parameters</span><pre><span></span><code><span id="__span-0-1"><span class="kd">interface</span><span class="w"> </span><span class="nx">useRecord</span><span class="o">&lt;</span><span class="nx">RecordItem</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<h3 id="interface">Interface</h3>
+<div class="language-typescript highlight"><span class="filename">Parameters</span><pre><span></span><code><span id="__span-0-1"><span class="kd">interface</span><span class="w"> </span><span class="nx">useRecord</span><span class="o">&lt;</span><span class="nx">RecordItem</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><span class="w">  </span><span class="p">(</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue?</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">RecordItem</span><span class="o">&gt;</span>
 </span><span id="__span-0-3"><span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">UseRecordApi</span><span class="o">&lt;</span><span class="nx">RecordItem</span><span class="o">&gt;</span>
 </span><span id="__span-0-4"><span class="p">}</span>
 </span></code></pre></div>
-<div class="language-typescript highlight"><span class="filename">useRecord returned values</span><pre><span></span><code><span id="__span-1-1"><span class="kr">type</span><span class="w"> </span><span class="nx">UseRecordApi</span><span class="o">&lt;</span><span class="nx">RecordItem</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<div class="language-typescript highlight"><span class="filename">Returned value</span><pre><span></span><code><span id="__span-1-1"><span class="kr">type</span><span class="w"> </span><span class="nx">UseRecordApi</span><span class="o">&lt;</span><span class="nx">RecordItem</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 </span><span id="__span-1-2"><span class="w">  </span><span class="nx">record</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">RecordItem</span><span class="o">&gt;</span><span class="p">,</span>
 </span><span id="__span-1-3"><span class="w">  </span><span class="nx">addItem</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">recordItem</span><span class="o">:</span><span class="w"> </span><span class="kt">RecordItem</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">void</span><span class="p">,</span>
 </span><span id="__span-1-4"><span class="w">  </span><span class="nx">removeItem</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">void</span><span class="p">,</span>
@@ -744,50 +726,47 @@
 </span><span id="__span-1-10"><span class="w">  </span><span class="p">(</span><span class="nx">valueFn</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">oldValue</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">Record</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
 </span><span id="__span-1-11"><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="userecord-api">useRecord API</h3>
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-2-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">record</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">,</span><span class="w"> </span><span class="nx">removeItem</span><span class="p">,</span><span class="w"> </span><span class="nx">setRecord</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRecord</span><span class="p">(</span><span class="s1">&#39;my-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{});</span>
-</span></code></pre></div>
 <h3 id="adding-items">Adding items</h3>
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-3-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">record</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRecord</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">);</span>
-</span><span id="__span-3-2">
-</span><span id="__span-3-3"><span class="w">                    </span><span class="c1">// record: {}</span>
-</span><span id="__span-3-4"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { a: &#39;A&#39; }</span>
-</span><span id="__span-3-5"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { a: &#39;A&#39;, b: &#39;B&#39; }</span>
-</span><span id="__span-3-6"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;C&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { a: &#39;C&#39;, b: &#39;B&#39; }</span>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-2-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">record</span><span class="p">,</span><span class="w"> </span><span class="nx">addItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRecord</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">);</span>
+</span><span id="__span-2-2">
+</span><span id="__span-2-3"><span class="w">                    </span><span class="c1">// record: {}</span>
+</span><span id="__span-2-4"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { a: &#39;A&#39; }</span>
+</span><span id="__span-2-5"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { a: &#39;A&#39;, b: &#39;B&#39; }</span>
+</span><span id="__span-2-6"><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;C&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { a: &#39;C&#39;, b: &#39;B&#39; }</span>
 </span></code></pre></div>
 <hr />
 <h3 id="removing-items">Removing items</h3>
 <h4 id="remove-item">Remove item</h4>
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-4-1"><span class="kd">const</span><span class="w"> </span><span class="nx">initialValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;C&#39;</span><span class="w"> </span><span class="p">};</span>
-</span><span id="__span-4-2"><span class="kd">const</span><span class="w"> </span><span class="p">[,,</span><span class="w"> </span><span class="nx">removeItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRecord</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="p">);</span>
-</span><span id="__span-4-3">
-</span><span id="__span-4-4"><span class="w">                  </span><span class="c1">// record: { a: &#39;A&#39;, b: &#39;B&#39;, c: &#39;C&#39; }</span>
-</span><span id="__span-4-5"><span class="nx">removeItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { a: &#39;A&#39;, c: &#39;C&#39; }</span>
-</span><span id="__span-4-6"><span class="nx">removeItem</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { c: &#39;C&#39; }</span>
-</span><span id="__span-4-7"><span class="nx">removeItem</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { c: &#39;C&#39; }</span>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-3-1"><span class="kd">const</span><span class="w"> </span><span class="nx">initialValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;C&#39;</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-3-2"><span class="kd">const</span><span class="w"> </span><span class="p">[,,</span><span class="w"> </span><span class="nx">removeItem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRecord</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">initialValue</span><span class="p">);</span>
+</span><span id="__span-3-3">
+</span><span id="__span-3-4"><span class="w">                  </span><span class="c1">// record: { a: &#39;A&#39;, b: &#39;B&#39;, c: &#39;C&#39; }</span>
+</span><span id="__span-3-5"><span class="nx">removeItem</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { a: &#39;A&#39;, c: &#39;C&#39; }</span>
+</span><span id="__span-3-6"><span class="nx">removeItem</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { c: &#39;C&#39; }</span>
+</span><span id="__span-3-7"><span class="nx">removeItem</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// record: { c: &#39;C&#39; }</span>
 </span></code></pre></div>
-<h3 id="setting-new-records">Setting new records</h3>
-<h4 id="set-new-record-by-new-value">Set new record by new value</h4>
+<h3 id="setting-new-record">Setting new record</h3>
+<h4 id="directly">Directly</h4>
 <p>You can set new record by calling <code>setRecord</code> with <em>newRecord</em> parameter.
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-5-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">record</span><span class="p">,,,</span><span class="w"> </span><span class="nx">setRecord</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRecord</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="w"> </span><span class="p">});</span>
-</span><span id="__span-5-2">
-</span><span id="__span-5-3"><span class="w">                        </span><span class="c1">// record: { a: &#39;A&#39; }</span>
-</span><span id="__span-5-4"><span class="nx">setRecord</span><span class="p">({</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="w"> </span><span class="p">});</span><span class="w">  </span><span class="c1">// record: { b: &#39;B&#39; }</span>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-4-1"><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">record</span><span class="p">,,,</span><span class="w"> </span><span class="nx">setRecord</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRecord</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-4-2">
+</span><span id="__span-4-3"><span class="w">                        </span><span class="c1">// record: { a: &#39;A&#39; }</span>
+</span><span id="__span-4-4"><span class="nx">setRecord</span><span class="p">({</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="w"> </span><span class="p">});</span><span class="w">  </span><span class="c1">// record: { b: &#39;B&#39; }</span>
 </span></code></pre></div></p>
-<h4 id="set-new-record-by-callback">Set new record by callback</h4>
+<h4 id="by-callback">By callback</h4>
 <p>If value provided to <code>setRecord</code> is a function, it will be called with <em>oldValue</em> parameter,
 and returned value from this function will be set as new record.</p>
 <p>With this mechanism you can resolve new value based on old value.
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-6-1"><span class="kd">const</span><span class="w"> </span><span class="p">[,,,</span><span class="w"> </span><span class="nx">setRecord</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRecord</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">);</span>
-</span><span id="__span-6-2">
-</span><span id="__span-6-3"><span class="kd">const</span><span class="w"> </span><span class="nx">setNewRecordIfEmpty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">newRecord</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span>
-</span><span id="__span-6-4"><span class="w">    </span><span class="nx">setRecord</span><span class="p">((</span><span class="nx">oldRecord</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-5"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">oldRecord</span><span class="p">).</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">oldRecord</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">newRecord</span><span class="p">;</span>
-</span><span id="__span-6-6"><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-6-7"><span class="p">);</span>
-</span><span id="__span-6-8"><span class="w">                                  </span><span class="c1">// record: {}</span>
-</span><span id="__span-6-9"><span class="nx">setNewRecordIfEmpty</span><span class="p">({</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="w"> </span><span class="p">});</span><span class="w">  </span><span class="c1">// record: { b: &#39;B&#39; }</span>
-</span><span id="__span-6-10"><span class="nx">setNewRecordIfEmpty</span><span class="p">({</span><span class="w"> </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;C&#39;</span><span class="w"> </span><span class="p">});</span><span class="w">  </span><span class="c1">// record: { b: &#39;B&#39; }</span>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-5-1"><span class="kd">const</span><span class="w"> </span><span class="p">[,,,</span><span class="w"> </span><span class="nx">setRecord</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRecord</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;some-key&#39;</span><span class="p">);</span>
+</span><span id="__span-5-2">
+</span><span id="__span-5-3"><span class="kd">const</span><span class="w"> </span><span class="nx">setNewRecordIfEmpty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">newRecord</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span>
+</span><span id="__span-5-4"><span class="w">    </span><span class="nx">setRecord</span><span class="p">((</span><span class="nx">oldRecord</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-5"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">oldRecord</span><span class="p">).</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">oldRecord</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">newRecord</span><span class="p">;</span>
+</span><span id="__span-5-6"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-7"><span class="p">);</span>
+</span><span id="__span-5-8"><span class="w">                                  </span><span class="c1">// record: {}</span>
+</span><span id="__span-5-9"><span class="nx">setNewRecordIfEmpty</span><span class="p">({</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="w"> </span><span class="p">});</span><span class="w">  </span><span class="c1">// record: { b: &#39;B&#39; }</span>
+</span><span id="__span-5-10"><span class="nx">setNewRecordIfEmpty</span><span class="p">({</span><span class="w"> </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;C&#39;</span><span class="w"> </span><span class="p">});</span><span class="w">  </span><span class="c1">// record: { b: &#39;B&#39; }</span>
 </span></code></pre></div></p>
 
 
