@@ -15,7 +15,7 @@ type ListOptions<ListItem> = {
     unique?: boolean;                 // ensure the uniqueness of elements in the list
     skipIfExist?: boolean;            // skip list update if element exists on the list (see "areEqual")
     areEqual?: EqualityFn<ListItem>;  // comparison function between two elements of the list
-    sizeLimit?: number;               // limit list size (FIFO / LIFO - depennds on "prepend" value)
+    sizeLimit?: number;               // list max size limit
 };
 
 interface EqualityFn<ListItem> {
