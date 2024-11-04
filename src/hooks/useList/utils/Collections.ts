@@ -7,6 +7,7 @@ export type ListOptions<T> = {
   skipIfExist?: boolean; // do not update e.g. move to the top
   prepend?: boolean;
   areEqual?: EqualityFn<T>;
+  sizeLimit?: number;
 };
 
 const defaultAreEqual = <T>(a: T, b: T) => a === b;
@@ -42,6 +43,14 @@ export function remove<T>(collection: T[], element: T, areEqual?: EqualityFn<T>)
     const c = [...collection];
     c.splice(index, 1);
     return c;
+  }
+  return collection;
+}
+
+export function applyLimit<T>(collection: T[], options: ListOptions<T> = {}): T[] {
+  if (options.sizeLimit && options.sizeLimit > 0 && collection.length > options.sizeLimit) {
+    const deleteCount = collection.length - options.sizeLimit;
+    collection.splice(options.prepend ? -deleteCount : 0, deleteCount);
   }
   return collection;
 }

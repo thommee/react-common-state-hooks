@@ -15,6 +15,7 @@ type ListOptions<ListItem> = {
     unique?: boolean;                 // ensure the uniqueness of elements in the list
     skipIfExist?: boolean;            // skip list update if element exists on the list (see "areEqual")
     areEqual?: EqualityFn<ListItem>;  // comparison function between two elements of the list
+    sizeLimit?: number;               // limit list size (FIFO / LIFO - depennds on "prepend" value)
 };
 
 interface EqualityFn<ListItem> {
@@ -79,6 +80,32 @@ With `prepend` option you can add new items at the beginning of the list.
     addItem('b');   // list: ['b', 'a', 'b', 'c']
     addItem('x');   // list: ['x', 'b', 'a', 'b', 'c']
     ```
+
+!!! info ""sizeLimit" option"
+    If length of the list exceeds `sizeLimit` value, list is shorted by cutting 
+    beginning of the list (default behaviour)
+    or ending of the list if `prepend` option is set to `true`
+
+
+=== "appending items with sizeLimit"
+    ```typescript title="New items are added at the end of the list. Beginning of the list will be cut (if needed)"
+    const listOptions: ListOptions<string> = { sizeLimit: 4 };
+    const [list, addItem] = useList<string>('key', ['a', 'b', 'c'], listOptions);
+
+                    // list: ['a', 'b', 'c']
+    addItem('d');   // list: ['a', 'b', 'c', 'd']
+    addItem('e');   // list: ['b', 'c', 'b', 'e']
+    ```
+=== "prepending items with sizeLimit"
+    ```typescript title="New items are added at the beginning of the list. Ending of the list will be cut (if needed)"
+    const listOptions: ListOptions<string> = { prepend: true, sizeLimit: 4 };
+    const [list, addItem] = useList<string>('key', ['a', 'b', 'c'], listOptions);
+
+                    // list: ['a', 'b', 'c']
+    addItem('d');   // list: ['d', 'a', 'b', 'c']
+    addItem('e');   // list: ['e', 'd', 'a', 'b']
+    ```
+
 
 ---
 #### Uniqueness check
@@ -193,29 +220,51 @@ element does not affect the list, and the operation is ignored.
     ```
 
 ### Setting new lists
-#### Set new list by new value
+#### Set new list by value or by callback
 You can set new list by calling `setList` with new list parameter.
-```typescript
-const [list,,, setList] = useList<string>('some-key', ['a', 'b', 'c']);
-
-                      // list: ['a', 'b', 'c']
-setList(['x', 'y']);  // list: ['x', 'y']
-setList(['a']);       // list: ['a']
-```
-#### Set new list by callback
-If value provided to `setList` is a function, it will be called with _oldValue_ parameter, 
-and returned value from this function will be set as new list. 
-
+If value provided to `setList` is a function, it will be called with _oldValue_ parameter,
+and returned value from this function will be set as new list.
 With this mechanism you can resolve new value based on old value.
-```typescript
-const [,,, setList] = useList<string>('some-key', []);
 
-const setNewListIfEmpty = (newList: string[]) => 
-    setList((oldList: string[]) => {
-        return (oldList.length > 0) ? oldList : newList;
-    }
-);
-                                // list: []
-setNewListIfEmpty(['x', 'y']);  // list: ['x', 'y']
-setNewListIfEmpty(['a']);       // list: ['x', 'y']
-```
+=== "set list by value"
+    ```typescript
+    const [list,,, setList] = useList<string>('some-key', ['a', 'b', 'c']);
+
+                          // list: ['a', 'b', 'c']
+    setList(['x', 'y']);  // list: ['x', 'y']
+    setList(['a']);       // list: ['a']
+    ```
+
+=== "set list by callback"
+    ```typescript
+    const [,,, setList] = useList<string>('some-key', []);
+
+    const setNewListIfEmpty = (newList: string[]) => 
+        setList((oldList: string[]) => {
+            return (oldList.length > 0) ? oldList : newList;
+        }
+    );
+                                    // list: []
+    setNewListIfEmpty(['x', 'y']);  // list: ['x', 'y']
+    setNewListIfEmpty(['a']);       // list: ['x', 'y']
+    ```
+
+!!! info "Set new list with sizeLimit"
+    If `sizeLimit` value is set and size of the list provided to `setList` exceeds `sizeLimit` list is shorted by cutting beginning of the list (default behaviour) or ending of the list if `prepend` option is set to `true`.
+
+=== "set list with `sizeLimit`"
+    ```typescript
+    const [list,,, setList] = useList<string>('some-key', [], { sizeLimit: 2 });
+
+    setList(['a']);             // list: ['a']
+    setList(['a', 'b']);        // list: ['a', 'b']
+    setList(['a', 'b', 'c']);   // list: ['b', 'c']
+    ```
+=== "set list with `sizeLimit` and `prepend`"
+    ```typescript
+    const [list,,, setList] = useList<string>('some-key', [], { prepend: true, sizeLimit: 2 });
+
+    setList(['a']);             // list: ['a']
+    setList(['a', 'b']);        // list: ['a', 'b']
+    setList(['a', 'b', 'c']);   // list: ['a', 'b']
+    ```

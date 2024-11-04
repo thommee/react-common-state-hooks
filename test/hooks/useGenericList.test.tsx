@@ -3,6 +3,7 @@ import { getReduxListHook } from '../testUtils/createReduxWrappers';
 import { getInMemoryListHook } from '../testUtils/createInMemoryWrappers';
 import { getLocalStorageListHook } from '../testUtils/createLocalStorageWrappers';
 import { getSessionStorageListHook } from '../testUtils/createSessionStorageWrappers';
+import { ListOptions } from '../../src/hooks/useList/utils/Collections';
 
 describe.each`
   renderListHook                                   | description
@@ -17,7 +18,9 @@ describe.each`
   }: {
     renderListHook:
       | ReturnType<typeof getReduxListHook>['renderGenericHook']
-      | ReturnType<typeof getInMemoryListHook>['renderGenericHook'];
+      | ReturnType<typeof getInMemoryListHook>['renderGenericHook']
+      | ReturnType<typeof getLocalStorageListHook>['renderGenericHook']
+      | ReturnType<typeof getSessionStorageListHook>['renderGenericHook'];
   }) => {
     const getListKey = () => 's.' + Math.random() + '.key';
 
@@ -122,6 +125,28 @@ describe.each`
         ({ initialList, itemToAdd, prepend, expectedResult }) => {
           // given:
           const { result } = renderListHook(getListKey(), initialList, { prepend });
+          // when:
+          act(() => result.current[1](itemToAdd));
+          // then:
+          expect(result.current[0][prepend ? 0 : expectedResult.length - 1]).toBe(itemToAdd);
+          expect(result.current[0]).toStrictEqual(expectedResult);
+        },
+      );
+
+      it.each`
+        initialList   | itemToAdd | prepend  | expectedResult
+        ${[]}         | ${'1'}    | ${true}  | ${['1']}
+        ${[]}         | ${'1'}    | ${false} | ${['1']}
+        ${['0']}      | ${'1'}    | ${true}  | ${['1', '0']}
+        ${['0']}      | ${'1'}    | ${false} | ${['0', '1']}
+        ${['0', '1']} | ${'2'}    | ${true}  | ${['2', '0']}
+        ${['0', '1']} | ${'2'}    | ${false} | ${['1', '2']}
+      `(
+        'should add "$itemToAdd" when prepend="$prepend" and initialList=$initialList and sizeLimit',
+        ({ initialList, itemToAdd, prepend, expectedResult }) => {
+          // given:
+          const sizeLimit = 2;
+          const { result } = renderListHook(getListKey(), initialList, { prepend, sizeLimit });
           // when:
           act(() => result.current[1](itemToAdd));
           // then:
@@ -311,6 +336,32 @@ describe.each`
         // then:
         expect(result.current[0]).toBe(newList);
       });
+
+      it.each`
+        newList            | limitedList   | prepend
+        ${[]}              | ${[]}         | ${undefined}
+        ${['1', '2']}      | ${['1', '2']} | ${undefined}
+        ${['1', '2']}      | ${['1', '2']} | ${true}
+        ${['1', '2']}      | ${['1', '2']} | ${false}
+        ${['1', '2', '3']} | ${['2', '3']} | ${undefined}
+        ${['1', '2', '3']} | ${['1', '2']} | ${true}
+        ${['1', '2', '3']} | ${['2', '3']} | ${false}
+      `(
+        'should set list from "$newList" to limitedList="$limitedList with sizeLimit, prepend=$prepend',
+        async ({ newList, limitedList, prepend }) => {
+          // given:
+          const listOptions: ListOptions<unknown> = {
+            sizeLimit: 2,
+            prepend,
+          };
+          const key = getListKey();
+          const { result } = renderListHook(key, [], listOptions);
+          // when:
+          act(() => result.current[3](newList));
+          // then:
+          expect(result.current[0]).toStrictEqual(limitedList);
+        },
+      );
     });
     describe('multiple usage', () => {
       it('should return the same lists for multiple hook usages', () => {
