@@ -1,11 +1,11 @@
 
-### Interface definition
-```typescript title="useValue parameters"
+### Interface
+```typescript title="Parameters"
 interface UseValue<Value> {
   (key: string, initialValue: Value): UseValueApi<Value>
 }
 ```
-```typescript title="useValue returned values"
+```typescript title="Returned value"
 type UseValueApi<Value> = 
   [value: Value, setValue: SetValue<Value>]
 
@@ -15,7 +15,8 @@ interface SetValue<Value> {
 }
 ```
 
-### Update data by new value directly
+### Setting data
+#### Directly
 ```typescript
 const [value, setValue] = useValue<number>('some-key', 0);
 
@@ -26,7 +27,7 @@ increment();  // value: 2
 increment();  // value: 3
 ```
 
-### Update data by callback
+#### By callback
 ```typescript
 const [value, setValue] = useValue<number>('some-key', 0);
 

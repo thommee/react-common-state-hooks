@@ -1,13 +1,13 @@
 
-### useRecord Interfaces
-```typescript title="useRecord parameters"
+### Interface
+```typescript title="Parameters"
 interface useRecord<RecordItem> {
   (key: string, initialValue?: Record<string, RecordItem>
   ): UseRecordApi<RecordItem>
 }
 ```
 
-```typescript title="useRecord returned values"
+```typescript title="Returned value"
 type UseRecordApi<RecordItem> = [
   record: Record<string, RecordItem>,
   addItem: (key: string, recordItem: RecordItem) => void,
@@ -19,11 +19,6 @@ interface SetValue<Record> {
   (value: Record): void;
   (valueFn: (oldValue: Record) => Record): void;
 }
-```
-
-### useRecord API
-```typescript
-const [record, addItem, removeItem, setRecord] = useRecord('my-key', {});
 ```
 
 ### Adding items
@@ -51,8 +46,8 @@ removeItem('a');  // record: { c: 'C' }
 removeItem('x');  // record: { c: 'C' }
 ```
 
-### Setting new records
-#### Set new record by new value
+### Setting new record
+#### Directly
 You can set new record by calling `setRecord` with _newRecord_ parameter.
 ```typescript
 const [record,,, setRecord] = useRecord<string>('some-key', { a: 'A' });
@@ -60,7 +55,7 @@ const [record,,, setRecord] = useRecord<string>('some-key', { a: 'A' });
                         // record: { a: 'A' }
 setRecord({ b: 'B' });  // record: { b: 'B' }
 ```
-#### Set new record by callback
+#### By callback
 If value provided to `setRecord` is a function, it will be called with _oldValue_ parameter,
 and returned value from this function will be set as new record.
 

@@ -47,9 +47,9 @@ Each of them stores data in different type of storage:
     export const { slice, createSelector, createAction,
       useValue, useList, useRecord
     } = createReduxStateHooks('my-namespace');
-    
-    // --------------------------------------------------------------
-    // RootReducer: Connect generated "slice.reducer" to Redux store:
+    ```
+    ```typescript title="rootReducer.ts"
+    // Connect generated "slice.reducer" to Redux store:
     import { slice } from './ReduxGenericStateHooks';
     
     const rootReducer = combineReducers({

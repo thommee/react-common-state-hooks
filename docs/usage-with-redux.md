@@ -2,7 +2,7 @@
 `createReduxStateHooks()` returns generic hooks, `slice` (reducer and its name), 
 `createSelector` and `createAction` helpers to work with Redux.
 
-```typescript title="myNamespaceReduxGenericHooks.ts"
+```typescript title="reduxStateHooks.ts"
 import { createReduxStateHooks } from 'react-generic-state-hooks';
 
 export const {
@@ -15,7 +15,7 @@ export const {
 Generated `slice` object contains two properties: `name` - the key for connecting reducer to rootReducer, 
 and `reducer` - reducer itself.
 ```typescript title="rootReducer.ts"
-import { slice } from './myNamespaceReduxGenericHooks.ts';
+import { slice } from './reduxStateHooks.ts';
 
 const rootReducer = combineReducers({
   [slice.name]: slice.reducer,
@@ -32,7 +32,7 @@ you will need to generate dedicated selectors and actions.
 
 ```typescript title="useCounter.ts"
 import { useValue, createSelector, createAction
-} from './myNamespaceReduxGenericHooks.ts';
+} from './reduxStateHooks.ts';
 
 const key = 'counter';
 const initialValue = 0;

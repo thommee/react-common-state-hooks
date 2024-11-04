@@ -6,7 +6,7 @@
 ready for use anywhere in the application.
 The library allows you to define hooks for reading and modifying **the same** data, regardless of where it is used.
 
-### [Docs, tutorials and examples can be found here.](https://thommee.github.io/react-generic-state-hooks/)
+### [Click here for full documentation](https://thommee.github.io/react-generic-state-hooks/)
 
 ## Quick guide
 ### Installation
