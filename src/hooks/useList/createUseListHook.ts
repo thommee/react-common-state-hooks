@@ -32,7 +32,7 @@ export const createUseListHook = (useStorage: UseStorage) => {
 
     const setList = useCallback(
       (l: ListItem[]) => {
-        _setList(applyLimit(l, defaultOptions));
+        _setList(applyLimit([...l], defaultOptions));
       },
       [defaultOptions, _setList],
     );

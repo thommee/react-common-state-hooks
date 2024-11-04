@@ -90,7 +90,8 @@ describe('create selector', () => {
       act(() => result.current[3](newList)); // .setList
       // then
       expect(result.current[0]).toBe(selector(store.getState()));
-      expect(result.current[0]).toBe(newList);
+      expect(result.current[0]).not.toBe(newList);
+      expect(result.current[0]).toStrictEqual(newList);
     });
   });
 

@@ -50,10 +50,12 @@ describe.each`
         expect(result.current[0]).toBe(initialValue);
         // when:
         act(() => result.current[3](newValue));
-        expect(result.current[0]).toBe(newValue);
+        expect(result.current[0]).not.toBe(newValue);
+        expect(result.current[0]).toStrictEqual(newValue);
         // when:
         act(() => result.current[3](newValue2));
-        expect(result.current[0]).toBe(newValue2);
+        expect(result.current[0]).not.toBe(newValue2);
+        expect(result.current[0]).toStrictEqual(newValue2);
       });
     });
     describe('.addItem', () => {
@@ -334,7 +336,8 @@ describe.each`
         // when:
         act(() => result.current[3](newList));
         // then:
-        expect(result.current[0]).toBe(newList);
+        expect(result.current[0]).not.toBe(newList);
+        expect(result.current[0]).toStrictEqual(newList);
       });
 
       it.each`
@@ -357,8 +360,11 @@ describe.each`
           const key = getListKey();
           const { result } = renderListHook(key, [], listOptions);
           // when:
+          const length = newList.length;
           act(() => result.current[3](newList));
           // then:
+          expect(newList).not.toBe(limitedList);
+          expect(newList.length).toEqual(length);
           expect(result.current[0]).toStrictEqual(limitedList);
         },
       );

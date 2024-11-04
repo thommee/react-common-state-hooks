@@ -43,7 +43,8 @@ describe('stable api reference', () => {
         // when:
         act(() => result.current[3](initialList));
         // then:
-        expect(list).toBe(result.current[0]);
+        expect(list).not.toBe(result.current[0]);
+        expect(list).toStrictEqual(result.current[0]);
       });
       it('should have stable .addItem modifier', () => {
         // given:
